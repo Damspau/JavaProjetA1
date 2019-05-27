@@ -1,9 +1,10 @@
 package controller;
 
-import contract.ControllerOrder;
+import contract.IBoulderdashController;
 import contract.IController;
 import contract.IModel;
 import contract.IView;
+import contract.UserOrder;
 
 import java.io.IOException;
 
