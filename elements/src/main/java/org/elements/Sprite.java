@@ -47,5 +47,9 @@ public void setImageLoaded(boolean imageLoaded) {
 	this.imageLoaded = imageLoaded;
 }
 
+//checking if the sprite is loaded
+public boolean isImageLoaded () {
+	return this.imageLoaded;
+}
 
 }
