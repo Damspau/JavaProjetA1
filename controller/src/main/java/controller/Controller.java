@@ -12,7 +12,7 @@ import java.io.IOException;
  * @see IOrderPerformer
  */
 
-public final class Controller implements IController, IBoulderDashController, IOrderPerformer, IBoulderdashModel, IBoulderDashView,  {
+public final class Controller implements IBoulderdashController, IOrderPerformer, IBoulderdashModel, IBoulderdashView  {
 	
 	private int diamondCount;
 	

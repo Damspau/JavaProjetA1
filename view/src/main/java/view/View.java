@@ -13,14 +13,14 @@ import javax.swing.SwingUtilities;
 import contract.ControllerOrder;
 import contract.IController;
 import contract.IModel;
-import contract.IView;
+import contract.IBoulderdashView;
 
 /**
  * The Class View.
  *
  * @author Jean-Aymeric Diet
  */
-public final class View implements IView, Runnable, Observer {
+public final class View implements IBoulderdashView, Runnable, Observer {
 	
 	//All the different attributes.
 	
