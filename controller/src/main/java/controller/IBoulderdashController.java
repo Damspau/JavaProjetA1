@@ -1,4 +1,4 @@
-package contract;
+package controller;
 
 /**
  * The Interface IBoulderdashController.
@@ -17,7 +17,7 @@ public interface IBoulderdashController {
 	 *
 	 * @param controllerOrder the controller order
 	 */
-	public void orderPerform(ControllerOrder controllerOrder);
+	public void orderPerform(UserOrder controllerOrder);
 
 	public void play() throws InterruptedException;
 
