@@ -40,6 +40,16 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 		this.clearStackOrder();
 	}
 	
+    /**
+     * Sets the view.
+     *
+     * @param view
+     *            the view to set
+     */
+    private void setView(final IBoulderdashView view) {
+        this.view = view;
+    }
+	
 	
 
 	/*
