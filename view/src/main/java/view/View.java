@@ -4,6 +4,7 @@ import java.lang.Runnable;
 import java.awt.Graphics;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Observable;
@@ -15,7 +16,10 @@ import javax.swing.SwingUtilities;
 import contract.ControllerOrder;
 import contract.IBoulderdashController;
 import contract.IController;
+import contract.IMap;
 import contract.IModel;
+import contract.IOrderPerformer;
+import contract.UserOrder;
 import contract.IBoulderdashView;
 
 /**
@@ -27,15 +31,176 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 
 	// All the different attributes.
 
-	public View view;
-
-	private int mapView = 16;
-	private int squareSize = 50;
-	private Rectangle closeView;
-	private int view;
-	private IMap map;
 	private Player myPlayer;
+
+	/** The Constant mapView. */
+	private static final int mapView = 16;
+
+	/** The Constant squareSize. */
+	private static final int squareSize = 50;
+
+	/** The Constant closeView. */
+	private Rectangle closeView;
+
+	/** The view. */
+	private int view;
+
+	/** The map. */
+	private IMap map;
+
+	/** The order performer. */
 	private IOrderPerformer orderPerformer;
+
+	/**
+	 * Instantiates a new view frame.
+	 *
+	 * @param model the model
+	 * @param gc    the gc
+	 * @return
+	 */
+	public View(final IModel model, final GraphicsConfiguration gc) {
+		super();
+		this.ViewFrame(model);
+
+	}
+
+	public View(final IModel model, final String title) throws HeadlessException {
+		super();
+		this.ViewFrame(model);
+	}
+
+	/**
+	 * Instantiates a new view.
+	 *
+	 * @param model the model
+	 */
+	public View(IModel model) {
+
+	}
+
+	protected static void keyCodeToControllerOrder(UserOrder userOrder) {
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see contract.IBoulderdashView#printMessage(java.lang.String)
+	 */
+	public void printMessage(final String message) {
+		this.viewFrame.printMessage(message);
+	}
+
+	public void printMessage1(final String message) {
+		JOptionPane.showMessageDialog(null, message);
+	}
+
+	/**
+	 * Sets the controller.
+	 *
+	 * @param controller the new controller
+	 */
+	protected void setController(final IBoulderdashController controller) {
+		this.controller = controller;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see java.lang.Runnable#run()
+	 */
+	public void run() {
+		this.view.setVisible(true);
+	}
+
+	public void show(int yStart) {
+
+	}
+
+	/**
+	 * Key code to controller order.
+	 *
+	 * @param keyCode the key code
+	 * @return the controller order
+	 */
+	protected UserOrder keyCodeToUserOrder(final int keyCode) {
+		switch (keyCode) {
+		case KeyEvent.VK_LEFT:
+			return UserOrder.LEFT;
+		case KeyEvent.VK_UP:
+			return UserOrder.UP;
+		case KeyEvent.VK_RIGHT:
+			return UserOrder.RIGHT;
+		case KeyEvent.VK_DOWN:
+			return UserOrder.DOWN;
+		default:
+			return UserOrder.NOP;
+		}
+	}
+
+	public void keyTyped(final KeyEvent e) {
+
+	}
+
+	public void keyPressed(final KeyEvent e) {
+		this.getController().orderPerform(View.keyCodeToUserOrder(e.getKeyCode()));
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
+	 */
+	public void keyReleased(final KeyEvent e) {
+
+	}
+
+	public void followMyPlayer() {
+
+	}
+
+	public IMap getMap() {
+
+	}
+
+	public void setMap(IMap map) {
+
+	}
+
+	public int getView() {
+
+	}
+
+	public void setView(int view) {
+
+	}
+
+	public Rectangle getCloseView() {
+
+	}
+
+	public void setCloseView(Rectangle closeView) {
+
+	}
+
+	public IOrderPerformer getOrderPerformer() {
+
+	}
+
+	public void setOrderPerformer(IOrderPerformer orderPerformer) {
+
+	}
+	
+	
+	
+	
+
+	/** CODE DE BASE */
+	
+	
+	
+	
+	
 
 	private View getView() {
 		// TODO Auto-generated method stub
@@ -68,77 +233,6 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 		return this.controller;
 	}
 
-	/**
-	 * Sets the controller.
-	 *
-	 * @param controller the new controller
-	 */
-	protected void setController1(final IController controller) {
-		this.controller = controller;
-	}
-
-	/**
-	 * Instantiates a new view.
-	 *
-	 * @param model the model
-	 */
-
-	/**
-	 * Key code to controller order.
-	 *
-	 * @param keyCode the key code
-	 * @return the controller order
-	 */
-	protected ControllerOrder keyCodeToControllerOrder(final int keyCode) {
-		switch (keyCode) {
-		case KeyEvent.VK_G:
-			return ControllerOrder.English;
-		case KeyEvent.VK_F:
-			return ControllerOrder.Francais;
-		case KeyEvent.VK_D:
-			return ControllerOrder.Deutsch;
-		case KeyEvent.VK_I:
-			return ControllerOrder.Indonesia;
-		default:
-			return ControllerOrder.English;
-		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IView#printMessage(java.lang.String)
-	 */
-	public void printMessage(final String message) {
-		this.viewFrame.printMessage(message);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.lang.Runnable#run()
-	 */
-	public void run() {
-		this.view.setVisible(true);
-	}
-
-	public void keyTyped(final KeyEvent e) {
-
-	}
-
-	public void keyPressed(final KeyEvent e) {
-		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
-	 */
-	public void keyReleased(final KeyEvent e) {
-
-	}
-
 	public void ViewPanel(final View viewFrame) {
 		this.setViewFrame(viewFrame, viewFrame);
 		viewFrame.getModel().getObservable().addObserver(this);
@@ -164,29 +258,8 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 		this.ViewFrame(model);
 	}
 
-	/**
-	 * Instantiates a new view frame.
-	 *
-	 * @param model the model
-	 * @param gc    the gc
-	 * @return
-	 */
-	public View(final IModel model, final GraphicsConfiguration gc) {
-		super();
-		this.ViewFrame(model);
-
-	}
-
-	public View(final IModel model, final String title) throws HeadlessException {
-		super();
-		this.ViewFrame(model);
-	}
-
 	protected IModel getModel() {
 		return this.model;
 	}
 
-	public void printMessage1(final String message) {
-		JOptionPane.showMessageDialog(null, message);
-	}
 }
