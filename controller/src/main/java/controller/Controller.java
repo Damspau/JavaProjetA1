@@ -185,6 +185,9 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 			break;
 		}
 	}
+	
+	
+	
 
 	public void collect() {
 
