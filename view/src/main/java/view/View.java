@@ -167,7 +167,7 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 
 	}
 
-	public int getView() {
+	private int getView() {
 
 	}
 
@@ -190,26 +190,35 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 	public void setOrderPerformer(IOrderPerformer orderPerformer) {
 
 	}
-	
-	
-	
-	
 
+	
+	
+	
+	
 	/** CODE DE BASE */
-	
-	
-	
-	
-	
 
-	private View getView() {
+	
+	
+	
+	
+	protected void paintComponent(final Graphics graphics) {
+		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
+		graphics.drawString(this.getView().getModel().getHelloWorld().getMessage(), 10, 20);
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
-		return null;
+
 	}
 
 	private void setVisible(boolean b) {
 		// TODO Auto-generated method stub
 
+	}
+
+	protected IModel getModel() {
+		return this.model;
 	}
 
 	private int getWidth() {
@@ -239,27 +248,12 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 
 	}
 
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-
-	}
-
 	private void setViewFrame(final View viewFrame, View view) {
 		this.view = view;
 	}
 
-	protected void paintComponent(final Graphics graphics) {
-		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
-		graphics.drawString(this.getView().getModel().getHelloWorld().getMessage(), 10, 20);
-	}
-
 	public void ViewFrame(final IModel model) throws HeadlessException {
 		this.ViewFrame(model);
-	}
-
-	protected IModel getModel() {
-		return this.model;
 	}
 
 }
