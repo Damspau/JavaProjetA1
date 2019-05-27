@@ -117,49 +117,35 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 			case LEFT:
 				this.getModel().getMyPlayer().moveLeft();
 				break;
+			case UP:
+				this.getModel().getMyPlayer().moveUp();
+				break;
+			case DOWN:
+				this.getModel().getMyPlayer().moveDown();
+				break;
 			case NOP:
 			default:
 				this.getModel().getMyPlayer().doNothing();
 				break;
 			}
 			this.clearStackOrder();
-			if (this.getModel().getMyVehicle().isAlive()) {
-				this.getModel().getMyVehicle().moveDown();
+			if (this.getModel().getMyPlayer().isAlive()) {
+				this.getModel().getMyPlayer().moveDown();
 			}
-			this.getView().followMyVehicle();
+			this.getView().followMyPlayer();
 		}
-		this.getView().displayMessage("Game over !");
+		this.getView().printMessage("Game over !");
 	}
 
-	/**
-	 * Control.
-	 */
 	/*
 	 * (non-Javadoc)
-	 *
-	 * @see contract.IController#control()
+	 * 
+	 * @see
+	 * fr.exia.2019.boulderdash.controller.IBoulderdashController#getOrderPeformer()
 	 */
-	public void control() {
-		this.view.printMessage(
-				"Appuyer sur les touches 'E', 'F', 'D' ou 'I', pour afficher Hello world dans la langue d votre choix.");
-	}
-
-	/**
-	 * Sets the view.
-	 *
-	 * @param pview the new view
-	 */
-	private void setView(final IView pview) {
-		this.view = pview;
-	}
-
-	/**
-	 * Sets the model.
-	 *
-	 * @param model the new model
-	 */
-	private void setModel(final IModel model) {
-		this.model = model;
+	@Override
+	public IOrderPerformer getOrderPerformer() {
+		return this;
 	}
 
 	/**
@@ -170,9 +156,14 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see contract.IController#orderPerform(contract.ControllerOrder)
+	 * @see contract.IBoulderdashController#orderPerform(contract.ControllerOrder)
 	 */
-	public void orderPerform(final ControllerOrder controllerOrder) {
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see contract.IOrderPerformed#orderPerform(contract.UserOrder)
+	 */
+	public void orderPerform(final ControllerOrder controllerOrder) throws IOException {
 		switch (controllerOrder) {
 		case English:
 			this.model.loadHelloWorld("GB");
@@ -190,17 +181,31 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 			break;
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+
+	/**
+	 * Control.
+	 */
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see contract.IController#control()
+	 */
+	public void control() {
+		this.view.printMessage(
+				"Appuyer sur les touches 'E', 'F', 'D' ou 'I', pour afficher Hello world dans la langue d votre choix.");
+	}
 
 	@Override
 	public void orderPerform(UserOrder userOrder) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public IOrderPerformer getOrderPerformer() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
