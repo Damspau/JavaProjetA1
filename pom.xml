@@ -17,6 +17,9 @@
 		<module>contract</module>
 		<module>model</module>
 		<module>entity</module>
+		<module>elements</module>
+		<module>mobile</module>
+		<module>motionless</module>
 	</modules>
 	<dependencies>
 		<dependency>
