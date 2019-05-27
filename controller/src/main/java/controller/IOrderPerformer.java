@@ -1,7 +1,18 @@
 package controller;
 
-public interface IOrderPerformer {
+import java.io.IOException;
 
-	public void orderPerform(UserOrder userOrder);
+public interface IOrderPerformer {
+	
+    /**
+     * Order perform.
+     *
+     * @param userOrder
+     *            the user order
+     * @throws IOException
+     *             Signals that an I/O exception has occurred.
+     */
+
+	public void orderPerform(UserOrder userOrder) throws IOException;
 
 }
