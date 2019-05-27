@@ -1,5 +1,7 @@
 package contract;
 
+import java.util.Observable;
+
 public interface IMap {
 	//get the width of the map
 	public void getWidth();
