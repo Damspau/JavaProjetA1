@@ -1,6 +1,10 @@
 package org.elements;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class Sprite {
 private Image image;
@@ -43,7 +47,7 @@ public void setBddImage(char bddImage) {
 	this.bddImage = bddImage;
 }
 
-public void setImageLoaded(boolean imageLoaded) {
+public void setImageLoaded(boolean isImageLoaded) {
 	this.imageLoaded = imageLoaded;
 }
 
@@ -51,5 +55,7 @@ public void setImageLoaded(boolean imageLoaded) {
 public boolean isImageLoaded () {
 	return this.imageLoaded;
 }
-
+public final void loadImage() throws IOException {
+    this.setImage(ImageIO.read(new File("images/" + this.getImageName())));
+}
 }
