@@ -8,7 +8,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 
 import contract.ControllerOrder;
 import contract.IController;
@@ -64,7 +63,7 @@ public final class View implements IView, Runnable, Observer {
 	 * @param controller
 	 *          the new controller
 	 */
-	protected void setController1(final IController controller) {
+	public void setController1(final IController controller) {
 		this.controller = controller;
 	}
 
@@ -165,17 +164,15 @@ public final class View implements IView, Runnable, Observer {
 	 *
 	 * @param model
 	 *          the model
-	 * @param gc
-	 *          the gc
 	 * @return 
 	 */
-	public  View(final IModel model, final GraphicsConfiguration gc) {
+	public  View(final IModel model) {
 		super();
 		this.ViewFrame(model);
 
 	}
 	
-	public View(final IModel model, final String title) throws HeadlessException {
+	public View(final IModel model) throws HeadlessException {
 		super();
 		this.ViewFrame(model);
 	}
