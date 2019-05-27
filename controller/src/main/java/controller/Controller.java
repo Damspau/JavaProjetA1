@@ -25,32 +25,81 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	/** The view. */
 	private IBoulderdashView view;
 
-	/** The order (RIGHT, LEFT, UP and DOWN) */
+	/** The stack order (RIGHT, LEFT, UP and DOWN) */
 	private UserOrder stackOrder;
 
 	/**
-	 * Instantiates a new controller.
+	 * Instantiates a new boulderdash controller.
 	 *
 	 * @param view  the view
 	 * @param model the model
 	 */
-	public Controller(final IBoulderdashView view, final IBoulderdashModel model) {
+	public void controller(final IBoulderdashView view, final IBoulderdashModel model) {
 		this.setView(view);
 		this.setModel(model);
 		this.clearStackOrder();
 	}
-	
-    /**
-     * Sets the view.
-     *
-     * @param view
-     *            the view to set
-     */
-    private void setView(final IBoulderdashView view) {
-        this.view = view;
-    }
-	
-	
+
+	/**
+	 * Sets the view.
+	 *
+	 * @param view the view to set
+	 */
+	private void setView(final IBoulderdashView view) {
+		this.view = view;
+	}
+
+	/**
+	 * Gets the view.
+	 *
+	 * @return the view
+	 */
+	private IBoulderdashView getView() {
+		return this.view;
+	}
+
+	/**
+	 * Sets the model.
+	 *
+	 * @param model the model to set
+	 */
+	private void setModel(final IBoulderdashModel model) {
+		this.model = model;
+	}
+
+	/**
+	 * Gets the model.
+	 *
+	 * @return the model
+	 */
+	private IBoulderdashModel getModel() {
+		return this.model;
+	}
+
+	/**
+	 * Sets the stack order.
+	 *
+	 * @param stackOrder the new stack order
+	 */
+	private void setStackOrder(final UserOrder stackOrder) {
+		this.stackOrder = stackOrder;
+	}
+
+	/**
+	 * Gets the stack order.
+	 *
+	 * @return the stack order
+	 */
+	private UserOrder getStackOrder() {
+		return this.stackOrder;
+	}
+
+	/**
+	 * Clear stack order.
+	 */
+	private void clearStackOrder() {
+		this.stackOrder = UserOrder.NOP;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -59,18 +108,18 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	 */
 	@Override
 	public final void play() throws InterruptedException {
-		while (this.getModel().getMyVehicle().isAlive()) {
+		while (this.getModel().getMyPlayer().isAlive()) {
 			Thread.sleep(speed);
 			switch (this.getStackOrder()) {
 			case RIGHT:
-				this.getModel().getMyVehicle().moveRight();
+				this.getModel().getMyPlayer().moveRight();
 				break;
 			case LEFT:
-				this.getModel().getMyVehicle().moveLeft();
+				this.getModel().getMyPlayer().moveLeft();
 				break;
 			case NOP:
 			default:
-				this.getModel().getMyVehicle().doNothing();
+				this.getModel().getMyPlayer().doNothing();
 				break;
 			}
 			this.clearStackOrder();

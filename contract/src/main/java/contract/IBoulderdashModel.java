@@ -16,4 +16,8 @@ public interface IBoulderdashModel {
 
 	public Observable getObservable();
 
+	public IMap getMap();
+
+	public CommonMobile getMyPlayer();
+
 }
