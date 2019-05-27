@@ -1,5 +1,5 @@
 package org.mobile;
 
-public class Player {
+public class Player extends CommonMobile {
 
 }

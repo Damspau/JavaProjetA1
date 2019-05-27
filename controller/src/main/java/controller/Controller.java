@@ -5,21 +5,30 @@ import contract.IController;
 import contract.IModel;
 import contract.IView;
 
+import java.io.IOException;
+
 /**
- * The Class Controller.
+ * <h1>The Class Controller.</h1>
+ *
+ * @author Damiens, Benoît D et Maxime G
+ * @version 0.1
+ * @see IOrderPerformer
  */
-public final class Controller implements IController, IBoulderDashController, IOrderPerformer {
 
+public final class Controller implements IController, IBoulderDashController, IOrderPerformer, IBoulderdashModel, IBoulderDashView,  {
+	
 	private int diamondCount;
-
-	private IBoulderdashModel model;
-	private IBoulderdashView view;
-
-	/** The view. */
-	private IView view;
+	
+	/** The Constant speed. */
+	private static final int speed = 300;
 
 	/** The model. */
-	private IModel model;
+	private IBoulderdashModel model;
+	
+	/** The view. */
+	private IBoulderdashView view;
+	
+	private UserOrder stackOrder;
 
 	/**
 	 * Instantiates a new controller.
@@ -27,10 +36,42 @@ public final class Controller implements IController, IBoulderDashController, IO
 	 * @param view  the view
 	 * @param model the model
 	 */
-	public Controller(final IView view, final IModel model) {
+	public Controller(final IBoulderdashView view, final IBoulderdashModel model) {
 		this.setView(view);
 		this.setModel(model);
+		this.clearStackOrder();
 	}
+	
+	/*
+     * (non-Javadoc)
+     * @see fr.exia.2019.boulderdash.controller.IBoulderDashController#play()
+     */
+    @Override
+    public final void play() throws InterruptedException {
+        while (this.getModel().getMyVehicle().isAlive()) {
+            Thread.sleep(speed);
+            switch (this.getStackOrder()) {
+                case RIGHT:
+                    this.getModel().getMyVehicle().moveRight();
+                    break;
+                case LEFT:
+                    this.getModel().getMyVehicle().moveLeft();
+                    break;
+                case NOP:
+                default:
+                    this.getModel().getMyVehicle().doNothing();
+                    break;
+            }
+            this.clearStackOrder();
+            if (this.getModel().getMyVehicle().isAlive()) {
+                this.getModel().getMyVehicle().moveDown();
+            }
+            this.getView().followMyVehicle();
+        }
+        this.getView().displayMessage("Game over !");
+    }
+
+	
 
 	/**
 	 * Control.
@@ -99,12 +140,6 @@ public final class Controller implements IController, IBoulderDashController, IO
 	}
 
 	@Override
-	public void play() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public IOrderPerformer getOrderPerformer() {
 		// TODO Auto-generated method stub
 		return null;
@@ -112,12 +147,6 @@ public final class Controller implements IController, IBoulderDashController, IO
 
 	@Override
 	public void controller() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void orderPerform(controller.ControllerOrder controllerOrder) {
 		// TODO Auto-generated method stub
 
 	}
