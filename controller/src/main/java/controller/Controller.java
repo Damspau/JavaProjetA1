@@ -3,6 +3,7 @@ package controller;
 import contract.*;
 
 import java.io.IOException;
+import java.util.Observable;
 
 /**
  * <h1>The Class Controller.</h1>
@@ -163,55 +164,41 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	 * 
 	 * @see contract.IOrderPerformed#orderPerform(contract.UserOrder)
 	 */
-	public void orderPerform(final ControllerOrder controllerOrder) throws IOException {
-		switch (controllerOrder) {
-		case English:
+	public void orderPerform(final UserOrder userOrder) throws IOException {
+
+		this.setStackOrder(userOrder);
+
+		switch (userOrder) {
+		case RIGHT:
 			this.model.loadHelloWorld("GB");
 			break;
-		case Francais:
+		case LEFT:
 			this.model.loadHelloWorld("FR");
 			break;
-		case Deutsch:
+		case UP:
 			this.model.loadHelloWorld("DE");
 			break;
-		case Indonesia:
+		case DOWN:
 			this.model.loadHelloWorld("ID");
 			break;
 		default:
 			break;
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
 
-	/**
-	 * Control.
-	 */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IController#control()
-	 */
-	public void control() {
-		this.view.printMessage(
-				"Appuyer sur les touches 'E', 'F', 'D' ou 'I', pour afficher Hello world dans la langue d votre choix.");
-	}
-
-	@Override
-	public void orderPerform(UserOrder userOrder) {
-		// TODO Auto-generated method stub
+	public void collect() {
 
 	}
 
-	@Override
-	public void controller() {
-		// TODO Auto-generated method stub
+	public void canBePushed() {
 
+	}
+
+	public void canBeDig() {
+
+	}
+
+	public void fallAndKill() {
 	}
 
 }
