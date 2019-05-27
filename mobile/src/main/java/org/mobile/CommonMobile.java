@@ -1,5 +1,7 @@
 package org.mobile;
 
-public abstract class CommonMobile {
+import org.elements.Elements;
+
+public abstract class CommonMobile  extends Elements{
 
 }
