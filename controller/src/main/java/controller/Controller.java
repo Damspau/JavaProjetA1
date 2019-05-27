@@ -1,10 +1,6 @@
 package controller;
 
-import contract.IBoulderdashController;
-import contract.IController;
-import contract.IModel;
-import contract.IView;
-import contract.UserOrder;
+import contract.*;
 
 import java.io.IOException;
 
@@ -16,19 +12,20 @@ import java.io.IOException;
  * @see IOrderPerformer
  */
 
-public final class Controller implements IController, IBoulderDashController, IOrderPerformer, IBoulderdashModel, IBoulderDashView,  {
-	
+public final class Controller implements IBoulderdashController, IOrderPerformer, IBoulderdashModel, IBoulderdashView {
+
 	private int diamondCount;
-	
+
 	/** The Constant speed. */
 	private static final int speed = 300;
 
 	/** The model. */
 	private IBoulderdashModel model;
-	
+
 	/** The view. */
 	private IBoulderdashView view;
-	
+
+	/** The order (RIGHT, LEFT, UP and DOWN) */
 	private UserOrder stackOrder;
 
 	/**
@@ -43,36 +40,37 @@ public final class Controller implements IController, IBoulderDashController, IO
 		this.clearStackOrder();
 	}
 	
-	/*
-     * (non-Javadoc)
-     * @see fr.exia.2019.boulderdash.controller.IBoulderDashController#play()
-     */
-    @Override
-    public final void play() throws InterruptedException {
-        while (this.getModel().getMyVehicle().isAlive()) {
-            Thread.sleep(speed);
-            switch (this.getStackOrder()) {
-                case RIGHT:
-                    this.getModel().getMyVehicle().moveRight();
-                    break;
-                case LEFT:
-                    this.getModel().getMyVehicle().moveLeft();
-                    break;
-                case NOP:
-                default:
-                    this.getModel().getMyVehicle().doNothing();
-                    break;
-            }
-            this.clearStackOrder();
-            if (this.getModel().getMyVehicle().isAlive()) {
-                this.getModel().getMyVehicle().moveDown();
-            }
-            this.getView().followMyVehicle();
-        }
-        this.getView().displayMessage("Game over !");
-    }
-
 	
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see fr.exia.2019.boulderdash.controller.IBoulderDashController#play()
+	 */
+	@Override
+	public final void play() throws InterruptedException {
+		while (this.getModel().getMyVehicle().isAlive()) {
+			Thread.sleep(speed);
+			switch (this.getStackOrder()) {
+			case RIGHT:
+				this.getModel().getMyVehicle().moveRight();
+				break;
+			case LEFT:
+				this.getModel().getMyVehicle().moveLeft();
+				break;
+			case NOP:
+			default:
+				this.getModel().getMyVehicle().doNothing();
+				break;
+			}
+			this.clearStackOrder();
+			if (this.getModel().getMyVehicle().isAlive()) {
+				this.getModel().getMyVehicle().moveDown();
+			}
+			this.getView().followMyVehicle();
+		}
+		this.getView().displayMessage("Game over !");
+	}
 
 	/**
 	 * Control.

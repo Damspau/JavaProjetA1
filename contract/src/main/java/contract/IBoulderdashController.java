@@ -1,39 +1,26 @@
 package contract;
 
-import controller.ControllerOrder;
-import controller.IOrderPerformer;
-
 /**
- * The Interface IController.
+ * The Interface IBoulderdashController.
  *
- * @author Jean-Aymeric Diet
+ * @author Benoît D, Damiens et Maxime G
  */
 public interface IBoulderdashController {
 
 	/**
-	 * Control.
+	 * Controller.
 	 */
-	public void control();
+	public void controller();
 
 	/**
 	 * Order perform.
 	 *
-	 * @param controllerOrder
-	 *          the controller order
+	 * @param controllerOrder the controller order
 	 */
-
+	public void orderPerform(ControllerOrder controllerOrder);
 
 	public void play() throws InterruptedException;
 
 	public IOrderPerformer getOrderPerformer();
 
-	public void controller();
-
-	public void orderPerform(ControllerOrder controllerOrder);
-
-
-
 }
-
-
-
