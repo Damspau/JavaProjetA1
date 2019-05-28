@@ -1,9 +1,11 @@
 package controller;
 
-import contract.*;
-
 import java.io.IOException;
-import java.util.Observable;
+
+import model.IBoulderdashModel;
+import view.IBoulderdashView;
+import view.IOrderPerformer;
+import view.UserOrder;
 
 /**
  * <h1>The Class Controller.</h1>
@@ -13,7 +15,7 @@ import java.util.Observable;
  * @see IOrderPerformer
  */
 
-public final class Controller implements IBoulderdashController, IOrderPerformer, IBoulderdashModel, IBoulderdashView {
+public final class Controller implements IBoulderdashController, IOrderPerformer {
 
 	private int diamondCount;
 
@@ -164,7 +166,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	 * 
 	 * @see contract.IOrderPerformed#orderPerform(contract.UserOrder)
 	 */
-	public void orderPerform(final UserOrder userOrder) throws IOException {
+	public void orderPerform (final UserOrder userOrder) throws IOException {
 
 		this.setStackOrder(userOrder);
 
@@ -185,9 +187,14 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 			break;
 		}
 	}
-	
-	
-	
+
+	public int getDiamondCount() {
+		return diamondCount;
+	}
+
+	public void setDiamondCount(int diamondCount) {
+		this.diamondCount = diamondCount;
+	}
 
 	public void collect() {
 

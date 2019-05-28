@@ -1,34 +1,27 @@
 package view;
 
-import java.lang.Runnable;
 import java.awt.Graphics;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JOptionPane;
 
-import contract.ControllerOrder;
-import contract.IBoulderdashController;
-import contract.IController;
 import contract.IMap;
-import contract.IModel;
-import contract.IOrderPerformer;
-import contract.UserOrder;
-import contract.IBoulderdashView;
 
 /**
  * The Class View.
  *
  * @author Maxime G, Benoît D et Damiens
  */
-public final class View implements IBoulderdashView, IBoulderdashController, Runnable, Observer {
+public final class View implements IBoulderdashView, Runnable, Observer {
 
 	// All the different attributes.
+
+	Graphics g;
 
 	private Player myPlayer;
 
@@ -57,14 +50,9 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 	 * @param gc    the gc
 	 * @return
 	 */
-
-	public void setController1(final IController controller) {
-		this.controller = controller;
-
 	public View(final IModel model, final GraphicsConfiguration gc) {
 		super();
 		this.ViewFrame(model);
-
 
 	}
 
@@ -195,56 +183,7 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 
 	}
 
-
-
-
-
 	/** CODE DE BASE */
-
-
-
-
-
-	protected void paintComponent(final Graphics graphics) {
-		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
-		graphics.drawString(this.getView().getModel().getHelloWorld().getMessage(), 10, 20);
-	}
-
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-
-	}
-
-<<<<<<< HEAD
-	/**
-	 * Instantiates a new view frame.
-	 *
-	 * @param model
-	 *          the model
-	 * @return
-	 */
-	public  View(final IModel model) {
-		super();
-		this.ViewFrame(model);
-
-	}
-
-	public View(final IModel model) throws HeadlessException {
-		super();
-		this.ViewFrame(model);
-	}
-
-=======
-	private void setVisible(boolean b) {
-		// TODO Auto-generated method stub
-
-	}
-
->>>>>>> depdency
-	protected IModel getModel() {
-		return this.model;
-	}
 
 	private int getWidth() {
 		// TODO Auto-generated method stub
@@ -254,6 +193,25 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 	private int getHeight() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	protected void paintComponent(final Graphics graphics) {
+		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void setVisible(boolean b) {
+		// TODO Auto-generated method stub
+
+	}
+
+	protected IModel getModel() {
+		return this.model;
 	}
 
 	/** The controller. */
