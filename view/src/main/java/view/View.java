@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import contract.IMap;
@@ -17,13 +18,9 @@ import contract.IMap;
  *
  * @author Maxime G, Benoît D et Damiens
  */
-public final class View implements IBoulderdashView, Runnable, Observer {
+public final class View extends JFrame implements IBoulderdashView, Runnable, Observer {
 
 	// All the different attributes.
-
-	Graphics g;
-
-	private Player myPlayer;
 
 	/** The Constant mapView. */
 	private static final int mapView = 16;
