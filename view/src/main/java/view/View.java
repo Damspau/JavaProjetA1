@@ -1,24 +1,31 @@
 package view;
 
-import java.awt.Graphics;
-import java.awt.GraphicsConfiguration;
-import java.awt.HeadlessException;
-import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
-import java.util.Observable;
-import java.util.Observer;
+import java.awt.*;
+import java.util.*;
+import javax.swing.*;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import contract.*;
+import model.*;
+import controller.*;
 
-import contract.IMap;
 
-/**
- * The Class View.
- *
- * @author Maxime G, Benoît D et Damiens
- */
 public final class View extends JFrame implements IBoulderdashView, Runnable, Observer {
+
+	private JPanel actionPanel;
+	private JPanel informationPanel;
+	private GameGroundView gamegroundView;
+	private Controller controller;
+	private Model model;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	// All the different attributes.
 
