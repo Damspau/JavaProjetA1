@@ -8,7 +8,7 @@ import view.UserOrder;
 /**
  * The Interface IBoulderdashController.
  *
- * @author Benoît D, Damiens et Maxime G
+ * @author Benoît D, Damiens and Maxime G
  */
 public interface IBoulderdashController {
 
@@ -26,9 +26,18 @@ public interface IBoulderdashController {
 
 	public void orderPerform(UserOrder controllerOrder);
 
+	/**
+	 * Play.
+	 *
+	 * @throws InterruptedException the interrupted exception
+	 */
+	void play() throws InterruptedException;
 
-	public void play() throws InterruptedException;
-
-	public IOrderPerformer getOrderPerformer();
+	/**
+	 * Gets the order peformer.
+	 *
+	 * @return the order peformer
+	 */
+	IOrderPerformer getOrderPerformer();
 
 }

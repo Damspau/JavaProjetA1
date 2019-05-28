@@ -2,33 +2,32 @@ package controller;
 
 import java.io.IOException;
 
+import contract.IBoulderdashController;
+import contract.IOrderPerformer;
+import contract.UserOrder;
 import model.IBoulderdashModel;
 import view.IView;
-import view.IOrderPerformer;
-import view.UserOrder;
 
 /**
  * <h1>The Class Controller.</h1>
  *
  * @author Damiens, Benoît D et Maxime G
- * @version 0.1
- * @see IOrderPerformer
  */
 
 public final class Controller implements IBoulderdashController, IOrderPerformer {
 
 	private int diamondCount;
-
-	/** The Constant speed. */
-	private static final int speed = 300;
-
+	
 	/** The model. */
 	private IBoulderdashModel model;
 
 	/** The view. */
 	private IView view;
 
-	/** The stack order (RIGHT, LEFT, UP and DOWN) */
+	/** The Constant speed. */
+	private static final int speed = 300;
+
+	/** The stack order (RIGHT, LEFT, UP, DOWN and NOP) */
 	private UserOrder stackOrder;
 
 	/**
@@ -166,7 +165,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	 * 
 	 * @see contract.IOrderPerformed#orderPerform(contract.UserOrder)
 	 */
-	public void orderPerform (final UserOrder userOrder) throws IOException {
+	public void orderPerform(final UserOrder userOrder) throws IOException {
 
 		this.setStackOrder(userOrder);
 
