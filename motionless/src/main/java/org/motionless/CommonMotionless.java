@@ -4,8 +4,7 @@ import fr.exia.showboard.IBoard;
 import java.awt.Point;
 
 import org.elements.*;
-import org.elements.Permeability;
-import org.elements.Sprite;
+import contract.*;
 
 import contract.IMap;
 
