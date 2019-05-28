@@ -16,7 +16,7 @@ public interface IBoulderdashController {
 	 * @throws IOException
 	 */
 
-	public void orderPerform(UserOrder controllerOrder);
+	public void orderPerform(UserOrder controllerOrder) throws IOException;
 
 	/**
 	 * Play.
