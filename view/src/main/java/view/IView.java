@@ -7,4 +7,8 @@ package view;
  */
 public interface IView {
 
+	void followMyPlayer();
+
+	void printMessage(String message);
+
 }

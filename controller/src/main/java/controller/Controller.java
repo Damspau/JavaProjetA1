@@ -17,7 +17,7 @@ import view.IView;
 public final class Controller implements IBoulderdashController, IOrderPerformer {
 
 	private int diamondCount;
-	
+
 	/** The model. */
 	private IBoulderdashModel model;
 
@@ -169,22 +169,6 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 		this.setStackOrder(userOrder);
 
-		switch (userOrder) {
-		case RIGHT:
-			this.model.loadHelloWorld("GB");
-			break;
-		case LEFT:
-			this.model.loadHelloWorld("FR");
-			break;
-		case UP:
-			this.model.loadHelloWorld("DE");
-			break;
-		case DOWN:
-			this.model.loadHelloWorld("ID");
-			break;
-		default:
-			break;
-		}
 	}
 
 	public int getDiamondCount() {
@@ -208,6 +192,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	}
 
 	public void fallAndKill() {
+
 	}
 
 }
