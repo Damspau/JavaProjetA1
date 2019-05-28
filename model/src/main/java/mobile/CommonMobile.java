@@ -1,4 +1,4 @@
-package org.mobile;
+package mobile;
 
 import org.elements.Elements;
 import contract.*;

@@ -9,24 +9,18 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Observable;
 import java.util.Observer;
-
+import org.mobile.*;
 import javax.swing.JOptionPane;
 
-import contract.ControllerOrder;
-import contract.IBoulderdashController;
-import contract.IController;
-import contract.IMap;
-import contract.IModel;
-import contract.IOrderPerformer;
-import contract.UserOrder;
-import contract.IBoulderdashView;
+import contract.*;
+
 
 /**
  * The Class View.
  *
  * @author Maxime G, Benoît D et Damiens
  */
-public final class View implements IBoulderdashView, IBoulderdashController, Runnable, Observer {
+public final class View implements IBoulderdashView, IBoulderdashController, IBoulderdashModel{
 
 	// All the different attributes.
 
@@ -58,29 +52,18 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 	 * @return
 	 */
 
-	public void setController1(final IController controller) {
-		this.controller = controller;
+	
 
-	public View(final IModel model, final GraphicsConfiguration gc) {
-		super();
-		this.ViewFrame(model);
+	public View(IBoulderdashModel model) {
+		this.setView(mapView);
+		this.setMap(map);
+		this.setMyPlayer();
+		
 
-
-	}
-
-	public View(final IModel model, final String title) throws HeadlessException {
-		super();
-		this.ViewFrame(model);
-	}
-
-	/**
-	 * Instantiates a new view.
-	 *
-	 * @param model the model
-	 */
-	public View(IModel model) {
 
 	}
+
+
 
 	protected static void keyCodeToControllerOrder(UserOrder userOrder) {
 
@@ -92,12 +75,9 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 	 * @see contract.IBoulderdashView#printMessage(java.lang.String)
 	 */
 	public void printMessage(final String message) {
-		this.viewFrame.printMessage(message);
+		
 	}
 
-	public void printMessage1(final String message) {
-		JOptionPane.showMessageDialog(null, message);
-	}
 
 	/**
 	 * Sets the controller.
@@ -105,7 +85,7 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 	 * @param controller the new controller
 	 */
 	protected void setController(final IBoulderdashController controller) {
-		this.controller = controller;
+		
 	}
 
 	/*
@@ -114,7 +94,7 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 	 * @see java.lang.Runnable#run()
 	 */
 	public void run() {
-		this.view.setVisible(true);
+		;
 	}
 
 	public void show(int yStart) {
@@ -127,7 +107,7 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 	 * @param keyCode the key code
 	 * @return the controller order
 	 */
-	protected UserOrder keyCodeToUserOrder(final int keyCode) {
+	protected UserOrder keyCodeToUserOrder(int keyCode) {
 		switch (keyCode) {
 		case KeyEvent.VK_LEFT:
 			return UserOrder.LEFT;
@@ -147,14 +127,10 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 	}
 
 	public void keyPressed(final KeyEvent e) {
-		this.getController().orderPerform(View.keyCodeToUserOrder(e.getKeyCode()));
+		;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
-	 */
+
 	public void keyReleased(final KeyEvent e) {
 
 	}
@@ -164,6 +140,7 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 	}
 
 	public IMap getMap() {
+		return map;
 
 	}
 
@@ -172,6 +149,7 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 	}
 
 	private int getView() {
+		return view;
 
 	}
 
@@ -180,6 +158,7 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 	}
 
 	public Rectangle getCloseView() {
+		return closeView;
 
 	}
 
@@ -188,6 +167,7 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 	}
 
 	public IOrderPerformer getOrderPerformer() {
+		return orderPerformer;
 
 	}
 
@@ -197,88 +177,59 @@ public final class View implements IBoulderdashView, IBoulderdashController, Run
 
 
 
-
-
-	/** CODE DE BASE */
-
-
-
-
-
-	protected void paintComponent(final Graphics graphics) {
-		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
-		graphics.drawString(this.getView().getModel().getHelloWorld().getMessage(), 10, 20);
+	@Override
+	public String getMessage() {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+
 
 	@Override
-	public void update(Observable arg0, Object arg1) {
+	public void loadMessage(String key) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
-<<<<<<< HEAD
-	/**
-	 * Instantiates a new view frame.
-	 *
-	 * @param model
-	 *          the model
-	 * @return
-	 */
-	public  View(final IModel model) {
-		super();
-		this.ViewFrame(model);
 
-	}
 
-	public View(final IModel model) throws HeadlessException {
-		super();
-		this.ViewFrame(model);
-	}
-
-=======
-	private void setVisible(boolean b) {
+	@Override
+	public Observable getObservable() {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 
->>>>>>> depdency
-	protected IModel getModel() {
-		return this.model;
-	}
 
-	private int getWidth() {
+
+	@Override
+	public void controller() {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
-	private int getHeight() {
+
+
+	@Override
+	public void orderPerform(UserOrder controllerOrder) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
 
-	/** The controller. */
-	private IController controller;
-	/** The frame. */
-	private View viewFrame;
-	private IModel model;
-	private View View;
 
-	private IController getController() {
-		return this.controller;
+
+	@Override
+	public void play() throws InterruptedException {
+		// TODO Auto-generated method stub
+		
 	}
 
-	public void ViewPanel(final View viewFrame) {
-		this.setViewFrame(viewFrame, viewFrame);
-		viewFrame.getModel().getObservable().addObserver(this);
 
+
+	@Override
+	public CommonMobile getMyPlayer() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	private void setViewFrame(final View viewFrame, View view) {
-		this.view = view;
-	}
-
-	public void ViewFrame(final IModel model) throws HeadlessException {
-		this.ViewFrame(model);
-	}
 
 }

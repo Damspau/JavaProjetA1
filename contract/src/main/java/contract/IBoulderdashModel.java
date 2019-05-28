@@ -1,6 +1,6 @@
-package model;
+package contract;
 
-import org.mobile.*;
+
 
 import java.util.Observable;
 
