@@ -19,8 +19,9 @@ public final class View extends JFrame implements IView, Observer {
 	private JPanel informationPanel;
 
 	private GameGroundView gamegroundView;
+	
 	private BoulderDashController boulderdashcontroller;
 
 	private BoulderDashLevelModel boulderdashlevelmodel;
-
+	
 }
