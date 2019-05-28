@@ -1,19 +1,23 @@
 package view;
 
-import java.awt.*;
-import java.util.*;
-import javax.swing.*;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.util.Observable;
 
-import contract.*;
-import model.*;
-import controller.*;
+import contract.IBoulderdashController;
+import contract.IBoulderdashModel;
+import contract.IMap;
+import contract.IOrderPerformer;
+import contract.UserOrder;
+import mobile.CommonMobile;
+import mobile.Player;
 
 /**
  * View
  *
  * @author Maxime G, Damiens et Benoît D
  */
-public final class View implements IBoulderdashView, IBoulderdashController, IBoulderdashModel{
+public final class View implements IBoulderdashView, IBoulderdashController, IBoulderdashModel {
 
 	// All the different attributes.
 
@@ -45,18 +49,12 @@ public final class View implements IBoulderdashView, IBoulderdashController, IBo
 	 * @return
 	 */
 
-
-
 	public View(IBoulderdashModel model) {
 		this.setView(mapView);
 		this.setMap(map);
 		this.setMyPlayer();
 
-
-
 	}
-
-
 
 	protected static void keyCodeToControllerOrder(UserOrder userOrder) {
 
@@ -70,7 +68,6 @@ public final class View implements IBoulderdashView, IBoulderdashController, IBo
 	public void printMessage(final String message) {
 
 	}
-
 
 	/**
 	 * Sets the controller.
@@ -123,7 +120,6 @@ public final class View implements IBoulderdashView, IBoulderdashController, IBo
 		;
 	}
 
-
 	public void keyReleased(final KeyEvent e) {
 
 	}
@@ -168,15 +164,11 @@ public final class View implements IBoulderdashView, IBoulderdashController, IBo
 
 	}
 
-
-
 	@Override
 	public String getMessage() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 
 	@Override
 	public void loadMessage(String key) {
@@ -184,15 +176,11 @@ public final class View implements IBoulderdashView, IBoulderdashController, IBo
 
 	}
 
-
-
 	@Override
 	public Observable getObservable() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 
 	@Override
 	public void controller() {
@@ -200,15 +188,11 @@ public final class View implements IBoulderdashView, IBoulderdashController, IBo
 
 	}
 
-
-
 	@Override
 	public void orderPerform(UserOrder controllerOrder) {
 		// TODO Auto-generated method stub
 
 	}
-
-
 
 	@Override
 	public void play() throws InterruptedException {
@@ -216,14 +200,11 @@ public final class View implements IBoulderdashView, IBoulderdashController, IBo
 
 	}
 
-
-
 	@Override
 	public CommonMobile getMyPlayer() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 	private BoulderDashLevelModel boulderdashlevelmodel;
 
