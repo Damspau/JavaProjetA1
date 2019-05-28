@@ -1,6 +1,6 @@
-package org.mobile;
+package mobile;
 
-import org.elements.Elements;
+import elements.*;
 import contract.*;
 
 public abstract class CommonMobile  extends Elements{
