@@ -2,20 +2,12 @@ package contract;
 
 import java.io.IOException;
 
-import view.IOrderPerformer;
-import view.UserOrder;
-
 /**
  * The Interface IBoulderdashController.
  *
  * @author Benoît D, Damiens and Maxime G
  */
 public interface IBoulderdashController {
-
-	/**
-	 * Controller.
-	 */
-	public void controller();
 
 	/**
 	 * Order perform.
