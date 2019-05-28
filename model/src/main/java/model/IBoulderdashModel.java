@@ -2,8 +2,9 @@ package model;
 
 
 
-import java.util.Observable;
 
+
+import contract.IMap;
 import mobile.CommonMobile;
 
 /**
@@ -15,8 +16,8 @@ import mobile.CommonMobile;
 public interface IBoulderdashModel {
 
 
-	public Observable getObservable();
+
 	public CommonMobile getMyPlayer ();
-	public CommonMobile setMyPlayer ();
+	IMap getMap();
 
 }

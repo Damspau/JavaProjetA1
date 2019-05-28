@@ -107,7 +107,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	}
 
 
-	}
+	
 
 
 
@@ -219,9 +219,10 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 
 
 
-	}
+
+	
 
 
-	private BoulderDashLevelModel boulderdashlevelmodel;
+	
 
-}
+

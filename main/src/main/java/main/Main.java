@@ -4,9 +4,12 @@
  */
 package main;
 
-import view.UserOrder;
+import view.*;
+
+import java.io.IOException;
+
 import controller.Controller;
-import model.Model;
+import model.*;
 import view.View;
 
 /**
@@ -21,14 +24,16 @@ public abstract class Main {
      *
      * @param args
      *            the arguments
+     * @throws IOException 
+     * @throws InterruptedException 
      */
-    public static void main(final String[] args) {
-        final Model model = new Model();
-        final View view = new View(model);
+    public static void main(final String[] args) throws IOException, InterruptedException {
+        final BoulderdashModel model = new BoulderdashModel("map.txt",0,5);
+        final View view = new View(model.getMap(), model.getMyPlayer());
         final Controller controller = new Controller(view, model);
-        view.setController1(controller);
+        view.setOrderPerformer(controller.getOrderPerformer());
 
-        controller.control();
-        controller.orderPerform(ControllerOrder.English);
+        controller.play();
+       
     }
 }

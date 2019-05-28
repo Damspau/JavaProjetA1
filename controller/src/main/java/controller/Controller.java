@@ -36,7 +36,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	 * @param view  the view
 	 * @param model the model
 	 */
-	public void controller(final IBoulderdashView view, final IBoulderdashModel model) {
+	public Controller(final IBoulderdashView view, final IBoulderdashModel model) {
 		this.setView(view);
 		this.setModel(model);
 		this.clearStackOrder();
