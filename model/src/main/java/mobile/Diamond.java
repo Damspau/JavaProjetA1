@@ -1,7 +1,7 @@
 package mobile;
 
-import org.elements.Permeability;
-import org.elements.Sprite;
+import elements.*;
+import contract.*;
 
 public class Diamond extends Rock {
 

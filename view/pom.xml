@@ -15,12 +15,7 @@
   	</dependency>
   	<dependency>
   		<groupId>jpublankproject</groupId>
-  		<artifactId>elements</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>jpublankproject</groupId>
-  		<artifactId>mobile</artifactId>
+  		<artifactId>model</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   </dependencies>

@@ -1,8 +1,7 @@
 package mobile;
 
-import org.elements.Elements;
-import org.elements.Permeability;
-import org.elements.Sprite;
+import elements.*;
+import contract.*;
 
 public class Mobile extends Elements{
 

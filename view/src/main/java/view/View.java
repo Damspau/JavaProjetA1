@@ -9,10 +9,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Observable;
 import java.util.Observer;
-import org.mobile.*;
+import mobile.*;
 import javax.swing.JOptionPane;
 
 import contract.*;
+import mobile.Player;
 
 
 /**

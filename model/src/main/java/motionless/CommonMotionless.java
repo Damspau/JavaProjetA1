@@ -3,7 +3,7 @@ import fr.exia.showboard.IBoard;
 
 import java.awt.Point;
 
-import org.elements.*;
+import elements.*;
 import contract.*;
 
 import contract.IMap;

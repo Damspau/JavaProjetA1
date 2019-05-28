@@ -4,6 +4,8 @@ package contract;
 
 import java.util.Observable;
 
+import mobile.CommonMobile;
+
 /**
  * The Interface IBoulderdashModel.
  *

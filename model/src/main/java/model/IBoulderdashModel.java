@@ -1,8 +1,10 @@
 package model;
 
-import org.mobile.*;
+
 
 import java.util.Observable;
+
+import mobile.CommonMobile;
 
 /**
  * The Interface IBoulderdashModel.

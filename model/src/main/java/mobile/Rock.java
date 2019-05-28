@@ -1,7 +1,6 @@
 package mobile;
 
-import org.elements.Permeability;
-import org.elements.Sprite;
+import contract.*;
 
 public class Rock extends CommonMobile {
 

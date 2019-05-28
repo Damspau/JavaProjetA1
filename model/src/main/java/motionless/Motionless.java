@@ -1,8 +1,8 @@
 package motionless;
 
-import org.elements.Elements;
-import org.elements.Permeability;
-import org.elements.Sprite;
+import contract.Permeability;
+import contract.Sprite;
+import elements.*;
 
 public class Motionless extends Elements {
 

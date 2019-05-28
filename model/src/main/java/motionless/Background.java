@@ -3,7 +3,6 @@ package motionless;
 import java.io.IOException;
 import contract.*;
 
-
 import contract.IMap;
 
 
