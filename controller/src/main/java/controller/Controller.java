@@ -6,7 +6,7 @@ import contract.IBoulderdashController;
 import contract.IOrderPerformer;
 import contract.UserOrder;
 import model.IBoulderdashModel;
-import view.IView;
+import view.IBoulderdashView;
 
 /**
  * <h1>The Class Controller.</h1>
