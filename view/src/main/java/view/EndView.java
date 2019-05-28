@@ -10,7 +10,7 @@ public class EndView extends JFrame {
 	/**
 	 * Generate the HelpView
 	 */
-	public void WinLoseView(String endView) {
+	public void EndView(String endView) {
 		this.endView = endView;
 		this.initializeView();
 		this.createLayout();

@@ -26,17 +26,38 @@ public abstract class GroundView extends JPanel implements Observer {
 	}
 	
 	/**
-	 * Set the view to inform the user that he won
+	 * WIN !
 	 */
 	private void displayWin() {
 		new EndView("win");
 	}
 
 	/**
-	 * Set the view to inform the user that he is not good at this game
+	 * GAME OVER !
 	 */
 	private void displayLose() {
 		new EndView("lose");
+	}
+	
+
+	/**
+	 * Paints the map
+	 *
+	 * @param g Map graphical object
+	 */
+	public void paint(Graphics g) {
+		this.drawTerrain(this.model.getSizeWidth(), this.model.getSizeHeight(), g);
+	}
+
+	/**
+	 * Updates the view
+	 *
+	 * @param obs Observable item
+	 * @param obj Object item
+	 */
+	@Override
+	public void update(Observable obs, Object obj) {
+		repaint();
 	}
 
 	/**
@@ -77,23 +98,4 @@ public abstract class GroundView extends JPanel implements Observer {
 
 	
 
-	/**
-	 * Paints the map
-	 *
-	 * @param g Map graphical object
-	 */
-	public void paint(Graphics g) {
-		this.drawTerrain(this.model.getSizeWidth(), this.model.getSizeHeight(), g);
-	}
-
-	/**
-	 * Updates the view
-	 *
-	 * @param obs Observable item
-	 * @param obj Object item
-	 */
-	@Override
-	public void update(Observable obs, Object obj) {
-		repaint();
-	}
 }
