@@ -5,14 +5,9 @@ import java.io.IOException;
 /**
  * The Interface IBoulderdashController.
  *
- * @author Benoît D, Damiens et Maxime G
+ * @author Benoît D, Damiens and Maxime G
  */
 public interface IBoulderdashController {
-
-	/**
-	 * Controller.
-	 */
-	public void controller();
 
 	/**
 	 * Order perform.
@@ -21,11 +16,20 @@ public interface IBoulderdashController {
 	 * @throws IOException
 	 */
 
-	public void orderPerform(UserOrder controllerOrder);
+	public void orderPerform(UserOrder controllerOrder) throws IOException;
 
+	/**
+	 * Play.
+	 *
+	 * @throws InterruptedException the interrupted exception
+	 */
+	void play() throws InterruptedException;
 
-	public void play() throws InterruptedException;
-
-	public IOrderPerformer getOrderPerformer();
+	/**
+	 * Gets the order peformer.
+	 *
+	 * @return the order peformer
+	 */
+	IOrderPerformer getOrderPerformer();
 
 }

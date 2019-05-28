@@ -15,11 +15,10 @@ import elements.Elements;
 import fr.exia.showboard.BoardFrame;
 import mobile.CommonMobile;
 
-
 /**
- * The Class View.
+ * View
  *
- * @author Maxime G, Benoît D et Damiens
+ * @author Maxime G, Damiens et Benoît D
  */
 public final class View implements IBoulderdashView, Runnable, KeyListener{
 
@@ -51,10 +50,10 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	 * @param model the model
 	 * @param gc    the gc
 	 * @return
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 
-	
+
 
 	public View(final IMap map, final CommonMobile myPlayer ) throws IOException {
 		this.setView(mapView);
@@ -66,7 +65,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 
 
 	}
-	
+
 	public final void run() {
 		final BoardFrame boardFrame = new BoardFrame("Close view");
 		 boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
@@ -76,7 +75,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	        boardFrame.addKeyListener(this);
 	        boardFrame.setFocusable(true);
 	        boardFrame.setFocusTraversalKeysEnabled(false);
-	        
+
 	        for (int x = 0; x < this.getMap().getWidth(); x++) {
 	            for (int y = 0; y < this.getMap().getHeight(); y++) {
 	                boardFrame.addSquare(this.map.getOnTheMap(x, y), x, y);
@@ -89,7 +88,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 
 	        boardFrame.setVisible(true);
 	    }
-	
+
 
 	public void show(int yStart) {
 		int y = yStart % this.getMap().getHeight();
@@ -104,10 +103,11 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	            System.out.print("\n");
 	            }
 	        }
-    
+
 	}
 
 
+	}
 
 
 
@@ -146,7 +146,6 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
             exception.printStackTrace();
         }
     }
-	
 
 
 	public void keyReleased(final KeyEvent e) {
@@ -178,9 +177,9 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	public void setMyPlayer(CommonMobile myPlayer) {
 		this.myPlayer = myPlayer;
 	}
-	
-	
-	
+
+
+
 	private int getView() {
 		return view;
 
@@ -212,14 +211,17 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 
 
 
-	
-	
 
 
 
 
+	}
 
 
 
+	}
+
+
+	private BoulderDashLevelModel boulderdashlevelmodel;
 
 }

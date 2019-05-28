@@ -1,24 +1,22 @@
 package controller;
 
-import contract.*;
-
 import java.io.IOException;
-import java.util.Observable;
+
+import contract.IBoulderdashController;
+import contract.IOrderPerformer;
+import contract.UserOrder;
+import model.IBoulderdashModel;
+import view.IBoulderdashView;
 
 /**
  * <h1>The Class Controller.</h1>
  *
  * @author Damiens, Benoît D et Maxime G
- * @version 0.1
- * @see IOrderPerformer
  */
 
-public final class Controller implements IBoulderdashController, IOrderPerformer, IBoulderdashModel, IBoulderdashView {
+public final class Controller implements IBoulderdashController, IOrderPerformer {
 
 	private int diamondCount;
-
-	/** The Constant speed. */
-	private static final int speed = 300;
 
 	/** The model. */
 	private IBoulderdashModel model;
@@ -26,7 +24,10 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	/** The view. */
 	private IBoulderdashView view;
 
-	/** The stack order (RIGHT, LEFT, UP and DOWN) */
+	/** The Constant speed. */
+	private static final int speed = 300;
+
+	/** The stack order (RIGHT, LEFT, UP, DOWN and NOP) */
 	private UserOrder stackOrder;
 
 	/**
@@ -168,26 +169,15 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 		this.setStackOrder(userOrder);
 
-		switch (userOrder) {
-		case RIGHT:
-			this.model.loadHelloWorld("GB");
-			break;
-		case LEFT:
-			this.model.loadHelloWorld("FR");
-			break;
-		case UP:
-			this.model.loadHelloWorld("DE");
-			break;
-		case DOWN:
-			this.model.loadHelloWorld("ID");
-			break;
-		default:
-			break;
-		}
 	}
-	
-	
-	
+
+	public int getDiamondCount() {
+		return diamondCount;
+	}
+
+	public void setDiamondCount(int diamondCount) {
+		this.diamondCount = diamondCount;
+	}
 
 	public void collect() {
 
@@ -202,6 +192,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	}
 
 	public void fallAndKill() {
+
 	}
 
 }
