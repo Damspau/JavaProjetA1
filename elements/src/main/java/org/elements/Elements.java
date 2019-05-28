@@ -1,10 +1,12 @@
 package org.elements;
 
 import java.awt.Image;
-
-public class Elements {
-	
+import contract.*;
+public abstract class Elements implements IElements{
+	protected int y;
 	protected int x;
+	
+	
 	public int getX() {
 		return x;
 	}
@@ -21,7 +23,8 @@ public class Elements {
 		this.y = y;
 	}
 
-	protected int y;
+	
+	
 	public Elements (Sprite sprite, Permeability permeability) {
 		
 	}

@@ -1,4 +1,4 @@
-package view;
+package contract;
 
 import java.io.IOException;
 

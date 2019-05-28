@@ -1,4 +1,4 @@
-package org.elements;
+package contract;
 
 public enum Permeability {
 BREAKABLE,

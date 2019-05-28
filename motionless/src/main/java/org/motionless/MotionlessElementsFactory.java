@@ -3,7 +3,7 @@ package org.motionless;
 public abstract class MotionlessElementsFactory {
 	private Background background;
 
-	public  Motionless createBackground () {
-		return null;
+	public  CommonMotionless createBackground () {
+		return background;
 	}
 }
