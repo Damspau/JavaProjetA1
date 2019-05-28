@@ -8,23 +8,19 @@ import contract.*;
 import model.*;
 import controller.*;
 
-
-public final class View extends JFrame implements IView, Runnable, Observer {
+/**
+ * View
+ *
+ * @author Maxime G, Damiens et Benoît D
+ */
+public final class View extends JFrame implements IView, Observer {
 
 	private JPanel actionPanel;
 	private JPanel informationPanel;
+
 	private GameGroundView gamegroundView;
-	private Controller controller;
-	private Model model;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	private BoulderDashController boulderdashcontroller;
+
+	private BoulderDashLevelModel boulderdashlevelmodel;
 
 }
