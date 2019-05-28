@@ -1,10 +1,10 @@
 /**
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Maxime G, Damiens et Benoît D
  * @version 1.0
  */
 package main;
 
-import contract.ControllerOrder;
+import view.UserOrder;
 import controller.Controller;
 import model.Model;
 import view.View;
@@ -12,7 +12,7 @@ import view.View;
 /**
  * The Class Main.
  *
- * @author Jean-Aymeric Diet
+ * @Maxime G, Damiens et Benoît D
  */
 public abstract class Main {
 

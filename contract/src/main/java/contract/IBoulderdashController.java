@@ -2,6 +2,9 @@ package contract;
 
 import java.io.IOException;
 
+import view.IOrderPerformer;
+import view.UserOrder;
+
 /**
  * The Interface IBoulderdashController.
  *
@@ -21,8 +24,7 @@ public interface IBoulderdashController {
 	 * @throws IOException
 	 */
 
-	public void orderPerform(UserOrder controllerOrder);
-
+	public void orderPerform(UserOrder userOrder);
 
 	public void play() throws InterruptedException;
 
