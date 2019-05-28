@@ -2,15 +2,17 @@ package contract;
 
 import java.util.Observable;
 
+import fr.exia.showboard.*;
+
 public interface IMap {
 	//get the width of the map
-	public void getWidth();
+	public int getWidth();
 	
 	//get the height of the map
-	public void getHeight();
+	public int getHeight();
 	
 	//go on the map
-	public IElements getOnTheMap (int x, int y);
+	public ISquare getOnTheMap (int x, int y);
 	
 	//notify the observer
 	public void setMobileHasChanged ();

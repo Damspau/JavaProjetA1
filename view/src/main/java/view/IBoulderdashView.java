@@ -12,7 +12,7 @@ public interface IBoulderdashView {
 	 *
 	 * @param message the message
 	 */
-	void printMessage(final String message);
+
 
 	void followMyPlayer();
 }

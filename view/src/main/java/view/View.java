@@ -1,19 +1,19 @@
 package view;
 
-import java.lang.Runnable;
-import java.awt.Graphics;
-import java.awt.GraphicsConfiguration;
-import java.awt.HeadlessException;
+import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Observable;
-import java.util.Observer;
-import mobile.*;
-import javax.swing.JOptionPane;
+import java.io.IOException;
 
-import contract.*;
-import mobile.Player;
+import javax.swing.SwingUtilities;
+
+import contract.IMap;
+import contract.IOrderPerformer;
+import contract.UserOrder;
+import elements.Elements;
+import fr.exia.showboard.BoardFrame;
+import mobile.CommonMobile;
 
 
 /**
@@ -21,11 +21,11 @@ import mobile.Player;
  *
  * @author Maxime G, Benoît D et Damiens
  */
-public final class View implements IBoulderdashView, IBoulderdashController, IBoulderdashModel{
+public final class View implements IBoulderdashView, Runnable, KeyListener{
 
 	// All the different attributes.
 
-	private Player myPlayer;
+	private CommonMobile myPlayer;
 
 	/** The Constant mapView. */
 	private static final int mapView = 16;
@@ -51,56 +51,67 @@ public final class View implements IBoulderdashView, IBoulderdashController, IBo
 	 * @param model the model
 	 * @param gc    the gc
 	 * @return
+	 * @throws IOException 
 	 */
 
 	
 
-	public View(IBoulderdashModel model) {
+	public View(final IMap map, final CommonMobile myPlayer ) throws IOException {
 		this.setView(mapView);
 		this.setMap(map);
-		this.setMyPlayer();
-		
+		this.setMyPlayer(myPlayer);
+		this.getMyPlayer().getSprite().loadImage();
+		this.setCloseView(new Rectangle(0, this.getMyPlayer().getY(), this.getMap().getWidth(), mapView));
+		SwingUtilities.invokeLater(this);
 
 
 	}
+	
+	public final void run() {
+		final BoardFrame boardFrame = new BoardFrame("Close view");
+		 boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
+	        boardFrame.setDisplayFrame(this.closeView);
+	        boardFrame.setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
+	        boardFrame.setHeightLooped(true);
+	        boardFrame.addKeyListener(this);
+	        boardFrame.setFocusable(true);
+	        boardFrame.setFocusTraversalKeysEnabled(false);
+	        
+	        for (int x = 0; x < this.getMap().getWidth(); x++) {
+	            for (int y = 0; y < this.getMap().getHeight(); y++) {
+	                boardFrame.addSquare(this.map.getOnTheMap(x, y), x, y);
+	            }
+	        }
+	        boardFrame.addPawn(this.getMyPlayer());
 
+	        this.getMap().getObservable().addObserver(boardFrame.getObserver());
+	        this.followMyPlayer();
 
-
-	protected static void keyCodeToControllerOrder(UserOrder userOrder) {
-
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IBoulderdashView#printMessage(java.lang.String)
-	 */
-	public void printMessage(final String message) {
-		
-	}
-
-
-	/**
-	 * Sets the controller.
-	 *
-	 * @param controller the new controller
-	 */
-	protected void setController(final IBoulderdashController controller) {
-		
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.lang.Runnable#run()
-	 */
-	public void run() {
-		;
-	}
+	        boardFrame.setVisible(true);
+	    }
+	
 
 	public void show(int yStart) {
-
+		int y = yStart % this.getMap().getHeight();
+	        for (int view = 0; view < this.getView(); view++) {
+	            for (int x = 0; x < this.getMap().getWidth(); x++) {
+	                if ((x == this.getMyPlayer().getX()) && (y == yStart)) {
+	                    System.out.print(this.getMyPlayer().getSprite().getBddImage());
+	                } else {
+	                    System.out.print(((Elements) this.getMap().getOnTheMap(x, y)).getSprite().getBddImage());
+	            }
+	            y = (y + 1) % this.getMap().getHeight();
+	            System.out.print("\n");
+	            }
+	        }
+    
 	}
+
+
+
+
+
+
 
 	/**
 	 * Key code to controller order.
@@ -119,25 +130,31 @@ public final class View implements IBoulderdashView, IBoulderdashController, IBo
 		case KeyEvent.VK_DOWN:
 			return UserOrder.DOWN;
 		default:
-			return UserOrder.NOP;
+			return UserOrder.FACE;
 		}
 	}
 
 	public void keyTyped(final KeyEvent e) {
+		/* not important for our program but necessary to implements because of the intefaces */
 
 	}
-
-	public void keyPressed(final KeyEvent e) {
-		;
-	}
+	@Override
+	public void keyPressed(final KeyEvent keyInput) {
+	    try {
+            this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyInput.getKeyCode()));
+        } catch (final IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+	
 
 
 	public void keyReleased(final KeyEvent e) {
-
+		/* not important for our program but necessary to implements because of the intefaces */
 	}
 
 	public void followMyPlayer() {
-
+		this.getCloseView().y = this.getMyPlayer().getY() - 5;
 	}
 
 	public IMap getMap() {
@@ -145,16 +162,32 @@ public final class View implements IBoulderdashView, IBoulderdashController, IBo
 
 	}
 
-	public void setMap(IMap map) {
+	public void setMap(IMap map) throws IOException {
+		this.map = map;
+        for (int x = 0; x < this.getMap().getWidth(); x++) {
+            for (int y = 0; y < this.getMap().getHeight(); y++) {
+                ((Elements) this.getMap().getOnTheMap(x, y)).getSprite().loadImage();
+            }
+        }
 
 	}
+	public CommonMobile getMyPlayer() {
+		return myPlayer;
+	}
 
+	public void setMyPlayer(CommonMobile myPlayer) {
+		this.myPlayer = myPlayer;
+	}
+	
+	
+	
 	private int getView() {
 		return view;
 
 	}
 
 	public void setView(int view) {
+		this.view = view;
 
 	}
 
@@ -164,11 +197,11 @@ public final class View implements IBoulderdashView, IBoulderdashController, IBo
 	}
 
 	public void setCloseView(Rectangle closeView) {
-
+		this.closeView = closeView;
 	}
 
 	public IOrderPerformer getOrderPerformer() {
-		return orderPerformer;
+		return this.orderPerformer;
 
 	}
 
@@ -178,59 +211,15 @@ public final class View implements IBoulderdashView, IBoulderdashController, IBo
 
 
 
-	@Override
-	public String getMessage() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+	
+	
 
 
 
-	@Override
-	public void loadMessage(String key) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 
-	@Override
-	public Observable getObservable() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-	@Override
-	public void controller() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void orderPerform(UserOrder controllerOrder) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void play() throws InterruptedException {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public CommonMobile getMyPlayer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 }

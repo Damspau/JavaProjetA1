@@ -14,12 +14,9 @@ import mobile.CommonMobile;
 
 public interface IBoulderdashModel {
 
-	public String getMessage();
-
-	public void loadMessage(String key);
 
 	public Observable getObservable();
-	
 	public CommonMobile getMyPlayer ();
+	public CommonMobile setMyPlayer ();
 
 }
