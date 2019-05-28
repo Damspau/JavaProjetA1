@@ -1,6 +1,6 @@
 package view;
 
-import controller.*;
+import controller.;
 import model.*;
 import contract.*;
 
@@ -21,7 +21,7 @@ public class GameGroundView extends GroundView {
 	 * Class constructor
 	 *
 	 * @param gameController Game controller
-	 * @param levelModel     Level model
+	 * @param Model model
 	 */
 	public GameGroundView(Controller controller, Model model) {
 		super(model);
