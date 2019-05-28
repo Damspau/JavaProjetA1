@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 import java.util.Observable;
 
 import contract.IBoulderdashController;
-import contract.IBoulderdashModel;
+import model.IBoulderdashModel;
 import contract.IMap;
 import contract.IOrderPerformer;
 import contract.UserOrder;
