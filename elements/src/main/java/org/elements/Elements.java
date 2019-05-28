@@ -1,10 +1,15 @@
 package org.elements;
 
 import java.awt.Image;
-
-public class Elements {
-	
+import contract.*;
+public abstract class Elements implements IElements{
+	protected int y;
 	protected int x;
+	
+	private Sprite sprite;
+	private Permeability permeability;
+	
+	
 	public int getX() {
 		return x;
 	}
@@ -21,31 +26,38 @@ public class Elements {
 		this.y = y;
 	}
 
-	protected int y;
+	
+	
 	public Elements (Sprite sprite, Permeability permeability) {
-		
+		this.setSprite(sprite);
+		this.setPermeability(permeability);
 	}
 	
 
 	
+
+	
+
+	
+	public final Sprite getSprite  () {
+		return this.sprite;
+	}
+	
 	protected void setSprite(Sprite sprite) {
+		this.sprite = sprite;
 		
-	}
-	
-	private void setPermeability(Permeability permeability) {
-		
-	}
-	
-	public Sprite getSprite  () {
-		return null;
 	}
 	
 	public Permeability getPermeability (){
-		return null;
+		return this.permeability;
 	}
 	
-	public Image getImage () {
-		return null;
+	private void setPermeability(Permeability permeability) {
+		this.permeability = permeability;
+	}
+	
+	public final Image getImage () {
+		return this.getSprite().getImage();
 		
 	}
 }

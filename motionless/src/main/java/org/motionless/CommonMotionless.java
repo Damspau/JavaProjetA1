@@ -3,18 +3,27 @@ import fr.exia.showboard.IBoard;
 
 import java.awt.Point;
 
-import org.elements.Elements;
-import org.elements.Permeability;
-import org.elements.Sprite;
+import org.elements.*;
+import contract.*;
 
 import contract.IMap;
 
 public class CommonMotionless extends Elements {
 	private Point position;
 	private IBoard board;
+	private IMap map;
 
+	public IMap getMap() {
+		return map;
+	}
+	public void setMap(IMap map) {
+		this.map = map;
+	}
+	
+	
 	public CommonMotionless(Sprite sprite, Permeability permeability, IMap map) {
 		super(sprite, permeability);
+		this.setMap(map);
 		// TODO Auto-generated constructor stub
 	}
 	//Override

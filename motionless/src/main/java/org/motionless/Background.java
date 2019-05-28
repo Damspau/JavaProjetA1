@@ -1,9 +1,8 @@
 package org.motionless;
 
 import java.io.IOException;
+import contract.*;
 
-import org.elements.Permeability;
-import org.elements.Sprite;
 
 import contract.IMap;
 

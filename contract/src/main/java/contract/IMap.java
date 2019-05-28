@@ -18,4 +18,6 @@ public interface IMap {
 	//become an observable
 	public Observable getObservable ();
 	
+	public void setMap (IMap map);
+	
 }
