@@ -2,33 +2,32 @@ package controller;
 
 import java.io.IOException;
 
+import contract.IBoulderdashController;
+import contract.IOrderPerformer;
+import contract.UserOrder;
 import model.IBoulderdashModel;
-import view.IBoulderdashView;
-import view.IOrderPerformer;
-import view.UserOrder;
+import view.IView;
 
 /**
  * <h1>The Class Controller.</h1>
  *
  * @author Damiens, Benoît D et Maxime G
- * @version 0.1
- * @see IOrderPerformer
  */
 
 public final class Controller implements IBoulderdashController, IOrderPerformer {
 
 	private int diamondCount;
 
-	/** The Constant speed. */
-	private static final int speed = 300;
-
 	/** The model. */
 	private IBoulderdashModel model;
 
 	/** The view. */
-	private IBoulderdashView view;
+	private IView view;
 
-	/** The stack order (RIGHT, LEFT, UP and DOWN) */
+	/** The Constant speed. */
+	private static final int speed = 300;
+
+	/** The stack order (RIGHT, LEFT, UP, DOWN and NOP) */
 	private UserOrder stackOrder;
 
 	/**
@@ -37,7 +36,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	 * @param view  the view
 	 * @param model the model
 	 */
-	public void controller(final IBoulderdashView view, final IBoulderdashModel model) {
+	public void controller(final IView view, final IBoulderdashModel model) {
 		this.setView(view);
 		this.setModel(model);
 		this.clearStackOrder();
@@ -48,7 +47,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	 *
 	 * @param view the view to set
 	 */
-	private void setView(final IBoulderdashView view) {
+	private void setView(final IView view) {
 		this.view = view;
 	}
 
@@ -57,7 +56,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	 *
 	 * @return the view
 	 */
-	private IBoulderdashView getView() {
+	private IView getView() {
 		return this.view;
 	}
 
@@ -166,26 +165,10 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	 * 
 	 * @see contract.IOrderPerformed#orderPerform(contract.UserOrder)
 	 */
-	public void orderPerform (final UserOrder userOrder) throws IOException {
+	public void orderPerform(final UserOrder userOrder) throws IOException {
 
 		this.setStackOrder(userOrder);
 
-		switch (userOrder) {
-		case RIGHT:
-			this.model.loadHelloWorld("GB");
-			break;
-		case LEFT:
-			this.model.loadHelloWorld("FR");
-			break;
-		case UP:
-			this.model.loadHelloWorld("DE");
-			break;
-		case DOWN:
-			this.model.loadHelloWorld("ID");
-			break;
-		default:
-			break;
-		}
 	}
 
 	public int getDiamondCount() {
@@ -209,6 +192,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	}
 
 	public void fallAndKill() {
+
 	}
 
 }

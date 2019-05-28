@@ -2,6 +2,12 @@ package contract;
 
 import java.io.IOException;
 
+/**
+ * <h1>The Interface IOrderPerformed.</h1>
+ * 
+ * @author Maxime G, Damiens and Benoît D
+ * @version 0.1
+ */
 public interface IOrderPerformer {
 
 	/**
