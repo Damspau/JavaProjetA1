@@ -3,7 +3,7 @@ package controller;
 import java.io.IOException;
 
 import model.IBoulderdashModel;
-import view.IBoulderdashView;
+import view.IView;
 import view.IOrderPerformer;
 import view.UserOrder;
 
@@ -26,7 +26,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	private IBoulderdashModel model;
 
 	/** The view. */
-	private IBoulderdashView view;
+	private IView view;
 
 	/** The stack order (RIGHT, LEFT, UP and DOWN) */
 	private UserOrder stackOrder;
@@ -37,7 +37,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	 * @param view  the view
 	 * @param model the model
 	 */
-	public void controller(final IBoulderdashView view, final IBoulderdashModel model) {
+	public void controller(final IView view, final IBoulderdashModel model) {
 		this.setView(view);
 		this.setModel(model);
 		this.clearStackOrder();
@@ -48,7 +48,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	 *
 	 * @param view the view to set
 	 */
-	private void setView(final IBoulderdashView view) {
+	private void setView(final IView view) {
 		this.view = view;
 	}
 
@@ -57,7 +57,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	 *
 	 * @return the view
 	 */
-	private IBoulderdashView getView() {
+	private IView getView() {
 		return this.view;
 	}
 

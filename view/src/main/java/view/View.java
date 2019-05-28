@@ -9,7 +9,7 @@ import model.*;
 import controller.*;
 
 
-public final class View extends JFrame implements IBoulderdashView, Runnable, Observer {
+public final class View extends JFrame implements IView, Runnable, Observer {
 
 	private JPanel actionPanel;
 	private JPanel informationPanel;
