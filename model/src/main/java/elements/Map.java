@@ -2,13 +2,17 @@ package elements;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Observable;
 
+import org.showboard.ISquare;
+
+
+
 import contract.IElements;
 import contract.IMap;
-import org.showboard.*;
 import motionless.CommonMotionless;
 import motionless.MotionlessElementsFactory;
 
@@ -23,22 +27,49 @@ public class Map extends Observable implements IMap {
 		super();
 		this.loadFile(fileName);
 	}
-	
+	public static int compterOccurrencesLargeur(String line, char recherche)
+	{
+	 int nb = 0;
+	 for (int i=0; i < line.length(); i++)
+	 {
+	 if (line.charAt(i) == recherche)
+	 nb++;
+	 }
+	 return nb;
+	}
+	public static int compterOccurencesHauteur(String fileName) throws IOException {
+		BufferedReader reader = new BufferedReader(new FileReader(fileName));
+		int lines = 0;
+		while (reader.readLine() != null) lines++;
+		reader.close();
+		return lines;
+	}
 
 	//temporal reading for the map
 	private void loadFile(final String fileName) throws IOException {
         final BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
-        String line;
+        String line = buffer.readLine() ;
         int y = 0;
-        line = buffer.readLine();
-        this.setWidth(Integer.parseInt(line));
-        line = buffer.readLine();
-        this.setHeight(Integer.parseInt(line));
+      
+        
+   
+        this.setWidth(compterOccurrencesLargeur(line, 'b'));
+       
+        this.setHeight(compterOccurencesHauteur(fileName));
+        
+        
+        
+        
+        
         this.onTheMap = new IElements[this.getWidth()][this.getHeight()];
-        line = buffer.readLine();
+
+    	MotionlessElementsFactory factory = new MotionlessElementsFactory();
         while (line != null) {
             for (int x = 0; x < line.toCharArray().length; x++) {
-                this.setOnTheMap(MotionlessElementsFactory.getFromFileSymbol(line.toCharArray()[x]), x, y);
+            	CommonMotionless element = factory.getFromFileSymbol(line.toCharArray()[x]);
+            	element.setX(x);
+            	element.setY(y);
+                this.setOnTheMap(element, x, y);
             }
             line = buffer.readLine();
             y++;
@@ -60,10 +91,12 @@ public class Map extends Observable implements IMap {
 
 	public void setWidth(int width) {
 		this.width = width;
+		
 	}
 
 	public void setHeight(int height) {
 		this.height = height;
+		
 	}
 
 	@Override

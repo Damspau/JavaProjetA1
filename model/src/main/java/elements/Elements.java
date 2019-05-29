@@ -40,7 +40,7 @@ public abstract class Elements implements IElements, IPawn{
 	
 
 	
-	public final Sprite getSprite  () {
+	public Sprite getSprite  () {
 		return this.sprite;
 	}
 	

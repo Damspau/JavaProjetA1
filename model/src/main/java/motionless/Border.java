@@ -4,9 +4,9 @@ import contract.Permeability;
 import contract.Sprite;
 
 public class Border extends CommonMotionless {
-
-	public Border(Sprite sprite, Permeability permeability) {
-		super(sprite, permeability, null);
+	private static final Sprite SPRITE = new Sprite('B', "background.jpg");
+	public Border(Sprite sprite, Permeability permeability,int x,int y) {
+		super(sprite, permeability, x, y);
 		// TODO Auto-generated constructor stub
 	}
 

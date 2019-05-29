@@ -1,23 +1,24 @@
 package motionless;
 
+import java.io.IOException;
 
+public class MotionlessElementsFactory {
+	private static Background background = new Background();
+//	private CommonMotionless[] motionlessElements = {
+//			background
+//	};
+//	
+//	
 
-public abstract class MotionlessElementsFactory {
-	private static Background background;
-	private static CommonMotionless[] motionlessElements = {
-			background,
-	};
-
-	public  CommonMotionless createBackground () {
-		return background;
-	}
+//	public static  CommonMotionless createBackground (int x, int y) throws IOException {
+//		background = (Background) createBackground(x, y);
+//		return background;
+//	}
 	
-public static CommonMotionless getFromFileSymbol(final char fileSymbol) {
-	for (final CommonMotionless motionlessElement : motionlessElements) {
-        if (motionlessElement.getSprite().getBddImage() == fileSymbol) {
-            return motionlessElement;
-        }
-	} return background;
+public CommonMotionless getFromFileSymbol(final char fileSymbol) throws IOException {
+	
+	//TODO switch sur chaque symbole possible
+	return background;
 	
 }
 }
