@@ -58,6 +58,6 @@ public boolean isImageLoaded () {
 }
 public final void loadImage() throws IOException {
 	System.out.println(this.getImageName());
-    this.setImage(ImageIO.read(new File("C:\\Users\\travail\\git\\JavaProjetA1\\main\\sprites\\background.jpg")));
+    this.setImage(ImageIO.read(new File("sprites/b.jpg")));
 }
 }
