@@ -51,10 +51,10 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	public View(final IMap map, final CommonMobile myPlayer ) throws IOException {
 		this.setView(mapView);
 		this.setMap(map);
-		this.setMyPlayer(myPlayer);
-		this.getMyPlayer().getSprite().loadImage();
-		this.setCloseView(new Rectangle(0, this.getMyPlayer().getY(), this.getMap().getWidth(), mapView));
-		SwingUtilities.invokeLater(this);
+//		this.setMyPlayer(myPlayer);
+//		this.getMyPlayer().getSprite().loadImage();
+//		this.setCloseView(new Rectangle(0, this.getMyPlayer().getY(), this.getMap().getWidth(), mapView));
+	SwingUtilities.invokeLater(this);
 
 
 	}

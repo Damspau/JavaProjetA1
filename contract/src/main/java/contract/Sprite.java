@@ -13,6 +13,7 @@ private char bddImage;
 private boolean imageLoaded;
 
 
+
 public Sprite (char character, String imageName) {
 	
 }
@@ -56,6 +57,7 @@ public boolean isImageLoaded () {
 	return this.imageLoaded;
 }
 public final void loadImage() throws IOException {
-    this.setImage(ImageIO.read(new File("sprites/" + this.getImageName())));
+	System.out.println(this.getImageName());
+    this.setImage(ImageIO.read(new File("C:\\Users\\travail\\git\\JavaProjetA1\\main\\sprites\\background.jpg")));
 }
 }
