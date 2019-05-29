@@ -2,7 +2,7 @@ package contract;
 
 import java.util.Observable;
 
-import fr.exia.showboard.*;
+import org.showboard.*;;
 
 public interface IMap {
 	//get the width of the map

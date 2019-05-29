@@ -1,5 +1,5 @@
 package motionless;
-import fr.exia.showboard.IBoard;
+import org.showboard.*;
 
 import java.awt.Point;
 

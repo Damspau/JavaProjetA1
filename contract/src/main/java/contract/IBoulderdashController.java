@@ -9,27 +9,14 @@ import java.io.IOException;
  */
 public interface IBoulderdashController {
 
-	/**
-	 * Order perform.
-	 *
-	 * @param controllerOrder the controller order
-	 * @throws IOException
-	 */
+
 
 	public void orderPerform(UserOrder controllerOrder) throws IOException;
 
-	/**
-	 * Play.
-	 *
-	 * @throws InterruptedException the interrupted exception
-	 */
+
 	void play() throws InterruptedException;
 
-	/**
-	 * Gets the order peformer.
-	 *
-	 * @return the order peformer
-	 */
+	
 	IOrderPerformer getOrderPerformer();
 
 }

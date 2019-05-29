@@ -5,7 +5,7 @@ import elements.*;
 import java.awt.Point;
 
 import contract.*;
-import fr.exia.showboard.*;
+import org.showboard.*;
 
 public abstract class CommonMobile  extends Elements {
 

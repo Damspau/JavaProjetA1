@@ -1,7 +1,7 @@
 package motionless;
 
-import org.elements.Permeability;
-import org.elements.Sprite;
+import contract.Permeability;
+import contract.Sprite;
 
 public class Dirt extends CommonMotionless{
 

@@ -8,7 +8,7 @@ import java.util.Observable;
 
 import contract.IElements;
 import contract.IMap;
-import fr.exia.showboard.ISquare;
+import org.showboard.*;
 import motionless.CommonMotionless;
 import motionless.MotionlessElementsFactory;
 

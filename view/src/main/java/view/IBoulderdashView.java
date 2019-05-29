@@ -7,11 +7,7 @@ package view;
  */
 public interface IBoulderdashView {
 
-	/**
-	 * Prints the message.
-	 *
-	 * @param message the message
-	 */
+
 
 
 	void followMyPlayer();

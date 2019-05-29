@@ -12,7 +12,7 @@ import contract.IMap;
 import contract.IOrderPerformer;
 import contract.UserOrder;
 import elements.Elements;
-import fr.exia.showboard.BoardFrame;
+import org.showboard.*;
 import mobile.CommonMobile;
 
 /**
@@ -44,14 +44,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	/** The order performer. */
 	private IOrderPerformer orderPerformer;
 
-	/**
-	 * Instantiates a new view frame.
-	 *
-	 * @param model the model
-	 * @param gc    the gc
-	 * @return
-	 * @throws IOException
-	 */
+
 
 
 
@@ -113,12 +106,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 
 
 
-	/**
-	 * Key code to controller order.
-	 *
-	 * @param keyCode the key code
-	 * @return the controller order
-	 */
+
 	protected UserOrder keyCodeToUserOrder(int keyCode) {
 		switch (keyCode) {
 		case KeyEvent.VK_LEFT:

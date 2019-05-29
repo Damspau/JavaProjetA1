@@ -13,7 +13,7 @@ public class Motionless extends Elements {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+	
 	public Point getPosition() {
 		// TODO Auto-generated method stub
 		return null;

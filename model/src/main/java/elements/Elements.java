@@ -2,7 +2,7 @@ package elements;
 
 import java.awt.Image;
 import contract.*;
-import fr.exia.showboard.*;
+import org.showboard.*;
 public abstract class Elements implements IElements, IPawn{
 	protected int y;
 	protected int x;
