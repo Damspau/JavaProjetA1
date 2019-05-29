@@ -117,6 +117,8 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 		this.setStackOrder(userOrder);
 
 	}
+	
+	
 
 	public int getDiamondCount() {
 		return diamondCount;

@@ -51,7 +51,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	public View(final IMap map, final CommonMobile myPlayer ) throws IOException {
 		this.setView(mapView);
 		this.setMap(map);
-		closeView.setSize(10, 10);
+		closeView.setSize(37, 22);
 //		this.setMyPlayer(myPlayer);
 //		this.getMyPlayer().getSprite().loadImage();
 //		this.setCloseView(new Rectangle(0, this.getMyPlayer().getY(), this.getMap().getWidth(), mapView));
@@ -65,13 +65,15 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 		 boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
 	        boardFrame.setDisplayFrame(this.closeView);
 	        boardFrame.setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
-	        boardFrame.setHeightLooped(true);
+	        boardFrame.setHeightLooped(false);
 	        boardFrame.addKeyListener(this);
 	        boardFrame.setFocusable(true);
 	        boardFrame.setFocusTraversalKeysEnabled(false);
 
 	        for (int x = 0; x < this.getMap().getWidth(); x++) {
+	        	System.out.println(x);
 	            for (int y = 0; y < this.getMap().getHeight(); y++) {
+		        	System.out.println("    " + y);
 	                boardFrame.addSquare(this.map.getOnTheMap(x, y), x, y);
 	            }
 	        }
