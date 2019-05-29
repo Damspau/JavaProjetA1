@@ -1,13 +1,13 @@
 package mobile;
 
-import elements.*;
-
 import java.awt.Point;
 
 import contract.*;
+import element.*;
+
 import org.showboard.*;
 
-public abstract class CommonMobile  extends Elements {
+public abstract class CommonMobile  extends Element {
 
 	private Point position;
 	private IBoard board;

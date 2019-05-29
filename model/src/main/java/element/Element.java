@@ -1,9 +1,9 @@
-package elements;
+package element;
 
 import java.awt.Image;
 import contract.*;
 import org.showboard.*;
-public abstract class Elements implements IElements, IPawn{
+public abstract class Element implements IElements, IPawn{
 	protected int y;
 	protected int x;
 	
@@ -29,7 +29,7 @@ public abstract class Elements implements IElements, IPawn{
 
 	
 	
-	public Elements (Sprite sprite, Permeability permeability) {
+	public Element (Sprite sprite, Permeability permeability) {
 		this.setSprite(sprite);
 		this.setPermeability(permeability);
 	}

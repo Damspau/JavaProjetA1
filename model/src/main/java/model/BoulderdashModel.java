@@ -3,7 +3,7 @@ package model;
 import java.io.IOException;
 
 import contract.IMap;
-import elements.Map;
+import element.Map;
 import mobile.CommonMobile;
 
 public class BoulderdashModel implements IBoulderdashModel {

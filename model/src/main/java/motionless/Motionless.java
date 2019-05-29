@@ -4,9 +4,9 @@ import java.awt.Point;
 
 import contract.Permeability;
 import contract.Sprite;
-import elements.Elements;
+import element.Element;
 
-public class Motionless extends Elements {
+public class Motionless extends Element {
 
 	public Motionless(Sprite sprite, Permeability permeability) {
 		super(sprite, permeability);

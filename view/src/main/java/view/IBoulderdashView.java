@@ -7,8 +7,5 @@ package view;
  */
 public interface IBoulderdashView {
 
-
-
-
 	void followMyPlayer();
 }

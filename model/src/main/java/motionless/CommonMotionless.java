@@ -3,12 +3,12 @@ import org.showboard.*;
 
 import java.awt.Point;
 
-import elements.*;
 import contract.*;
 
 import contract.IMap;
+import element.*;
 
-public class CommonMotionless extends Elements {
+public class CommonMotionless extends Element {
 	private Point position;
 	private IBoard board;
 	private IMap map;

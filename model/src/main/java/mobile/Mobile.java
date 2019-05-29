@@ -4,9 +4,9 @@ import java.awt.Point;
 
 import contract.Permeability;
 import contract.Sprite;
-import elements.Elements;
+import element.Element;
 
-public class Mobile extends Elements{
+public class Mobile extends Element{
 
 	public Mobile(Sprite sprite, Permeability permeability) {
 		super(sprite, permeability);

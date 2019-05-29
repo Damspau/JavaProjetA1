@@ -11,7 +11,8 @@ import javax.swing.SwingUtilities;
 import contract.IMap;
 import contract.IOrderPerformer;
 import contract.UserOrder;
-import elements.Elements;
+import element.Element;
+
 import org.showboard.*;
 import mobile.CommonMobile;
 
@@ -20,17 +21,17 @@ import mobile.CommonMobile;
  *
  * @author Maxime G, Damiens et Benoît D
  */
-public final class View implements IBoulderdashView, Runnable, KeyListener{
+public final class View implements IBoulderdashView, Runnable, KeyListener {
 
 	// All the different attributes.
 
 	private CommonMobile myPlayer;
 
 	/** The Constant mapView. */
-	private static final int mapView = 16;
+	private int mapView = 16;
 
 	/** The Constant squareSize. */
-	private static final int squareSize = 50;
+	private int squareSize = 50;
 
 	/** The Constant closeView. */
 	private Rectangle closeView = new Rectangle();
@@ -44,71 +45,57 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	/** The order performer. */
 	private IOrderPerformer orderPerformer;
 
-
-
-
-
-	public View(final IMap map, final CommonMobile myPlayer ) throws IOException {
+	public View(IMap map, CommonMobile myPlayer) throws IOException {
 		this.setView(mapView);
 		this.setMap(map);
 		closeView.setSize(37, 22);
 //		this.setMyPlayer(myPlayer);
 //		this.getMyPlayer().getSprite().loadImage();
 //		this.setCloseView(new Rectangle(0, this.getMyPlayer().getY(), this.getMap().getWidth(), mapView));
-	SwingUtilities.invokeLater(this);
-
+		SwingUtilities.invokeLater(this);
 
 	}
 
 	public final void run() {
 		final BoardFrame boardFrame = new BoardFrame("Close view");
-		 boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
-	        boardFrame.setDisplayFrame(this.closeView);
-	        boardFrame.setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
-	        boardFrame.setHeightLooped(false);
-	        boardFrame.addKeyListener(this);
-	        boardFrame.setFocusable(true);
-	        boardFrame.setFocusTraversalKeysEnabled(false);
+		boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
+		boardFrame.setDisplayFrame(this.closeView);
+		boardFrame.setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
+		boardFrame.setHeightLooped(false);
+		boardFrame.addKeyListener(this);
+		boardFrame.setFocusable(true);
+		boardFrame.setFocusTraversalKeysEnabled(false);
 
-	        for (int x = 0; x < this.getMap().getWidth(); x++) {
-	        	System.out.println(x);
-	            for (int y = 0; y < this.getMap().getHeight(); y++) {
-		        	System.out.println("    " + y);
-	                boardFrame.addSquare(this.map.getOnTheMap(x, y), x, y);
-	            }
-	        }
+		for (int x = 0; x < this.getMap().getWidth(); x++) {
+			System.out.println(x);
+			for (int y = 0; y < this.getMap().getHeight(); y++) {
+				System.out.println("    " + y);
+				boardFrame.addSquare(this.map.getOnTheMap(x, y), x, y);
+			}
+		}
 //	        boardFrame.addPawn(this.getMyPlayer());
 
-	        this.getMap().getObservable().addObserver(boardFrame.getObserver());
-	        //this.followMyPlayer();
+		this.getMap().getObservable().addObserver(boardFrame.getObserver());
+		// this.followMyPlayer();
 
-	        boardFrame.setVisible(true);
-	    }
-
+		boardFrame.setVisible(true);
+	}
 
 	public void show(int yStart) {
 		int y = yStart % this.getMap().getHeight();
-	        for (int view = 0; view < this.getView(); view++) {
-	            for (int x = 0; x < this.getMap().getWidth(); x++) {
-	                if ((x == this.getMyPlayer().getX()) && (y == yStart)) {
-	                    System.out.print(this.getMyPlayer().getSprite().getBddImage());
-	                } else {
-	                    System.out.print(((Elements) this.getMap().getOnTheMap(x, y)).getSprite().getBddImage());
-	            }
-	            y = (y + 1) % this.getMap().getHeight();
-	            System.out.print("\n");
-	            }
-	        }
+		for (int view = 0; view < this.getView(); view++) {
+			for (int x = 0; x < this.getMap().getWidth(); x++) {
+				if ((x == this.getMyPlayer().getX()) && (y == yStart)) {
+					System.out.print(this.getMyPlayer().getSprite().getBddImage());
+				} else {
+					System.out.print(((Element) this.getMap().getOnTheMap(x, y)).getSprite().getBddImage());
+				}
+				y = (y + 1) % this.getMap().getHeight();
+				System.out.print("\n");
+			}
+		}
 
 	}
-
-
-	
-
-
-
-
-
 
 	protected UserOrder keyCodeToUserOrder(int keyCode) {
 		switch (keyCode) {
@@ -126,25 +113,31 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	}
 
 	public void keyTyped(final KeyEvent e) {
-		/* not important for our program but necessary to implements because of the intefaces */
+		/*
+		 * not important for our program but necessary to implements because of the
+		 * intefaces
+		 */
 
 	}
+
 	@Override
 	public void keyPressed(final KeyEvent keyInput) {
-	    try {
-            this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyInput.getKeyCode()));
-        } catch (final IOException exception) {
-            exception.printStackTrace();
-        }
-    }
-
+		try {
+			this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyInput.getKeyCode()));
+		} catch (final IOException exception) {
+			exception.printStackTrace();
+		}
+	}
 
 	public void keyReleased(final KeyEvent e) {
-		/* not important for our program but necessary to implements because of the intefaces */
+		/*
+		 * not important for our program but necessary to implements because of the
+		 * intefaces
+		 */
 	}
 
 	public void followMyPlayer() {
-	//	this.getCloseView().y = this.getMyPlayer().getY() - 5;
+		// this.getCloseView().y = this.getMyPlayer().getY() - 5;
 	}
 
 	public IMap getMap() {
@@ -161,6 +154,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 //        }
 
 	}
+
 	public CommonMobile getMyPlayer() {
 		return myPlayer;
 	}
@@ -168,8 +162,6 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	public void setMyPlayer(CommonMobile myPlayer) {
 		this.myPlayer = myPlayer;
 	}
-
-
 
 	private int getView() {
 		return view;
@@ -199,21 +191,4 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 
 	}
 
-
-
-
-
-
-
-
-	}
-
-
-
-
-	
-
-
-	
-
-
+}
