@@ -3,7 +3,7 @@ package motionless;
 import java.io.IOException;
 
 public class MotionlessElementsFactory {
-	private static Background background = new Background();
+	private Background background = new Background();
 //	private CommonMotionless[] motionlessElements = {
 //			background
 //	};

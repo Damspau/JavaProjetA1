@@ -4,7 +4,7 @@ import java.awt.Point;
 
 import contract.Permeability;
 import contract.Sprite;
-import elements.*;
+import elements.Elements;
 
 public class Motionless extends Elements {
 

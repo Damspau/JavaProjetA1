@@ -23,12 +23,13 @@ public abstract class CommonMobile  extends Elements {
 	
 	public CommonMobile(Sprite sprite, Permeability permeability) {
 		super(sprite, permeability);
+		this.setMap(map);
 		// TODO Auto-generated constructor stub
 	}
 
 
 	//Override
-	public CommonMobile(Sprite sprite, Permeability permeability, IMap map, int x, int y) {
+	protected CommonMobile(Sprite sprite, Permeability permeability, int x, int y) {
 		super(sprite, permeability);
 		
 	}
