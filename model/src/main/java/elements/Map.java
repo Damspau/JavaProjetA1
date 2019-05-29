@@ -69,6 +69,7 @@ public class Map extends Observable implements IMap {
             	CommonMotionless element = factory.getFromFileSymbol(line.toCharArray()[x]);
             	element.setX(x);
             	element.setY(y);
+//            	element.getSprite().setImageName(line.toCharArray()[x]+".jpg");
                 this.setOnTheMap(element, x, y);
             }
             line = buffer.readLine();

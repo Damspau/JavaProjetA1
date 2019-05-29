@@ -33,7 +33,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	private static final int squareSize = 50;
 
 	/** The Constant closeView. */
-	private Rectangle closeView;
+	private Rectangle closeView = new Rectangle();
 
 	/** The view. */
 	private int view;
@@ -51,6 +51,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	public View(final IMap map, final CommonMobile myPlayer ) throws IOException {
 		this.setView(mapView);
 		this.setMap(map);
+		closeView.setSize(10, 10);
 //		this.setMyPlayer(myPlayer);
 //		this.getMyPlayer().getSprite().loadImage();
 //		this.setCloseView(new Rectangle(0, this.getMyPlayer().getY(), this.getMap().getWidth(), mapView));
@@ -74,10 +75,10 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	                boardFrame.addSquare(this.map.getOnTheMap(x, y), x, y);
 	            }
 	        }
-	        boardFrame.addPawn(this.getMyPlayer());
+//	        boardFrame.addPawn(this.getMyPlayer());
 
 	        this.getMap().getObservable().addObserver(boardFrame.getObserver());
-	        this.followMyPlayer();
+	        //this.followMyPlayer();
 
 	        boardFrame.setVisible(true);
 	    }
@@ -141,7 +142,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	}
 
 	public void followMyPlayer() {
-		this.getCloseView().y = this.getMyPlayer().getY() - 5;
+	//	this.getCloseView().y = this.getMyPlayer().getY() - 5;
 	}
 
 	public IMap getMap() {
@@ -151,11 +152,11 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 
 	public void setMap(IMap map) throws IOException {
 		this.map = map;
-        for (int x = 0; x < this.getMap().getWidth(); x++) {
-            for (int y = 0; y < this.getMap().getHeight(); y++) {
-                ((Elements) this.getMap().getOnTheMap(x, y)).getSprite().loadImage();
-            }
-        }
+//        for (int x = 0; x < this.getMap().getWidth(); x++) {
+//            for (int y = 0; y < this.getMap().getHeight(); y++) {
+//                ((Elements) this.getMap().getOnTheMap(x, y)).getSprite().loadImage();
+//            }
+//        }
 
 	}
 	public CommonMobile getMyPlayer() {

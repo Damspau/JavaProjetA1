@@ -14,10 +14,10 @@ public class MotionlessElementsFactory {
 //		background = (Background) createBackground(x, y);
 //		return background;
 //	}
-	
+
 public CommonMotionless getFromFileSymbol(final char fileSymbol) throws IOException {
 	
-	//TODO switch sur chaque symbole possible
+	
 	return background;
 	
 }

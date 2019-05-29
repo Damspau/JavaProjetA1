@@ -8,14 +8,19 @@ import javax.imageio.ImageIO;
 
 public class Sprite {
 private Image image;
-private String imageName;
+//private String imageName;
 private char bddImage;
-private boolean imageLoaded;
+//private boolean imageLoaded;
 
 
 
 public Sprite (char character, String imageName) {
-	
+	try {
+		loadImage(imageName);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 }
 
 //Overwrite
@@ -32,13 +37,13 @@ public void setImage(Image image) {
 	this.image = image;
 }
 
-public String getImageName() {
-	return imageName;
-}
+//public String getImageName() {
+//	return imageName;
+//}
 
-public void setImageName(String imageName) {
-	this.imageName = imageName;
-}
+//public void setImageName(String imageName) {
+//	this.imageName = imageName;
+//}
 
 public char getBddImage() {
 	return bddImage;
@@ -48,16 +53,17 @@ public void setBddImage(char bddImage) {
 	this.bddImage = bddImage;
 }
 
-public void setImageLoaded(boolean isImageLoaded) {
-	this.imageLoaded = imageLoaded;
-}
+//public void setImageLoaded(boolean isImageLoaded) {
+//	this.imageLoaded = imageLoaded;
+//}
 
 //checking if the sprite is loaded
-public boolean isImageLoaded () {
-	return this.imageLoaded;
-}
-public final void loadImage() throws IOException {
-	System.out.println(this.getImageName());
-    this.setImage(ImageIO.read(new File("sprites/b.jpg")));
+//public boolean isImageLoaded () {
+//	return this.imageLoaded;
+//}
+public final void loadImage(String imageName) throws IOException {
+	String spriteName = "sprites/"+ imageName;
+	System.out.println(spriteName);
+	this.setImage(ImageIO.read(new File(spriteName)));
 }
 }
