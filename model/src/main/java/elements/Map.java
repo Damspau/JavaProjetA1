@@ -25,8 +25,9 @@ public class Map extends Observable implements IMap {
 	private IElements [][] onTheMap;
 	
 	
-	public Map(final String fileName) throws IOException {
+	public Map(String fileName) throws IOException {
 		super();
+		System.out.println(fileName);
 		this.loadFile(fileName);
 	}
 	public static int compterOccurrencesLargeur(String line, char recherche)

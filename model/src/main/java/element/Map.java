@@ -11,9 +11,11 @@ import org.showboard.ISquare;
 
 import contract.IElements;
 import contract.IMap;
-import entity.DB;
+import mobile.CommonMobile;
+import mobile.MobileElementsFactory;
 import motionless.CommonMotionless;
 import motionless.MotionlessElementsFactory;
+import entity.DB;
 
 public class Map extends Observable implements IMap {
 
@@ -21,33 +23,44 @@ public class Map extends Observable implements IMap {
 	private int height;
 	private IElements[][] onTheMap;
 
-	public Map() throws IOException {
+	public Map(String fileName) throws IOException {
 		super();
-		DB.lireEnBase();
-		loadFile();
+		this.loadFile(fileName);
 	}
 
-	// temporal reading for the map
-	private void loadFile() throws IOException {
-		final BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream("map.txt")));
+	private void loadFile(final String fileName) throws IOException {
+
+		final BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
 		String line = buffer.readLine();
-		System.out.println(line);
 		int y = 0;
 
-		this.setWidth(1);
+		this.setWidth(3);
 
-		this.setHeight(1);
+		this.setHeight(3);
 
 		this.onTheMap = new IElements[this.getWidth()][this.getHeight()];
 
-		MotionlessElementsFactory factory = new MotionlessElementsFactory();
+		MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
+		MobileElementsFactory factoryMobile = new MobileElementsFactory();
+
+		// Elements display:
+
 		while (line != null) {
+
 			for (int x = 0; x < line.toCharArray().length; x++) {
-				CommonMotionless element = factory.getFromFileSymbol(line.toCharArray()[x]);
-				element.setX(x);
-				element.setY(y);
-            	//element.getSprite().setImageName(line.toCharArray()[x]+".jpg");
-				this.setOnTheMap(element, x, y);
+				CommonMotionless motionLessElement = factoryMotionless.getFromFileSymbol(line.toCharArray()[x]);
+				if (motionLessElement == null) {
+					CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x]);
+					mobileElement.setX(x);
+					mobileElement.setY(y);
+					this.setOnTheMap(mobileElement, x, y);
+				} else {
+					motionLessElement.setX(x);
+					motionLessElement.setY(y);
+					this.setOnTheMap(motionLessElement, x, y);
+
+				}
+
 			}
 			line = buffer.readLine();
 			y++;
@@ -55,8 +68,8 @@ public class Map extends Observable implements IMap {
 		buffer.close();
 	}
 
-	private void setOnTheMap(CommonMotionless fromFileSymbol, int x, int y) {
-		this.onTheMap[x][y] = fromFileSymbol;
+	private void setOnTheMap(IElements mobileElement, int x, int y) {
+		this.onTheMap[x][y] = mobileElement;
 
 	}
 
@@ -67,13 +80,11 @@ public class Map extends Observable implements IMap {
 	}
 
 	public void setWidth(int width) {
-		System.out.println("width" + width);
 		this.width = width;
 
 	}
 
 	public void setHeight(int height) {
-		System.out.println("height" + height);
 		this.height = height;
 
 	}
