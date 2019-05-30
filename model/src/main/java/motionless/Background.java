@@ -8,22 +8,22 @@ import contract.IMap;
 
 
 public class Background extends CommonMotionless{
-	private static final Sprite SPRITE = new Sprite('b', "b.jpg");
+	private final static Sprite sprite = new Sprite('b', "b.jpg");
 	
 	public Background() {
 
-		super(SPRITE, Permeability.UNBREAKABLE);
+		super(sprite, Permeability.UNBREAKABLE);
 		
 	}
 	
 	public Background(int x,int y) throws IOException {
 		
-		super(SPRITE, Permeability.UNBREAKABLE, x,y);
+		super(sprite, Permeability.UNBREAKABLE, x,y);
 		
 	}
 
 	public Sprite getSprite() {
-		return SPRITE;
+		return sprite;
 	}
 
 }

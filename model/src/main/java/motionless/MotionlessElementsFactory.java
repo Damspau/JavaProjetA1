@@ -3,22 +3,24 @@ package motionless;
 import java.io.IOException;
 
 public class MotionlessElementsFactory {
-	private Background background = new Background();
-//	private CommonMotionless[] motionlessElements = {
-//			background
-//	};
-//	
-//	
 
-//	public static  CommonMotionless createBackground (int x, int y) throws IOException {
-//		background = (Background) createBackground(x, y);
-//		return background;
-//	}
+	private CommonMotionless toReturn=null;
 
 public CommonMotionless getFromFileSymbol(final char fileSymbol) throws IOException {
+
+	switch (fileSymbol) {
+	case 'b':
+		Background background = new Background();
+		toReturn = background;
+		break;
+
+	default:
+		
+		break;
+	}
 	
 	
-	return background;
+	return toReturn;
 	
 }
 }

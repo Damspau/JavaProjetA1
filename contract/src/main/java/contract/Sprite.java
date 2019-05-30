@@ -53,14 +53,7 @@ public void setBddImage(char bddImage) {
 	this.bddImage = bddImage;
 }
 
-//public void setImageLoaded(boolean isImageLoaded) {
-//	this.imageLoaded = imageLoaded;
-//}
 
-//checking if the sprite is loaded
-//public boolean isImageLoaded () {
-//	return this.imageLoaded;
-//}
 public final void loadImage(String imageName) throws IOException {
 	String spriteName = "sprites/"+ imageName;
 	System.out.println(spriteName);
