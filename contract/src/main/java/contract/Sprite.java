@@ -24,14 +24,17 @@ public Sprite (char character, String imageName) {
 }
 
 //Overwrite
-
 public Sprite (char character) {
 	
 }
 
+
+
 public Image getImage() {
 	return image;
 }
+
+
 
 public void setImage(Image image) {
 	this.image = image;
@@ -45,9 +48,13 @@ public void setImage(Image image) {
 //	this.imageName = imageName;
 //}
 
+
+
 public char getBddImage() {
 	return bddImage;
 }
+
+
 
 public void setBddImage(char bddImage) {
 	this.bddImage = bddImage;
@@ -61,6 +68,9 @@ public void setBddImage(char bddImage) {
 //public boolean isImageLoaded () {
 //	return this.imageLoaded;
 //}
+
+
+
 public final void loadImage(String imageName) throws IOException {
 	String spriteName = "sprites/"+ imageName;
 	System.out.println(spriteName);
