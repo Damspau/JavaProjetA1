@@ -48,7 +48,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 	public View(IMap map, CommonMobile myPlayer) throws IOException {
 		this.setView(mapView);
 		this.setMap(map);
-		closeView.setSize(37, 22);
+		closeView.setSize(10, 10);
 //		this.setMyPlayer(myPlayer);
 //		this.getMyPlayer().getSprite().loadImage();
 //		this.setCloseView(new Rectangle(0, this.getMyPlayer().getY(), this.getMap().getWidth(), mapView));
