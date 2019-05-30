@@ -23,7 +23,7 @@ public class DB {
 
 			cn = DriverManager.getConnection(url, login, passwd);
 
-			String query = "{CALL Map1()}";
+			String query = "{CALL test()}";
 
 			java.sql.CallableStatement stmt = cn.prepareCall(query);
 
