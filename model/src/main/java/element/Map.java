@@ -27,34 +27,15 @@ public class Map extends Observable implements IMap {
 		this.loadFile();
 	}
 
-	public static int countWidth(String line, char recherche) {
-		int nb = 0;
-		for (int i = 0; i < line.length(); i++) {
-			if (line.charAt(i) == recherche)
-				nb++;
-		}
-		return nb;
-	}
-
-	public static int countHeight() throws IOException {
-		BufferedReader reader = new BufferedReader(new FileReader("src\\main\\map.txt"));
-		int lines = 0;
-		while (reader.readLine() != null)
-			lines++;
-		reader.close();
-		return lines;
-	}
-
 	// temporal reading for the map
 	private void loadFile() throws IOException {
-		final BufferedReader buffer = new BufferedReader(
-				new InputStreamReader(new FileInputStream("src\\main\\map.txt")));
+		final BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream("map.txt")));
 		String line = buffer.readLine();
 		int y = 0;
 
-		this.setWidth(countWidth(line, 'b'));
+		this.setWidth(40);
 
-		this.setHeight(countHeight());
+		this.setHeight(22);
 
 		this.onTheMap = new IElements[this.getWidth()][this.getHeight()];
 
@@ -85,13 +66,13 @@ public class Map extends Observable implements IMap {
 	}
 
 	public void setWidth(int width) {
-
+		System.out.println("width" + width);
 		this.width = width;
 
 	}
 
 	public void setHeight(int height) {
-		System.out.println(height);
+		System.out.println("height" + height);
 		this.height = height;
 
 	}

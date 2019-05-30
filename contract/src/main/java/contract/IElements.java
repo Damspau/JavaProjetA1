@@ -2,16 +2,11 @@ package contract;
 
 import java.awt.Image;
 
-
-
 public interface IElements {
-	 Sprite getSprite();
+	Sprite getSprite();
 
-	 
-	    Permeability getPermeability();
+	Permeability getPermeability();
 
-	 
-	    Image getImage();
+	Image getImage();
 
-	}
-
+}

@@ -31,19 +31,11 @@ public class DB {
 
 			while (rs.next()) {
 				String map1 = rs.getString("MapLines");
-				
-	
-				
-				
-				
-				
-				
-				FileWriter map = new FileWriter("src\\main\\map.txt");
+
+				FileWriter map = new FileWriter("map.txt");
 				map.write(map1);
-				
-				
-				
-				
+				map.close();
+
 				System.out.println(map1);
 
 			}
