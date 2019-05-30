@@ -2,9 +2,6 @@ package entity;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Writer;
-import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -34,8 +31,19 @@ public class DB {
 
 			while (rs.next()) {
 				String map1 = rs.getString("MapLines");
+				
+	
+				
+				
+				
+				
+				
 				FileWriter map = new FileWriter("src\\main\\map.txt");
 				map.write(map1);
+				
+				
+				
+				
 				System.out.println(map1);
 
 			}
