@@ -11,11 +11,10 @@ import org.showboard.ISquare;
 
 import contract.IElements;
 import contract.IMap;
-import mobile.CommonMobile;
+import entity.DB;
 import mobile.MobileElementsFactory;
 import motionless.CommonMotionless;
 import motionless.MotionlessElementsFactory;
-import entity.DB;
 
 public class Map extends Observable implements IMap {
 
@@ -25,6 +24,7 @@ public class Map extends Observable implements IMap {
 
 	public Map(String fileName) throws IOException {
 		super();
+		DB.lireEnBase();
 		this.loadFile(fileName);
 	}
 
@@ -33,10 +33,8 @@ public class Map extends Observable implements IMap {
 		final BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
 		String line = buffer.readLine();
 		int y = 0;
-
-		this.setWidth(3);
-
-		this.setHeight(3);
+		this.setWidth(compterOccurrencesLargeur(line));
+		this.setHeight(compterOccurencesHauteur(fileName));
 
 		this.onTheMap = new IElements[this.getWidth()][this.getHeight()];
 
@@ -48,12 +46,13 @@ public class Map extends Observable implements IMap {
 		while (line != null) {
 
 			for (int x = 0; x < line.toCharArray().length; x++) {
+				System.out.println(line);
 				CommonMotionless motionLessElement = factoryMotionless.getFromFileSymbol(line.toCharArray()[x]);
 				if (motionLessElement == null) {
-					CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x]);
-					mobileElement.setX(x);
-					mobileElement.setY(y);
-					this.setOnTheMap(mobileElement, x, y);
+//					CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x]);
+//					mobileElement.setX(x);
+//					mobileElement.setY(y);
+//					this.setOnTheMap(mobileElement, x, y);
 				} else {
 					motionLessElement.setX(x);
 					motionLessElement.setY(y);
@@ -66,7 +65,7 @@ public class Map extends Observable implements IMap {
 			y++;
 		}
 		buffer.close();
-	}
+}
 
 	private void setOnTheMap(IElements mobileElement, int x, int y) {
 		this.onTheMap[x][y] = mobileElement;
@@ -112,6 +111,23 @@ public class Map extends Observable implements IMap {
 	public Observable getObservable() {
 		// TODO Auto-generated method stub
 		return this;
+	}
+
+	public static int compterOccurrencesLargeur(String line) {
+		int nb = 0;
+		for (int i = 0; i < line.length(); i++) {
+				nb++;
+		}
+		return nb;
+	}
+
+	public static int compterOccurencesHauteur(String fileName) throws IOException {
+		BufferedReader reader = new BufferedReader(new FileReader(fileName));
+		int lines = 0;
+		while (reader.readLine() != null)
+			lines++;
+		reader.close();
+		return lines;
 	}
 
 }

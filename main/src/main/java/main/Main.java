@@ -16,7 +16,7 @@ public abstract class Main {
 		
 		String fileName = "map.txt";
 		
-		final BoulderdashModel model = new BoulderdashModel(fileName, 0, 5);
+		final BoulderdashModel model = new BoulderdashModel(fileName, 0, 0);
 		final View view = new View(model.getMap(), model.getMyPlayer());
 		final Controller controller = new Controller(view, model);
 		view.setOrderPerformer(controller.getOrderPerformer());

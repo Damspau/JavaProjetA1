@@ -63,29 +63,29 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	@Override
 	public final void play() throws InterruptedException {
-		while (this.getModel().getMyPlayer().isAlive()) {
-//			Thread.sleep(speed);
-			switch (this.getStackOrder()) {
-			case RIGHT:
-				this.getModel().getMyPlayer().moveRight();
-				break;
-			case LEFT:
-				this.getModel().getMyPlayer().moveLeft();
-				break;
-			case UP:
-				this.getModel().getMyPlayer().moveUp();
-				break;
-			case DOWN:
-				this.getModel().getMyPlayer().moveDown();
-				break;
-			case FACE:
-			default:
-				this.getModel().getMyPlayer().doNothing();
-				break;
-			}
-			this.clearStackOrder();
-
-		}
+//		while (this.getModel().getMyPlayer().isAlive()) {
+////			Thread.sleep(speed);
+//			switch (this.getStackOrder()) {
+//			case RIGHT:
+//				this.getModel().getMyPlayer().moveRight();
+//				break;
+//			case LEFT:
+//				this.getModel().getMyPlayer().moveLeft();
+//				break;
+//			case UP:
+//				this.getModel().getMyPlayer().moveUp();
+//				break;
+//			case DOWN:
+//				this.getModel().getMyPlayer().moveDown();
+//				break;
+//			case FACE:
+//			default:
+//				this.getModel().getMyPlayer().doNothing();
+//				break;
+//			}
+//			this.clearStackOrder();
+//
+//		}
 
 	}
 

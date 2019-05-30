@@ -23,22 +23,22 @@ public class DB {
 
 			cn = DriverManager.getConnection(url, login, passwd);
 
-			String query = "{CALL test()}";
+			String query = "{CALL Map1()}";
 
 			java.sql.CallableStatement stmt = cn.prepareCall(query);
 
 			rs = stmt.executeQuery(query);
 
+			FileWriter map = new FileWriter("map.txt");
+
 			while (rs.next()) {
 				String map1 = rs.getString("MapLines");
-
-				FileWriter map = new FileWriter("map.txt");
 				map.write(map1);
-				map.close();
-
+				map.write("\r\n");
 				System.out.println(map1);
 
 			}
+			map.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {

@@ -9,12 +9,12 @@ public class MotionlessElementsFactory {
 public CommonMotionless getFromFileSymbol(final char fileSymbol) throws IOException {
 
 	switch (fileSymbol) {
-	case 'b':
+	case 'B':
 		Background background = new Background();
 		toReturn = background;
 		break;
 
-	case 't':
+	case '-':
 		Dirt dirt = new Dirt();
 		toReturn = dirt;
 		break;
@@ -22,8 +22,6 @@ public CommonMotionless getFromFileSymbol(final char fileSymbol) throws IOExcept
 		toReturn = null;
 		break;
 	}
-	
-	
 	return toReturn;
 	
 }
