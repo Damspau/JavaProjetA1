@@ -13,6 +13,8 @@ import org.showboard.ISquare;
 
 import contract.IElements;
 import contract.IMap;
+import mobile.CommonMobile;
+import mobile.MobileElementsFactory;
 import motionless.CommonMotionless;
 import motionless.MotionlessElementsFactory;
 
@@ -59,18 +61,34 @@ public class Map extends Observable implements IMap {
         
         
         
-        
-        
         this.onTheMap = new IElements[this.getWidth()][this.getHeight()];
 
-    	MotionlessElementsFactory factory = new MotionlessElementsFactory();
+    	MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
+    	MobileElementsFactory factoryMobile = new MobileElementsFactory();
+    	
+    	
+    	
+    	
+    	
+    	//Elements display:
+    	
         while (line != null) {
+        	
             for (int x = 0; x < line.toCharArray().length; x++) {
-            	CommonMotionless element = factory.getFromFileSymbol(line.toCharArray()[x]);
-            	element.setX(x);
-            	element.setY(y);
-//            	element.getSprite().setImageName(line.toCharArray()[x]+".jpg");
-                this.setOnTheMap(element, x, y);
+            	CommonMotionless motionLessElement = factoryMotionless.getFromFileSymbol(line.toCharArray()[x]);
+            	if (motionLessElement==null) {
+            		CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x]);
+            		mobileElement.setX(x);
+                	mobileElement.setY(y);
+                	this.setOnTheMap(mobileElement, x, y);
+            	}
+            	else {
+            		motionLessElement.setX(x);
+                	motionLessElement.setY(y);
+                    this.setOnTheMap(motionLessElement, x, y);
+            		
+            	}
+            	
             }
             line = buffer.readLine();
             y++;
@@ -78,8 +96,8 @@ public class Map extends Observable implements IMap {
         buffer.close();
     }
 	
-	private void setOnTheMap(CommonMotionless fromFileSymbol, int x, int y) {
-		this.onTheMap[x][y] = fromFileSymbol;
+	private void setOnTheMap(Elements mobileElement, int x, int y) {
+		this.onTheMap[x][y] = mobileElement;
 		
 	}
 	
