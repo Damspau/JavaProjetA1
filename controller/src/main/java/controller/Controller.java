@@ -64,7 +64,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	@Override
 	public final void play() throws InterruptedException {
 		while (this.getModel().getMyPlayer().isAlive()) {
-			Thread.sleep(speed);
+//			Thread.sleep(speed);
 			switch (this.getStackOrder()) {
 			case RIGHT:
 				this.getModel().getMyPlayer().moveRight();
@@ -85,13 +85,9 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 			}
 			this.clearStackOrder();
 
-
 		}
 
 	}
-
-
-
 
 	public IOrderPerformer getOrderPerformer() {
 		return this;
@@ -148,9 +144,5 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	public void fallAndKill() {
 
 	}
-
-
-
-
 
 }

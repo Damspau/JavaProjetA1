@@ -31,6 +31,7 @@ public class Map extends Observable implements IMap {
 	private void loadFile() throws IOException {
 		final BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream("map.txt")));
 		String line = buffer.readLine();
+		System.out.println(line);
 		int y = 0;
 
 		this.setWidth(1);
@@ -45,7 +46,7 @@ public class Map extends Observable implements IMap {
 				CommonMotionless element = factory.getFromFileSymbol(line.toCharArray()[x]);
 				element.setX(x);
 				element.setY(y);
-//            	element.getSprite().setImageName(line.toCharArray()[x]+".jpg");
+            	//element.getSprite().setImageName(line.toCharArray()[x]+".jpg");
 				this.setOnTheMap(element, x, y);
 			}
 			line = buffer.readLine();

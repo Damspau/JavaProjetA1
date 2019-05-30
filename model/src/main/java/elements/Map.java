@@ -96,7 +96,7 @@ public class Map extends Observable implements IMap {
         buffer.close();
     }
 	
-	private void setOnTheMap(Elements mobileElement, int x, int y) {
+	private void setOnTheMap(IElements mobileElement, int x, int y) {
 		this.onTheMap[x][y] = mobileElement;
 		
 	}
