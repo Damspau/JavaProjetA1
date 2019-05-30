@@ -8,7 +8,7 @@ import contract.IMap;
 
 
 public class Background extends CommonMotionless{
-	private static final Sprite SPRITE = new Sprite('b', "b.jpg");
+	private static final Sprite SPRITE = new Sprite('B', "B.jpg");
 	
 	public Background() {
 
