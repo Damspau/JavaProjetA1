@@ -3,14 +3,14 @@ package element;
 import java.awt.Image;
 import contract.*;
 import org.showboard.*;
-public abstract class Element implements IElements, IPawn{
+
+public abstract class Element implements IElements, IPawn {
 	protected int y;
 	protected int x;
-	
+
 	private Sprite sprite;
 	private Permeability permeability;
-	
-	
+
 	public int getX() {
 		return x;
 	}
@@ -27,40 +27,30 @@ public abstract class Element implements IElements, IPawn{
 		this.y = y;
 	}
 
-	
-	
-	public Element (Sprite sprite, Permeability permeability) {
+	public Element(Sprite sprite, Permeability permeability) {
 		this.setSprite(sprite);
 		this.setPermeability(permeability);
 	}
-	
 
-	
-
-	
-
-	
-	public Sprite getSprite  () {
+	public Sprite getSprite() {
 		return this.sprite;
 	}
-	
+
 	protected void setSprite(Sprite sprite) {
 		this.sprite = sprite;
-		
+
 	}
-	
-	public Permeability getPermeability (){
+
+	public Permeability getPermeability() {
 		return this.permeability;
 	}
-	
+
 	private void setPermeability(Permeability permeability) {
 		this.permeability = permeability;
 	}
-	
-	public final Image getImage () {
+
+	public final Image getImage() {
 		return this.getSprite().getImage();
-		
+
 	}
 }
-
-

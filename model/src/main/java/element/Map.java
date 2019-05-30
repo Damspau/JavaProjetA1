@@ -24,7 +24,7 @@ public class Map extends Observable implements IMap {
 	public Map() throws IOException {
 		super();
 		DB.lireEnBase();
-		this.loadFile();
+		loadFile();
 	}
 
 	// temporal reading for the map
@@ -33,9 +33,9 @@ public class Map extends Observable implements IMap {
 		String line = buffer.readLine();
 		int y = 0;
 
-		this.setWidth(10);
+		this.setWidth(1);
 
-		this.setHeight(10);
+		this.setHeight(1);
 
 		this.onTheMap = new IElements[this.getWidth()][this.getHeight()];
 
