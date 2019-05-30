@@ -1,13 +1,12 @@
 package motionless;
 
 import java.io.IOException;
-import contract.*;
 
+import contract.Permeability;
+import contract.Sprite;
 
-
-
-public class Background extends CommonMotionless{
-	private final static Sprite sprite = new Sprite('B', "B.jpg");
+public class Background extends CommonMotionless {
+	private final static Sprite sprite = new Sprite('*', "background.jpg");
 
 	public Background() {
 
@@ -15,9 +14,9 @@ public class Background extends CommonMotionless{
 
 	}
 
-	public Background(int x,int y) throws IOException {
+	public Background(int x, int y) throws IOException {
 
-		super(sprite, Permeability.UNBREAKABLE, x,y);
+		super(sprite, Permeability.UNBREAKABLE, x, y);
 
 	}
 
