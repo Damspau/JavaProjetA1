@@ -15,6 +15,7 @@ import contract.IElements;
 import contract.IMap;
 import mobile.CommonMobile;
 import mobile.MobileElementsFactory;
+import mobile.Player;
 import motionless.CommonMotionless;
 import motionless.MotionlessElementsFactory;
 
@@ -23,6 +24,9 @@ public class Map extends Observable implements IMap {
 	private int width;
 	private int height;
 	private IElements [][] onTheMap;
+	private int actualXPlayer;
+	private int actualYPlayer;
+	private CommonMobile playerDetector;
 	
 	
 	public Map(final String fileName) throws IOException {
@@ -65,6 +69,7 @@ public class Map extends Observable implements IMap {
 
     	MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
     	MobileElementsFactory factoryMobile = new MobileElementsFactory();
+    	playerDetector = new Player() ;
     	
     	
     	
@@ -78,8 +83,14 @@ public class Map extends Observable implements IMap {
             	CommonMotionless motionLessElement = factoryMotionless.getFromFileSymbol(line.toCharArray()[x]);
             	if (motionLessElement==null) {
             		CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x]);
+            		if (line.toCharArray()[x]=='p') {
+            			setActualXPlayer(x);
+            			setActualYPlayer(y);
+            			
+            		}
             		mobileElement.setX(x);
                 	mobileElement.setY(y);
+                	
                 	this.setOnTheMap(mobileElement, x, y);
             	}
             	else {
@@ -143,6 +154,18 @@ public class Map extends Observable implements IMap {
 	public Observable getObservable() {
 		// TODO Auto-generated method stub
 		return this;
+	}
+	public int getActualXPlayer() {
+		return actualXPlayer;
+	}
+	public void setActualXPlayer(int actualXPlayer) {
+		this.actualXPlayer = actualXPlayer;
+	}
+	public int getActualYPlayer() {
+		return actualYPlayer;
+	}
+	public void setActualYPlayer(int actualYPlayer) {
+		this.actualYPlayer = actualYPlayer;
 	}
 
 

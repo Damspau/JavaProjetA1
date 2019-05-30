@@ -42,7 +42,6 @@ public class CommonMotionless extends Elements {
 	public IBoard getBoard() {
 		return board;
 	}
-	
 
 
 }
