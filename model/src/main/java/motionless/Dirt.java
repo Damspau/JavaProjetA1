@@ -1,14 +1,26 @@
 package motionless;
 
+import java.io.IOException;
+
 import contract.Permeability;
 import contract.Sprite;
 
 public class Dirt extends CommonMotionless{
-	private static final Sprite SPRITE = new Sprite('d', "background.jpg");
-	public Dirt(Sprite sprite, Permeability permeability, int x,int y) {
-		super(SPRITE, Permeability.UNBREAKABLE, x,y);
-		
+	private final static Sprite sprite = new Sprite('t', "t.png");
+	
+	public Dirt() {
 		// TODO Auto-generated constructor stub
+		super(sprite, Permeability.UNBREAKABLE);
+	}
+	
+	public Dirt(int x,int y) throws IOException {
+		
+		super(sprite, Permeability.BREAKABLE, x,y);
+		
+	}
+
+	public Sprite getSprite() {
+		return sprite;
 	}
 
 }

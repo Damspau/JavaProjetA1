@@ -45,5 +45,50 @@ public abstract class CommonMobile  extends Elements {
 		return board;
 	}
 	
+	
+	public void moveLeft() {
+		 this.setX(this.getX() - 1);
+	        this.setHasMoved();
+		
+	}
+	
+	
+	
+	public void moveRight() {
+		 this.setX(this.getX() + 1);
+	        this.setHasMoved();
+		
+	}
+	
+	
+	
+	
+	public void moveUp() {
+		 this.setX(this.getY() + -1);
+	        this.setHasMoved();
+		
+	}
+	
+	
+	
+	
+	
+	public void moveDown() {
+		 this.setX(this.getY() + +1);
+	        this.setHasMoved();
+		
+	}
+	
+	 private void setHasMoved() {
+	        this.getMap().setMobileHasChanged();
+	    }
+	public void doNothing() {
+		// TODO Auto-generated method stub
+		this.setHasMoved();
+	}
+	public boolean isAlive() {
+		
+		return true;
+	}
 
 }
