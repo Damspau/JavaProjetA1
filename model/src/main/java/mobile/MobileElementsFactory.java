@@ -4,7 +4,7 @@ import java.io.IOException;
 
 
 public class MobileElementsFactory {
-	private CommonMobile toReturn=null;
+	private CommonMobile toReturn;
  
 	
 	
@@ -17,6 +17,7 @@ public class MobileElementsFactory {
 			break;
 
 		default:
+			toReturn=null;
 			break;
 		}
 		

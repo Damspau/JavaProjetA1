@@ -61,16 +61,10 @@ public class Map extends Observable implements IMap {
         
         
         
-        
-        
         this.onTheMap = new IElements[this.getWidth()][this.getHeight()];
 
     	MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
     	MobileElementsFactory factoryMobile = new MobileElementsFactory();
-    	
-    	
-    	
-    	
     	
     	
     	

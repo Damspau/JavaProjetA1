@@ -82,5 +82,13 @@ public abstract class CommonMobile  extends Elements {
 	 private void setHasMoved() {
 	        this.getMap().setMobileHasChanged();
 	    }
+	public void doNothing() {
+		// TODO Auto-generated method stub
+		this.setHasMoved();
+	}
+	public boolean isAlive() {
+		
+		return true;
+	}
 
 }

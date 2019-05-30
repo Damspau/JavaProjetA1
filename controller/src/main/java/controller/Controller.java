@@ -74,7 +74,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	
 	@Override
-	/*public final void play() throws InterruptedException {
+	public final void play() throws InterruptedException {
 		while (this.getModel().getMyPlayer().isAlive()) {
 			Thread.sleep(speed);
 			switch (this.getStackOrder()) {
@@ -96,14 +96,12 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 				break;
 			}
 			this.clearStackOrder();
-			if (this.getModel().getMyPlayer().isAlive()) {
-				this.getModel().getMyPlayer().moveDown();
-			}
-			this.getView().followMyPlayer();
+		
+		
 		}
-		this.getView().printMessage("Game over !");
+	
 	}
-	 	**/
+	 	
 	
 	 
 	
@@ -144,10 +142,6 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	}
 
-	@Override
-	public void play() throws InterruptedException {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }

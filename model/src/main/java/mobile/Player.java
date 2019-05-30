@@ -6,6 +6,7 @@ import contract.Sprite;
 public class Player extends CommonMobile {
 	
 	private boolean validMove;
+	private boolean alive=true;
 
 
 
@@ -17,22 +18,22 @@ public class Player extends CommonMobile {
 	
 
 	/** The Constant SPRITE. */
-	private final static Sprite sprite = new Sprite('H', "MyPlayer.png");
+	private final static Sprite sprite = new Sprite('p', "pF.gif");
 
 	/** The Constant spriteTurnLeft. */
-	private final Sprite spriteMoveLeft = new Sprite('H', "MyPlayerLeft.png");
+	private final Sprite spriteMoveLeft = new Sprite('p', "pL.gif");
 
 	/** The Constant spriteTurnRight. */
-	private final Sprite spriteMoveRight = new Sprite('H', "MyPlayerRight.png");
+	private final Sprite spriteMoveRight = new Sprite('p', "pR.gif");
 	
 	/** The Constant spriteTurnDown. */
-	private final Sprite spriteMoveDown = new Sprite('H', "MyPlayerDown.png");
+	private final Sprite spriteMoveDown = new Sprite('p', "pD.gif");
 	
 	/** The Constant spriteTurnUp. */
-	private final Sprite spriteMoveUp = new Sprite('H', "MyPlayerUp.png");
+	private final Sprite spriteMoveUp = new Sprite('p', "pU.gif");
 
 	/** The Constant spriteExplode. */
-	private final Sprite spriteExplode = new Sprite('H', "MyPlayerExplode.png");
+	private final Sprite spriteExplode = new Sprite('p', "pU.gif");
 
 	
 	public boolean isValidMove() {
@@ -79,4 +80,25 @@ public class Player extends CommonMobile {
 		super.moveUp();
 		this.setSprite(spriteMoveUp);
 	}
+	
+	public void doNothing()	{
+		super.doNothing();
+		this.setSprite(sprite);
+	}
+	
+	@Override
+	public boolean isAlive() {
+		return alive;
+	}
+
+
+
+
+
+
+	public void setAlive(boolean alive) {
+		this.alive = alive;
+	}
+	
+	
 }

@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class MotionlessElementsFactory {
 
-	private CommonMotionless toReturn=null;
+	private CommonMotionless toReturn;
 
 public CommonMotionless getFromFileSymbol(final char fileSymbol) throws IOException {
 
@@ -14,8 +14,12 @@ public CommonMotionless getFromFileSymbol(final char fileSymbol) throws IOExcept
 		toReturn = background;
 		break;
 
+	case 't':
+		Dirt dirt = new Dirt();
+		toReturn = dirt;
+		break;
 	default:
-		
+		toReturn = null;
 		break;
 	}
 	
