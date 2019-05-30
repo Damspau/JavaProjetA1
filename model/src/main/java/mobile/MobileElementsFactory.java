@@ -13,6 +13,17 @@ public class MobileElementsFactory {
 
 			break;
 
+		case 'D':
+			Diamond diamond = new Diamond();
+			toReturn = diamond;
+
+			break;
+
+		case 'R':
+			Rock rock = new Rock();
+			toReturn = rock;
+
+			break;
 		default:
 			toReturn = null;
 			break;
