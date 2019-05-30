@@ -24,9 +24,6 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	/** The view. */
 	private IBoulderdashView view;
 
-	/** The Constant speed. */
-	private int speed = 300;
-
 	/** The stack order (RIGHT, LEFT, UP, DOWN and NOP) */
 	private UserOrder stackOrder;
 
@@ -99,10 +96,32 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	public void collect() {
 
+//		if (levelMap[move.x][move.y] == '+') {
+//			numFulfilledDiamonds++;
+//			score += (numFulfilledDiamonds < numNeededDiamonds ? scorePerDiamond : scorePerExtraDiamond);
+//			updateScore();
+//			redrawAndSound(move, MOVE_DIAMOND_SOUND);
+//			if (numFulfilledDiamonds == numNeededDiamonds) {
+//				levelMap[coordExit.x][coordExit.y] = '[';
+//				redrawAndSound(coordExit, MOVE_OPENEXIT_SOUND);
+//			}
+//			validMove = true;
+//		}
+
 	}
 
 	public void canBePushed() {
-
+//		if ((levelMap[move.x][move.y] == 'O') && (move2.y != move.y - 1)) {
+//			if (((move2.x >= 0) && (move2.x <= X_DIMEN)) && ((move2.y >= 0) && (move2.y <= Y_DIMEN))) {
+//				if (levelMap[move2.x][move2.y] == '.') {
+//					// "look-ahead" is an empty space. Move the rock.
+//					levelMap[move2.x][move2.y] = levelMap[move.x][move.y];
+//					redrawAndSound(move2, MOVE_ROCK_SOUND);
+//					redrawAndSound(move, MOVE_NULL_SOUND);
+//					validMove = true;
+//				}
+//			}
+//		}
 	}
 
 	public void canBeDig() {
@@ -112,6 +131,9 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	public void fallAndKill() {
 
 	}
+
+	// A effacer quand le joueur sera implémenté : récupérer la méthode play au
+	// dessus
 
 	@Override
 	public void play() throws InterruptedException {
