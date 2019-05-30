@@ -62,19 +62,36 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	}
 
 	@Override
-	/*
-	 * public final void play() throws InterruptedException { while
-	 * (this.getModel().getMyPlayer().isAlive()) { Thread.sleep(speed); switch
-	 * (this.getStackOrder()) { case RIGHT:
-	 * this.getModel().getMyPlayer().moveRight(); break; case LEFT:
-	 * this.getModel().getMyPlayer().moveLeft(); break; case UP:
-	 * this.getModel().getMyPlayer().moveUp(); break; case DOWN:
-	 * this.getModel().getMyPlayer().moveDown(); break; case FACE: default:
-	 * this.getModel().getMyPlayer().doNothing(); break; } this.clearStackOrder();
-	 * if (this.getModel().getMyPlayer().isAlive()) {
-	 * this.getModel().getMyPlayer().moveDown(); } this.getView().followMyPlayer();
-	 * } this.getView().printMessage("Game over !"); }
-	 **/
+	public final void play() throws InterruptedException {
+		while (this.getModel().getMyPlayer().isAlive()) {
+			Thread.sleep(speed);
+			switch (this.getStackOrder()) {
+			case RIGHT:
+				this.getModel().getMyPlayer().moveRight();
+				break;
+			case LEFT:
+				this.getModel().getMyPlayer().moveLeft();
+				break;
+			case UP:
+				this.getModel().getMyPlayer().moveUp();
+				break;
+			case DOWN:
+				this.getModel().getMyPlayer().moveDown();
+				break;
+			case FACE:
+			default:
+				this.getModel().getMyPlayer().doNothing();
+				break;
+			}
+			this.clearStackOrder();
+
+
+		}
+
+	}
+
+
+
 
 	public IOrderPerformer getOrderPerformer() {
 		return this;
@@ -132,13 +149,8 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	}
 
-	// A effacer quand le joueur sera implémenté : récupérer la méthode play au
-	// dessus
 
-	@Override
-	public void play() throws InterruptedException {
-		// TODO Auto-generated method stub
 
-	}
+
 
 }
