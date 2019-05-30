@@ -12,6 +12,7 @@ import org.showboard.ISquare;
 import contract.IElements;
 import contract.IMap;
 import entity.DB;
+import mobile.CommonMobile;
 import mobile.MobileElementsFactory;
 import motionless.CommonMotionless;
 import motionless.MotionlessElementsFactory;
@@ -49,10 +50,10 @@ public class Map extends Observable implements IMap {
 				System.out.println(line);
 				CommonMotionless motionLessElement = factoryMotionless.getFromFileSymbol(line.toCharArray()[x]);
 				if (motionLessElement == null) {
-//					CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x]);
-//					mobileElement.setX(x);
-//					mobileElement.setY(y);
-//					this.setOnTheMap(mobileElement, x, y);
+					CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x]);
+					mobileElement.setX(x);
+					mobileElement.setY(y);
+					this.setOnTheMap(mobileElement, x, y);
 				} else {
 					motionLessElement.setX(x);
 					motionLessElement.setY(y);
@@ -65,7 +66,7 @@ public class Map extends Observable implements IMap {
 			y++;
 		}
 		buffer.close();
-}
+	}
 
 	private void setOnTheMap(IElements mobileElement, int x, int y) {
 		this.onTheMap[x][y] = mobileElement;
@@ -116,7 +117,7 @@ public class Map extends Observable implements IMap {
 	public static int compterOccurrencesLargeur(String line) {
 		int nb = 0;
 		for (int i = 0; i < line.length(); i++) {
-				nb++;
+			nb++;
 		}
 		return nb;
 	}
