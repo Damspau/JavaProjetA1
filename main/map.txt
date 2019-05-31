@@ -17,6 +17,6 @@ B-----R-BR------B--D*---B*--R---B-R-RR-B
 B**************************************B
 BD--*-R-BR----R-B-R-*--RB-R-R---B------B
 B-----R-BR--D---B---*R--B--R----B---RR*B
-B-D---*RB--R----B-PD*R--B-*-----B---RR*B
+B-D---*RB--R----B--D*R--B-*-----B---RR*B
 B-R----*B--*--R-B-P-*---B----R-RB----*-B
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
