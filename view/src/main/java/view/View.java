@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import javax.swing.SwingUtilities;
 
+import contract.IBoulderdashView;
 import contract.IMap;
 import contract.IOrderPerformer;
 import contract.UserOrder;
@@ -45,34 +46,42 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 	/** The order performer. */
 	private IOrderPerformer orderPerformer;
 
-	public View(IMap map, CommonMobile myPlayer) throws IOException {
+
+
+
+
+
+
+	public View(final IMap map) throws IOException {
 		this.setView(mapView);
 		this.setMap(map);
 		closeView.setSize(40, 22);
 //		this.setMyPlayer(myPlayer);
 //		this.getMyPlayer().getSprite().loadImage();
 //		this.setCloseView(new Rectangle(0, this.getMyPlayer().getY(), this.getMap().getWidth(), mapView));
-		SwingUtilities.invokeLater(this);
+		this.setOrderPerformer(orderPerformer);
+	SwingUtilities.invokeLater(this);
+
 
 	}
 
 	public final void run() {
 		final BoardFrame boardFrame = new BoardFrame("Close view");
-		boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
-		boardFrame.setDisplayFrame(this.closeView);
-		boardFrame.setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
-		boardFrame.setHeightLooped(false);
-		boardFrame.addKeyListener(this);
-		boardFrame.setFocusable(true);
-		boardFrame.setFocusTraversalKeysEnabled(false);
+		 boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
+	        boardFrame.setDisplayFrame(this.closeView);
+	        boardFrame.setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
+	        boardFrame.setHeightLooped(false);
+	        boardFrame.addKeyListener(this);
+	        boardFrame.setFocusable(true);
+	        boardFrame.setFocusTraversalKeysEnabled(false);
 
-		for (int x = 0; x < this.getMap().getWidth(); x++) {
-			System.out.println(x);
-			for (int y = 0; y < this.getMap().getHeight(); y++) {
-				System.out.println("    " + y);
-				boardFrame.addSquare(this.map.getOnTheMap(x, y), x, y);
-			}
-		}
+	        for (int x = 0; x < this.getMap().getWidth(); x++) {
+
+	            for (int y = 0; y < this.getMap().getHeight(); y++) {
+
+	                boardFrame.addSquare(this.map.getOnTheMap(x, y), x, y);
+	            }
+	        }
 //	        boardFrame.addPawn(this.getMyPlayer());
 
 		this.getMap().getObservable().addObserver(boardFrame.getObserver());
@@ -81,21 +90,13 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 		boardFrame.setVisible(true);
 	}
 
-	public void show(int yStart) {
-		int y = yStart % this.getMap().getHeight();
-		for (int view = 0; view < this.getView(); view++) {
-			for (int x = 0; x < this.getMap().getWidth(); x++) {
-				if ((x == this.getMyPlayer().getX()) && (y == yStart)) {
-					System.out.print(this.getMyPlayer().getSprite().getBddImage());
-				} else {
-					System.out.print(((Element) this.getMap().getOnTheMap(x, y)).getSprite().getBddImage());
-				}
-				y = (y + 1) % this.getMap().getHeight();
-				System.out.print("\n");
-			}
-		}
 
-	}
+
+
+
+
+
+
 
 	protected UserOrder keyCodeToUserOrder(int keyCode) {
 		switch (keyCode) {
@@ -183,12 +184,13 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 	}
 
 	public IOrderPerformer getOrderPerformer() {
-		return this.orderPerformer;
+		return orderPerformer;
 
 	}
 
 	public void setOrderPerformer(IOrderPerformer orderPerformer) {
 
+		this.orderPerformer=orderPerformer ;
 	}
 
 }

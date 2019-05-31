@@ -19,7 +19,7 @@ public class BoulderdashModel implements IBoulderdashModel {
 
 	@Override
 	public CommonMobile getMyPlayer() {
-		return myPlayer;
+		return this.myPlayer;
 		// TODO Auto-generated method stub
 
 	}

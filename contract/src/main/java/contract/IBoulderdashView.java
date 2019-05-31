@@ -1,4 +1,7 @@
-package view;
+package contract;
+
+import contract.IMap;
+
 
 /**
  * The Interface IBoulderdashView.
@@ -8,4 +11,6 @@ package view;
 public interface IBoulderdashView {
 
 	void followMyPlayer();
+
+	IMap getMap();
 }

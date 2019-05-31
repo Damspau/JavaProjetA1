@@ -3,10 +3,12 @@ package controller;
 import java.io.IOException;
 
 import contract.IBoulderdashController;
+import contract.IBoulderdashView;
 import contract.IOrderPerformer;
 import contract.UserOrder;
+import mobile.CommonMobile;
 import model.IBoulderdashModel;
-import view.IBoulderdashView;
+
 
 /**
  * <h1>The Class Controller.</h1>
@@ -26,6 +28,9 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	/** The stack order (RIGHT, LEFT, UP, DOWN and NOP) */
 	private UserOrder stackOrder;
+	
+	private int playerActualXPosition;
+	private int playerActualYPosition;
 
 	public Controller(IBoulderdashView view, IBoulderdashModel model) {
 		this.setView(view);
@@ -63,24 +68,27 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	@Override
 	public final void play() throws InterruptedException {
-		while (this.getModel().getMyPlayer().isAlive()) {
-			Thread.sleep(speed);
+		playerActualXPosition = this.getView().getMap().getActualXPlayer();
+		playerActualYPosition = this.getView().getMap().getActualYPlayer();
+		
+		while (((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).isAlive()) {
+			
 			switch (this.getStackOrder()) {
 			case RIGHT:
-				this.getModel().getMyPlayer().moveRight();
+				((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).moveRight();
 				break;
 			case LEFT:
-				this.getModel().getMyPlayer().moveLeft();
+				((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).moveLeft();
 				break;
 			case UP:
-				this.getModel().getMyPlayer().moveUp();
+				((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).moveUp();
 				break;
 			case DOWN:
-				this.getModel().getMyPlayer().moveDown();
+				((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).moveDown();
 				break;
 			case FACE:
 			default:
-				this.getModel().getMyPlayer().doNothing();
+				((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).doNothing();
 				break;
 			}
 			this.clearStackOrder();

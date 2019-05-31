@@ -19,6 +19,9 @@ public interface IMap {
 	
 	//become an observable
 	public Observable getObservable ();
+
+	public int getActualXPlayer();
+	public int getActualYPlayer();
 	
 
 	
