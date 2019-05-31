@@ -1,22 +1,22 @@
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-B------ --D-R -----R-R------- ----R----B
-B-RPR------ ---------RD--R---- ----- --B
-B---------- --R-----R-R--R--------R----B
-BR-RR---------R------R--R----R---R-----B
-BR- R--------- R--R--------R------R-RR-B
-B--- --R--------R-----R- R--------R-RR-B
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB---R--R-B
-B- ---R--D- --R-R----------D-RD------ -B
-B--D-----R----- --------RR R--R----R---B
-B---R--R-R--------------R -R--R--------B
-B-R-----R--------RRR-------R-- -D----R-B
-B-D-- --R-  -----R-RD--D----R---R--D- -B
-B- R--------------R R--R--------D-----RB
-B--------BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-B R---------R---D----R-----R---R-------B
-B R--------- R--R--------R------R-RR--EB
-B- --R--------R-----R-  ----D---R-RR---B
-B----RD--R--------R------R-RD------R---B
-B--- --R- --R-RR---------R-RD------ --RB
-B-D---- ----- --------- -R--R----R---R-B
+BR-BB-BRR-B---RBR--R----B---R-----RB-D-B
+B--PB-D-R-B---BBB--B-R----R--R-R---B-BRB
+B----B--RD--R----B-----R-BBR-------B-BBB
+BD-B--BRBR--R----B---R------R-RR------BB
+BR-B---B--R-BB--R-BBD-------R-RR---E--BB
+BRR--R----B---R------R-RR------R--DBB--B
+B--R-BB--R-RR---B----R-RR------B--R-B-RB
+B--B---D------D-R--BBR--R-B-BR--BR--D-RB
+BR-R----B-BB--D-R--BBR--R--D-B---B--R-BB
+B-R-BB-----RRBR--D-B-BR--BR---BR--D-R--B
+BB-BB------RRBR--R-B-BB---B--R-BB--R-BBB
+B-B-R-R-B---BBR--R----B---R-----BB-R-BBB
+B-B-R-R-B-D-B-BR--BR----R--R-RR----B---B
+BB--BRBR--R----B---D---B-RB------B-BB-DB
+BB---BBR--B-D---BR--R-R---R-BR------B--B
+BB-D----R-BB--R-BBR-------R-BR------B--B
+B--R----B---R------R-RR------B--R-B---BB
+BR-BB--R-BB---B----R-RR------B--RD--R--B
+BB---R------R-RD------R---BB--BR--D-B--B
+BRR---B-----R-RD------B--R-BD-D-RB-R---B
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB

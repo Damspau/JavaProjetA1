@@ -14,22 +14,22 @@ public class Player extends CommonMobile {
 	}
 
 	/** The Constant SPRITE. */
-	private final static Sprite sprite = new Sprite('p', "pF.gif");
+	private final static Sprite sprite = new Sprite('P', "pF.gif");
 
 	/** The Constant spriteTurnLeft. */
-	private final Sprite spriteMoveLeft = new Sprite('p', "pL.gif");
+	private final Sprite spriteMoveLeft = new Sprite('P', "pL.gif");
 
 	/** The Constant spriteTurnRight. */
-	private final Sprite spriteMoveRight = new Sprite('p', "pR.gif");
+	private final Sprite spriteMoveRight = new Sprite('P', "pR.gif");
 
 	/** The Constant spriteTurnDown. */
-	private final Sprite spriteMoveDown = new Sprite('p', "pD.gif");
+	private final Sprite spriteMoveDown = new Sprite('P', "pD.gif");
 
 	/** The Constant spriteTurnUp. */
-	private final Sprite spriteMoveUp = new Sprite('p', "pU.gif");
+	private final Sprite spriteMoveUp = new Sprite('P', "pU.gif");
 
 	/** The Constant spriteExplode. */
-	private final Sprite spriteExplode = new Sprite('p', "pU.gif");
+	private final Sprite spriteExplode = new Sprite('P', "pU.gif");
 
 	public boolean isValidMove() {
 		return validMove;
