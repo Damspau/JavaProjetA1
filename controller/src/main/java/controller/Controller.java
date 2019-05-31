@@ -28,7 +28,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	/** The stack order (RIGHT, LEFT, UP, DOWN and NOP) */
 	private UserOrder stackOrder;
-	
+
 	private int playerActualXPosition;
 	private int playerActualYPosition;
 
@@ -70,9 +70,9 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	public final void play() throws InterruptedException {
 		playerActualXPosition = this.getView().getMap().getActualXPlayer();
 		playerActualYPosition = this.getView().getMap().getActualYPlayer();
-		
+
 		while (((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).isAlive()) {
-			
+
 			switch (this.getStackOrder()) {
 			case RIGHT:
 				((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).moveRight();
@@ -97,9 +97,6 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 		}
 
 	}
-
-
-
 
 	public IOrderPerformer getOrderPerformer() {
 		return this;
@@ -156,9 +153,5 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	public void fallAndKill() {
 
 	}
-
-
-
-
 
 }

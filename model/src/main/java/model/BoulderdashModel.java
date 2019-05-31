@@ -12,9 +12,9 @@ public class BoulderdashModel implements IBoulderdashModel {
 
 	private CommonMobile myPlayer;
 
-	public BoulderdashModel(int myPlayerStartX, int myPlayerStartY) throws IOException {
+	public BoulderdashModel(String fileName, int myPlayerStartX, int myPlayerStartY) throws IOException {
 		// TODO Auto-generated constructor stub
-		this.setMap(new Map());
+		this.setMap(new Map(fileName));
 	}
 
 	@Override

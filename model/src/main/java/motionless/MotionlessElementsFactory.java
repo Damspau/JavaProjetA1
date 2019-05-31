@@ -6,25 +6,34 @@ public class MotionlessElementsFactory {
 
 	private CommonMotionless toReturn;
 
-public CommonMotionless getFromFileSymbol(final char fileSymbol) throws IOException {
+	public CommonMotionless getFromFileSymbol(final char fileSymbol) throws IOException {
 
-	switch (fileSymbol) {
-	case 'b':
-		Background background = new Background();
-		toReturn = background;
-		break;
+		switch (fileSymbol) {
+		case 'B':
+			Border border = new Border();
+			toReturn = border;
+			break;
 
-	case 't':
-		Dirt dirt = new Dirt();
-		toReturn = dirt;
-		break;
-	default:
-		toReturn = null;
-		break;
+		case '-':
+			Dirt dirt = new Dirt();
+			toReturn = dirt;
+			break;
+
+		case 'E':
+			ExitDoor exitDoor = new ExitDoor();
+			toReturn = exitDoor;
+			break;
+
+		case '*':
+			Background background = new Background();
+			toReturn = background;
+			break;
+
+		default:
+			toReturn = null;
+			break;
+		}
+		return toReturn;
+
 	}
-	
-	
-	return toReturn;
-	
-}
 }
