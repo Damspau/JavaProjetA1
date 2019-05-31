@@ -12,7 +12,10 @@ public abstract class CommonMobile  extends Elements {
 	private Point position;
 	private IBoard board;
 	private IMap map;
-
+	
+	
+	
+	
 	public IMap getMap() {
 		return map;
 	}
@@ -49,6 +52,8 @@ public abstract class CommonMobile  extends Elements {
 	public void moveLeft() {
 		 this.setX(this.getX() - 1);
 	        this.setHasMoved();
+	        System.out.println("okL");
+			
 		
 	}
 	
@@ -57,7 +62,7 @@ public abstract class CommonMobile  extends Elements {
 	public void moveRight() {
 		 this.setX(this.getX() + 1);
 	        this.setHasMoved();
-		
+	        System.out.println("okR");
 	}
 	
 	
@@ -66,6 +71,7 @@ public abstract class CommonMobile  extends Elements {
 	public void moveUp() {
 		 this.setX(this.getY() + -1);
 	        this.setHasMoved();
+	        System.out.println("okU");
 		
 	}
 	
@@ -76,6 +82,7 @@ public abstract class CommonMobile  extends Elements {
 	public void moveDown() {
 		 this.setX(this.getY() + +1);
 	        this.setHasMoved();
+	        System.out.println("okD");
 		
 	}
 	

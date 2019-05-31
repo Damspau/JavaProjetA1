@@ -1,5 +1,7 @@
 package mobile;
 
+import java.io.IOException;
+
 import contract.IMap;
 import contract.Permeability;
 import contract.Sprite;
@@ -11,14 +13,13 @@ public class Player extends CommonMobile {
 
 
 
-	public Player() {
-		super(Sprite sprite, Permeability permeability, x, y);
+	public Player(int x, int y, IMap map) throws IOException {
+		super(sprite, Permeability.BREAKABLE, x, y);
 		// TODO Auto-generated constructor stub
 	}
+   
 	
-	public Player(IMap map) {
-		super(sprite, Permeability.BREAKABLE, map);
-	}
+	
 	
 	
 

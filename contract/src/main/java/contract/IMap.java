@@ -11,8 +11,8 @@ public interface IMap {
 	//get the height of the map
 	public int getHeight();
 	
-	//go on the map
-	public ISquare getOnTheMap (int x, int y);
+	
+	
 	
 	//notify the observer
 	public void setMobileHasChanged ();
@@ -22,6 +22,10 @@ public interface IMap {
 
 	public int getActualXPlayer();
 	public int getActualYPlayer();
+	//go on the map motionless
+	
+
+	ISquare getOnTheMap(int x, int y);
 	
 
 	

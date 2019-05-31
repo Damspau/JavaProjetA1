@@ -84,6 +84,8 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 		playerActualYPosition = this.getView().getMap().getActualYPlayer();
 		
 		while (((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).isAlive()) {
+			((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).setMap(this.getView().getMap());
+			
 			
 			switch (this.getStackOrder()) {
 			case RIGHT:

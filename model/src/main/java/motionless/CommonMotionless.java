@@ -23,7 +23,7 @@ public class CommonMotionless extends Elements {
 	
 	public CommonMotionless(Sprite sprite, Permeability permeability) {
 		super(sprite, permeability);
-		this.setMap(map);
+		//this.setMap(map);
 		// TODO Auto-generated constructor stub
 	}
 	//Override
