@@ -21,17 +21,18 @@ public abstract class CommonMobile  extends Elements {
 	}
 	
 	
-	public CommonMobile(Sprite sprite, Permeability permeability, IMap map) {
-		super(sprite, permeability);
-		this.setMap(map);
-		// TODO Auto-generated constructor stub
-	}
+//	public CommonMobile(Sprite sprite, Permeability permeability, IMap map) {
+//		super(sprite, permeability);
+//		this.setMap(map);
+//		// TODO Auto-generated constructor stub
+//	}
 
 
 	//Override
-	protected CommonMobile(Sprite sprite, Permeability permeability, int x, int y) {
+	protected CommonMobile(Sprite sprite, Permeability permeability, int x, int y, IMap map) {
 		
 		super(sprite, permeability);
+		this.setMap(map);
 		
 		
 	}
@@ -66,7 +67,7 @@ public abstract class CommonMobile  extends Elements {
 	
 	
 	public void moveUp() {
-		 this.setX(this.getY() + -1);
+		 this.setY(this.getY()  -1);
 	        this.setHasMoved();
 		
 	}
@@ -76,7 +77,7 @@ public abstract class CommonMobile  extends Elements {
 	
 	
 	public void moveDown() {
-		 this.setX(this.getY() + +1);
+		 this.setY(this.getY() + 1);
 	        this.setHasMoved();
 		
 	}

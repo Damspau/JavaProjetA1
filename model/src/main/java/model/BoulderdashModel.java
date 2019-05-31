@@ -18,10 +18,10 @@ public class BoulderdashModel implements IBoulderdashModel {
 	private CommonMobile myPlayer;
 	
 	
-	public BoulderdashModel(final String fileName, int myPlayerStartX, int myPlayerStartY) throws IOException {
+	public BoulderdashModel(final String fileName) throws IOException {
 		// TODO Auto-generated constructor stub
 		this.setMap(new Map(fileName));
-		this.setMyPlayer(new Player(this.getMap().getActualXPlayer(), this.getMap().getActualYPlayer()));
+		this.setMyPlayer(new Player(this.getMap().getActualXPlayer(), this.getMap().getActualYPlayer(),getMap()));
 	}
 
 

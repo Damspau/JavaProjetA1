@@ -10,7 +10,6 @@ import java.util.Observable;
 import org.showboard.ISquare;
 
 
-
 import contract.IElements;
 import contract.IMap;
 import mobile.CommonMobile;
@@ -30,7 +29,7 @@ public class Map extends Observable implements IMap {
 	
 	
 	public Map(final String fileName) throws IOException {
-		super();
+		
 		this.loadFile(fileName);
 	}
 	public static int compterOccurrencesLargeur(String line, char recherche)

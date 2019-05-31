@@ -63,18 +63,17 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	}
 
 
-	private void setStackOrder(final UserOrder stackOrder) {
-		this.stackOrder = stackOrder;
-	}
+	
 
 	
 	private UserOrder getStackOrder() {
-		return this.stackOrder;
+		
+		return stackOrder;
 	}
 
 	
 	private void clearStackOrder() {
-		this.stackOrder = UserOrder.FACE;
+		setStackOrder(UserOrder.FACE);
 	}
 
 	
@@ -83,25 +82,32 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 		
 		
 		while (this.getModel().getMyPlayer().isAlive()){
-			
+			Thread.sleep(300);
 			switch (this.getStackOrder()) {
-			case RIGHT:
-				getModel().getMyPlayer().moveRight();
-				System.out.println("test");
-				break;
-			case LEFT:
-				getModel().getMyPlayer().moveLeft();
-				break;
-			case UP:
-				getModel().getMyPlayer().moveUp();
-				break;
-			case DOWN:
-				getModel().getMyPlayer().moveDown();
-				break;
-			case FACE:
-			default:
-				getModel().getMyPlayer().doNothing();
-				break;
+				case RIGHT:
+					getModel().getMyPlayer().moveRight();
+					
+					break;
+				
+				case LEFT:
+					System.out.println("test");
+					getModel().getMyPlayer().moveLeft();
+					
+					break;
+				
+				case UP:
+					getModel().getMyPlayer().moveUp();
+					break;
+				
+				case DOWN:
+					getModel().getMyPlayer().moveDown();
+					break;
+				
+				case FACE:
+					
+				default:
+					getModel().getMyPlayer().doNothing();
+					break;
 			}
 			
 			this.clearStackOrder();
@@ -149,6 +155,11 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	public void fallAndKill() {
 
+	}
+	private void setStackOrder(final UserOrder stackOrder) {
+		
+		this.stackOrder = stackOrder;
+		System.out.println(stackOrder);
 	}
 
 
