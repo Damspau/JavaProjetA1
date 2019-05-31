@@ -120,7 +120,8 @@ class BoardPanel extends JPanel implements Observer {
      */
     @Override
     public final void update(final Observable observable, final Object object) {
-        this.repaint();
+        System.out.println("ton pattern fonctionne stresse pas");
+    	this.repaint();
     }
 
     /**

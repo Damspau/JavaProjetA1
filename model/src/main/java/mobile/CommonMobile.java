@@ -95,6 +95,7 @@ public abstract class CommonMobile  extends Elements {
 	
 	 private void setHasMoved() {
 	        this.getMap().setMobileHasChanged();
+	        System.out.println("setHAsmoved");
 	 }
 	public boolean isAlive() {
 		

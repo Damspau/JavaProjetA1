@@ -109,6 +109,7 @@ public class Map extends Observable implements IMap {
 
 	@Override
 	public void setMobileHasChanged() {
+		System.out.println("setMobileHaschanged");
 		this.setChanged();
 		this.notifyObservers();
 
