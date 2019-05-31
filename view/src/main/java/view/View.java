@@ -18,7 +18,7 @@ import mobile.CommonMobile;
 /**
  * View
  *
- * @author Maxime G, Damiens et Benoît D
+ * @author Maxime G, Damien and Benoît D
  */
 public final class View implements IBoulderdashView, Runnable, KeyListener{
 

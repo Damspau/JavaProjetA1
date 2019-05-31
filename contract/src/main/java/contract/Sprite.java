@@ -28,7 +28,7 @@ public Sprite (char character) {
 	
 }
 
-public Sprite (ImageIcon imageIcon) {
+public Sprite (Sprite sprite) {
 
 }
 

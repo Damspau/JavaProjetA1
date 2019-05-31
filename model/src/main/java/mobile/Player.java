@@ -3,7 +3,6 @@ package mobile;
 import javax.swing.ImageIcon;
 
 import contract.Permeability;
-import contract.Sprite;
 
 public class Player extends CommonMobile {
 	
@@ -21,7 +20,7 @@ public class Player extends CommonMobile {
 	
 
 	/** The Constant SPRITE. */
-	private final static ImageIcon face = new ImageIcon("pF.gif");
+	private final ImageIcon face = new ImageIcon("pF.gif");
 
 	/** The Constant spriteTurnLeft. */
 	private final ImageIcon left = new ImageIcon("pL.gif");

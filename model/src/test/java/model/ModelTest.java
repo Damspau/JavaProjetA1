@@ -1,9 +1,11 @@
 /**
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ @author Benoît D, Damien and Maxime G. 
  * @version 1.0
  */
 package model;
 
-public class ModelTest {
+import junit.framework.TestCase;
+
+public class ModelTest extends TestCase {
 
 }
