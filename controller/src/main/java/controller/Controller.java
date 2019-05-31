@@ -3,11 +3,12 @@ package controller;
 import java.io.IOException;
 
 import contract.IBoulderdashController;
+import contract.IBoulderdashView;
 import contract.IOrderPerformer;
 import contract.UserOrder;
 import mobile.CommonMobile;
 import model.IBoulderdashModel;
-import view.IBoulderdashView;
+
 
 /**
  * <h1>The Class Controller.</h1>

@@ -1,4 +1,4 @@
-package view;
+package contract;
 
 import contract.IMap;
 

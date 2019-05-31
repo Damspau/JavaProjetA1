@@ -1,5 +1,6 @@
 package mobile;
 
+import contract.IMap;
 import contract.Permeability;
 import contract.Sprite;
 
@@ -11,8 +12,12 @@ public class Player extends CommonMobile {
 
 
 	public Player() {
-		super(sprite, Permeability.BREAKABLE);
+		super(Sprite sprite, Permeability permeability, x, y);
 		// TODO Auto-generated constructor stub
+	}
+	
+	public Player(IMap map) {
+		super(sprite, Permeability.BREAKABLE, map);
 	}
 	
 	

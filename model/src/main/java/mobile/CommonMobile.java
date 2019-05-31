@@ -21,7 +21,7 @@ public abstract class CommonMobile  extends Elements {
 	}
 	
 	
-	public CommonMobile(Sprite sprite, Permeability permeability) {
+	public CommonMobile(Sprite sprite, Permeability permeability, IMap map) {
 		super(sprite, permeability);
 		this.setMap(map);
 		// TODO Auto-generated constructor stub
@@ -79,13 +79,16 @@ public abstract class CommonMobile  extends Elements {
 		
 	}
 	
-	 private void setHasMoved() {
-	        this.getMap().setMobileHasChanged();
-	    }
+	
+	    
 	public void doNothing() {
 		// TODO Auto-generated method stub
-		this.setHasMoved();
+		
 	}
+	
+	 private void setHasMoved() {
+	        this.getMap().setMobileHasChanged();
+	 }
 	public boolean isAlive() {
 		
 		return true;

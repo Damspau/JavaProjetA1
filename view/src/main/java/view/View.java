@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import javax.swing.SwingUtilities;
 
+import contract.IBoulderdashView;
 import contract.IMap;
 import contract.IOrderPerformer;
 import contract.UserOrder;
@@ -43,6 +44,8 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 
 	/** The order performer. */
 	private IOrderPerformer orderPerformer;
+	
+
 
 
 
@@ -55,6 +58,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 //		this.setMyPlayer(myPlayer);
 //		this.getMyPlayer().getSprite().loadImage();
 //		this.setCloseView(new Rectangle(0, this.getMyPlayer().getY(), this.getMap().getWidth(), mapView));
+		this.setOrderPerformer(orderPerformer);
 	SwingUtilities.invokeLater(this);
 
 
@@ -71,9 +75,9 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	        boardFrame.setFocusTraversalKeysEnabled(false);
 
 	        for (int x = 0; x < this.getMap().getWidth(); x++) {
-	        	System.out.println(x);
+	      
 	            for (int y = 0; y < this.getMap().getHeight(); y++) {
-		        	System.out.println("    " + y);
+		        	
 	                boardFrame.addSquare(this.map.getOnTheMap(x, y), x, y);
 	            }
 	        }
@@ -85,22 +89,6 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	        boardFrame.setVisible(true);
 	    }
 
-
-	public void show(int yStart) {
-		int y = yStart % this.getMap().getHeight();
-	        for (int view = 0; view < this.getView(); view++) {
-	            for (int x = 0; x < this.getMap().getWidth(); x++) {
-	                if ((x == this.getMyPlayer().getX()) && (y == yStart)) {
-	                    System.out.print(this.getMyPlayer().getSprite().getBddImage());
-	                } else {
-	                    System.out.print(((Elements) this.getMap().getOnTheMap(x, y)).getSprite().getBddImage());
-	            }
-	            y = (y + 1) % this.getMap().getHeight();
-	            System.out.print("\n");
-	            }
-	        }
-
-	}
 
 
 	
@@ -191,12 +179,13 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	}
 
 	public IOrderPerformer getOrderPerformer() {
-		return this.orderPerformer;
+		return orderPerformer;
 
 	}
 
 	public void setOrderPerformer(IOrderPerformer orderPerformer) {
 
+		this.orderPerformer=orderPerformer ;
 	}
 
 
