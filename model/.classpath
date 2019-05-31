@@ -40,10 +40,11 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/travail/Desktop/programmation java 3 interface/showboard.jar">
+	<classpathentry kind="lib" path="C:/Users/Maxime-PC/OneDrive - Association Cesi Viacesi mail/CESI/Semestre 2/Bloc 2/Prosit/Prosit 3/showboard.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:file:/C:/Users/travail/Desktop/programmation%20java%203%20interface/showboarddoc.jar!/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Maxime-PC/OneDrive - Association Cesi Viacesi mail/CESI/Semestre 2/Bloc 2/Prosit/Prosit 6/mysql-connector-java-8.0.11/mysql-connector-java-8.0.11/mysql-connector-java-8.0.11.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

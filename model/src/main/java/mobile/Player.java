@@ -22,7 +22,7 @@ public class Player extends CommonMobile {
 	
 
 	/** The Constant SPRITE. */
-	private final static Sprite sprite = new Sprite('p', "pF.gif");
+	private final static Sprite sprite = new Sprite('P', "P.jpg");
 
 	/** The Constant spriteTurnLeft. */
 	private final Sprite spriteMoveLeft = new Sprite('p', "pL.gif");

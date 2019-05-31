@@ -11,7 +11,7 @@ public class DB {
 
 	public static void lireEnBase() throws IOException {
 
-		String url = "jdbc:mysql://localhost:3306/carte?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		String url = "jdbc:mysql://localhost:3306/good?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		String login = "root";
 		String passwd = "";
 		Connection cn = null;
@@ -23,7 +23,7 @@ public class DB {
 
 			cn = DriverManager.getConnection(url, login, passwd);
 
-			String query = "{CALL Map3()}";
+			String query = "{CALL Map2()}";
 
 			java.sql.CallableStatement stmt = cn.prepareCall(query);
 

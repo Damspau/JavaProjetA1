@@ -54,7 +54,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	public View(final IMap map, CommonMobile Player) throws IOException {
 		this.setView(mapView);
 		this.setMap(map);
-		closeView.setSize(37, 22);
+		closeView.setSize(50, 50);
 		this.setMyPlayer(Player);		
 		this.getMyPlayer().getSprite().loadImage();
 		this.setCloseView(new Rectangle(0, this.getMyPlayer().getY(), this.getMap().getWidth(), mapView));
@@ -84,7 +84,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	        boardFrame.addPawn(this.getMyPlayer());
 
 	        this.getMap().getObservable().addObserver(boardFrame.getObserver());
-	        //this.followMyPlayer();
+	        this.followMyPlayer();
 
 	        boardFrame.setVisible(true);
 	    }

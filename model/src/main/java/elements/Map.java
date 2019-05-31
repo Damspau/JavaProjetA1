@@ -47,10 +47,10 @@ public class Map extends Observable implements IMap {
 		while (line != null) {
 
 			for (int x = 0; x < line.toCharArray().length; x++) {
-				System.out.println(line);
+
 				CommonMotionless motionLessElement = factoryMotionless.getFromFileSymbol(line.toCharArray()[x]);
 				if (motionLessElement == null) {
-					CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x]);
+					CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x], x, x);
 					mobileElement.setX(x);
 					mobileElement.setY(y);
 					this.setOnTheMap(mobileElement, x, y);
@@ -146,7 +146,7 @@ public class Map extends Observable implements IMap {
 	@Override
 	public void setActualYPlayer() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
