@@ -1,7 +1,9 @@
 package motionless;
 
 import java.io.IOException;
-import contract.*;
+
+import contract.Permeability;
+import contract.Sprite;
 
 
 
@@ -24,6 +26,7 @@ public class Background extends CommonMotionless{
 	public Sprite getSprite() {
 		return sprite;
 	}
+	
 
 }
 

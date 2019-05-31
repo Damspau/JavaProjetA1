@@ -33,6 +33,12 @@ public abstract class CommonMobile  extends Elements {
 		super(sprite, permeability);
 		
 	}
+	
+	
+	public CommonMobile(javax.swing.ImageIcon imageicon, Permeability breakable) {
+		super(imageIcon, permeability);
+		}
+	
 	public Point getPosition() {
 		return position;
 	}

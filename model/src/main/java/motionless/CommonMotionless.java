@@ -6,8 +6,6 @@ import java.awt.Point;
 import elements.*;
 import contract.*;
 
-import contract.IMap;
-
 public class CommonMotionless extends Elements {
 	private Point position;
 	private IBoard board;
@@ -41,6 +39,12 @@ public class CommonMotionless extends Elements {
 
 	public IBoard getBoard() {
 		return board;
+	}
+
+	@Override
+	public ImageIcon setImageIcon(ImageIcon imageIcon) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

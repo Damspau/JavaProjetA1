@@ -2,6 +2,7 @@ package motionless;
 
 import java.awt.Point;
 
+import contract.ImageIcon;
 import contract.Permeability;
 import contract.Sprite;
 import elements.Elements;
@@ -15,6 +16,13 @@ public class Motionless extends Elements {
 
 	
 	public Point getPosition() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public ImageIcon setImageIcon(ImageIcon imageIcon) {
 		// TODO Auto-generated method stub
 		return null;
 	}

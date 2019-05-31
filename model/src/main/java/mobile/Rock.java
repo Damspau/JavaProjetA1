@@ -9,4 +9,10 @@ public class Rock extends CommonMobile {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public ImageIcon setImageIcon(ImageIcon imageIcon) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

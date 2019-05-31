@@ -1,39 +1,42 @@
 package mobile;
 
+import javax.swing.ImageIcon;
+
 import contract.Permeability;
 import contract.Sprite;
 
 public class Player extends CommonMobile {
 	
+	private static final ImageIcon imageIcon = new ImageIcon("pF.gif");
 	private boolean validMove;
 	private boolean alive=true;
 
 
 
 	public Player() {
-		super(sprite, Permeability.BREAKABLE);
+		super(imageIcon, Permeability.BREAKABLE);
 		// TODO Auto-generated constructor stub
 	}
 	
 	
 
 	/** The Constant SPRITE. */
-	private final static Sprite sprite = new Sprite('p', "pF.gif");
+	private final static ImageIcon face = new ImageIcon("pF.gif");
 
 	/** The Constant spriteTurnLeft. */
-	private final Sprite spriteMoveLeft = new Sprite('p', "pL.gif");
+	private final ImageIcon left = new ImageIcon("pL.gif");
 
 	/** The Constant spriteTurnRight. */
-	private final Sprite spriteMoveRight = new Sprite('p', "pR.gif");
+	private final ImageIcon right = new ImageIcon("pR.gif");
 	
 	/** The Constant spriteTurnDown. */
-	private final Sprite spriteMoveDown = new Sprite('p', "pD.gif");
+	private final ImageIcon down = new ImageIcon("pD.gif");
 	
 	/** The Constant spriteTurnUp. */
-	private final Sprite spriteMoveUp = new Sprite('p', "pU.gif");
+	private final ImageIcon up = new ImageIcon("pU.gif");
 
 	/** The Constant spriteExplode. */
-	private final Sprite spriteExplode = new Sprite('p', "pU.gif");
+	private final ImageIcon explode = new ImageIcon("pU.gif");
 
 	
 	public boolean isValidMove() {
@@ -56,14 +59,14 @@ public class Player extends CommonMobile {
 	@Override
    public final void moveLeft() {
        super.moveLeft();
-       this.setSprite(spriteMoveLeft);
+       this.setImageIcon(left);
     }
 	
 	@Override
 	public void moveRight() {
 		// TODO Auto-generated method stub
 		super.moveRight();
-		this.setSprite(spriteMoveRight);
+		this.setImageIcon(right);
 	
 	}
 	
@@ -71,19 +74,19 @@ public class Player extends CommonMobile {
 	public void moveDown() {
 		// TODO Auto-generated method stub
 		super.moveDown();
-		this.setSprite(spriteMoveDown);
+		this.setImageIcon(down);
 	}
 	
 	@Override
 	public void moveUp() {
 		// TODO Auto-generated method stub
 		super.moveUp();
-		this.setSprite(spriteMoveUp);
+		this.setImageIcon(up);
 	}
 	
 	public void doNothing()	{
 		super.doNothing();
-		this.setSprite(sprite);
+		this.setImageIcon(face);
 	}
 	
 	@Override
@@ -92,13 +95,28 @@ public class Player extends CommonMobile {
 	}
 
 
-
-
-
-
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
+
+
+
+	public ImageIcon setImageIcon(ImageIcon imageIcon) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public contract.ImageIcon setImageIcon(contract.ImageIcon imageIcon) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
 	
 	
 }

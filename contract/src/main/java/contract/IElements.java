@@ -4,14 +4,16 @@ import java.awt.Image;
 
 
 
+
+
 public interface IElements {
 	 Sprite getSprite();
-
 	 
-	    Permeability getPermeability();
-
+	 ImageIcon setImageIcon(ImageIcon imageIcon);
 	 
-	    Image getImage();
+	 Permeability getPermeability();
+
+	 Image getImage();
 
 	}
 

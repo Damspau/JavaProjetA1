@@ -7,8 +7,9 @@ public abstract class Elements implements IElements, IPawn{
 	protected int y;
 	protected int x;
 	
-	private Sprite sprite;
-	private Permeability permeability;
+	protected static Sprite sprite;
+	protected static Permeability permeability;
+	protected static ImageIcon imageIcon;
 	
 	
 	public int getX() {
@@ -34,12 +35,11 @@ public abstract class Elements implements IElements, IPawn{
 		this.setPermeability(permeability);
 	}
 	
+	public Elements (ImageIcon imageIcon, Permeability permeability) {
+		this.setImageIcon(imageIcon);
+		this.setPermeability(permeability);
+	}
 
-	
-
-	
-
-	
 	public Sprite getSprite  () {
 		return this.sprite;
 	}
