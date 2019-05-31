@@ -69,7 +69,7 @@ public class Map extends Observable implements IMap {
 
     	MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
     	MobileElementsFactory factoryMobile = new MobileElementsFactory();
-    	playerDetector = new Player() ;
+  
     	
     	
     	
@@ -82,7 +82,7 @@ public class Map extends Observable implements IMap {
             for (int x = 0; x < line.toCharArray().length; x++) {
             	CommonMotionless motionLessElement = factoryMotionless.getFromFileSymbol(line.toCharArray()[x]);
             	if (motionLessElement==null) {
-            		CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x]);
+            		CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x],x,y);
             		if (line.toCharArray()[x]=='p') {
             			setActualXPlayer(x);
             			setActualYPlayer(y);
@@ -166,6 +166,11 @@ public class Map extends Observable implements IMap {
 	}
 	public void setActualYPlayer(int actualYPlayer) {
 		this.actualYPlayer = actualYPlayer;
+	}
+	@Override
+	public void setActualYPlayer() {
+		// TODO Auto-generated method stub
+		
 	}
 
 

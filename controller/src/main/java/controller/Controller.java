@@ -80,29 +80,30 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	
 	@Override
 	public final void play() throws InterruptedException {
-		playerActualXPosition = this.getView().getMap().getActualXPlayer();
-		playerActualYPosition = this.getView().getMap().getActualYPlayer();
 		
-		while (((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).isAlive()) {
+		
+		while (this.getModel().getMyPlayer().isAlive()){
 			
 			switch (this.getStackOrder()) {
 			case RIGHT:
-				((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).moveRight();
+				getModel().getMyPlayer().moveRight();
+				System.out.println("test");
 				break;
 			case LEFT:
-				((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).moveLeft();
+				getModel().getMyPlayer().moveLeft();
 				break;
 			case UP:
-				((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).moveUp();
+				getModel().getMyPlayer().moveUp();
 				break;
 			case DOWN:
-				((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).moveDown();
+				getModel().getMyPlayer().moveDown();
 				break;
 			case FACE:
 			default:
-				((CommonMobile) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).doNothing();
+				getModel().getMyPlayer().doNothing();
 				break;
 			}
+			
 			this.clearStackOrder();
 		
 		

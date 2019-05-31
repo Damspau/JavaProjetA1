@@ -22,6 +22,8 @@ public interface IMap {
 
 	public int getActualXPlayer();
 	public int getActualYPlayer();
+
+	public void setActualYPlayer();
 	
 
 	

@@ -51,13 +51,13 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 
 
 
-	public View(final IMap map) throws IOException {
+	public View(final IMap map, CommonMobile Player) throws IOException {
 		this.setView(mapView);
 		this.setMap(map);
 		closeView.setSize(37, 22);
-//		this.setMyPlayer(myPlayer);
-//		this.getMyPlayer().getSprite().loadImage();
-//		this.setCloseView(new Rectangle(0, this.getMyPlayer().getY(), this.getMap().getWidth(), mapView));
+		this.setMyPlayer(Player);		
+		this.getMyPlayer().getSprite().loadImage();
+		this.setCloseView(new Rectangle(0, this.getMyPlayer().getY(), this.getMap().getWidth(), mapView));
 		this.setOrderPerformer(orderPerformer);
 	SwingUtilities.invokeLater(this);
 
@@ -65,7 +65,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	}
 
 	public final void run() {
-		final BoardFrame boardFrame = new BoardFrame("Close view");
+		final BoardFrame boardFrame = new BoardFrame("BoulderDash");
 		 boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
 	        boardFrame.setDisplayFrame(this.closeView);
 	        boardFrame.setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
@@ -81,7 +81,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	                boardFrame.addSquare(this.map.getOnTheMap(x, y), x, y);
 	            }
 	        }
-//	        boardFrame.addPawn(this.getMyPlayer());
+	        boardFrame.addPawn(this.getMyPlayer());
 
 	        this.getMap().getObservable().addObserver(boardFrame.getObserver());
 	        //this.followMyPlayer();
@@ -120,6 +120,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	@Override
 	public void keyPressed(final KeyEvent keyInput) {
 	    try {
+	    	
             this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyInput.getKeyCode()));
         } catch (final IOException exception) {
             exception.printStackTrace();

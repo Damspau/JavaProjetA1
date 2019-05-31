@@ -3,6 +3,7 @@ package contract;
 import contract.IMap;
 
 
+
 /**
  * The Interface IBoulderdashView.
  *
@@ -12,8 +13,11 @@ public interface IBoulderdashView {
 
 
 
-
+	
+	
 	void followMyPlayer();
 
 	IMap getMap();
+
+	IElements getMyPlayer();
 }

@@ -11,9 +11,8 @@ public class Player extends CommonMobile {
 
 
 
-	public Player() {
-		super(Sprite sprite, Permeability permeability, x, y);
-		// TODO Auto-generated constructor stub
+	public Player(int x,int y) {
+		super(sprite, Permeability.BREAKABLE, x, y);
 	}
 	
 	public Player(IMap map) {

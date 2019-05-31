@@ -30,7 +30,9 @@ public abstract class CommonMobile  extends Elements {
 
 	//Override
 	protected CommonMobile(Sprite sprite, Permeability permeability, int x, int y) {
+		
 		super(sprite, permeability);
+		
 		
 	}
 	public Point getPosition() {

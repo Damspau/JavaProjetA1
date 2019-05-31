@@ -5,6 +5,7 @@ import java.io.IOException;
 import contract.IMap;
 import elements.Map;
 import mobile.CommonMobile;
+import mobile.Player;
 
 public class BoulderdashModel implements IBoulderdashModel {
 	
@@ -20,6 +21,7 @@ public class BoulderdashModel implements IBoulderdashModel {
 	public BoulderdashModel(final String fileName, int myPlayerStartX, int myPlayerStartY) throws IOException {
 		// TODO Auto-generated constructor stub
 		this.setMap(new Map(fileName));
+		this.setMyPlayer(new Player(this.getMap().getActualXPlayer(), this.getMap().getActualYPlayer()));
 	}
 
 
