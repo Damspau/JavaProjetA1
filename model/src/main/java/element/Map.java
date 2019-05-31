@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Observable;
 
+import javax.lang.model.util.Elements;
+
 import org.showboard.ISquare;
 
 import contract.IElements;
@@ -22,6 +24,9 @@ public class Map extends Observable implements IMap {
 	private int width;
 	private int height;
 	private IElements[][] onTheMap;
+	private int actualXPlayer;
+	private int actualYPlayer;
+	private CommonMobile playerDetector;
 
 	public Map(String fileName) throws IOException {
 		super();
@@ -47,7 +52,6 @@ public class Map extends Observable implements IMap {
 		while (line != null) {
 
 			for (int x = 0; x < line.toCharArray().length; x++) {
-				System.out.println(line);
 				CommonMotionless motionLessElement = factoryMotionless.getFromFileSymbol(line.toCharArray()[x]);
 				if (motionLessElement == null) {
 					CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x]);
@@ -101,19 +105,6 @@ public class Map extends Observable implements IMap {
 		return this.height;
 	}
 
-	@Override
-	public void setMobileHasChanged() {
-		this.setChanged();
-		this.notifyObservers();
-
-	}
-
-	@Override
-	public Observable getObservable() {
-		// TODO Auto-generated method stub
-		return this;
-	}
-
 	public static int compterOccurrencesLargeur(String line) {
 		int nb = 0;
 		for (int i = 0; i < line.length(); i++) {
@@ -129,6 +120,35 @@ public class Map extends Observable implements IMap {
 			lines++;
 		reader.close();
 		return lines;
+	}
+
+	@Override
+	public void setMobileHasChanged() {
+		this.setChanged();
+		this.notifyObservers();
+
+	}
+
+	@Override
+	public Observable getObservable() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+
+	public int getActualXPlayer() {
+		return actualXPlayer;
+	}
+
+	public void setActualXPlayer(int actualXPlayer) {
+		this.actualXPlayer = actualXPlayer;
+	}
+
+	public int getActualYPlayer() {
+		return actualYPlayer;
+	}
+
+	public void setActualYPlayer(int actualYPlayer) {
+		this.actualYPlayer = actualYPlayer;
 	}
 
 }

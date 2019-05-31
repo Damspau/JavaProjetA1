@@ -2,10 +2,12 @@ package mobile;
 
 import java.awt.Point;
 
-import contract.*;
-import element.*;
+import org.showboard.IBoard;
 
-import org.showboard.*;
+import contract.IMap;
+import contract.Permeability;
+import contract.Sprite;
+import element.Element;
 
 public abstract class CommonMobile extends Element {
 
@@ -73,16 +75,11 @@ public abstract class CommonMobile extends Element {
 		this.getMap().setMobileHasChanged();
 	}
 
-
-
 	public void doNothing() {
 		// TODO Auto-generated method stub
 
 	}
 
-	 private void setHasMoved() {
-	        this.getMap().setMobileHasChanged();
-	 }
 	public boolean isAlive() {
 		return true;
 	}

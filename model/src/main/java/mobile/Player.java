@@ -9,17 +9,6 @@ public class Player extends CommonMobile {
 	private boolean validMove;
 	private boolean alive = true;
 
-	public Player() {
-		super(Sprite sprite, Permeability permeability, x, y);
-		// TODO Auto-generated constructor stub
-	}
-
-	public Player(IMap map) {
-		super(sprite, Permeability.BREAKABLE, map);
-	}
-
-
-
 	/** The Constant SPRITE. */
 	private final static Sprite sprite = new Sprite('P', "pF.gif");
 
@@ -37,6 +26,15 @@ public class Player extends CommonMobile {
 
 	/** The Constant spriteExplode. */
 	private final Sprite spriteExplode = new Sprite('P', "pU.gif");
+
+	public Player(Sprite sprite, Permeability permeability, int x, int y) {
+		super(sprite, permeability, x, y);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Player() {
+		super(sprite, Permeability.BREAKABLE);
+	}
 
 	public boolean isValidMove() {
 		return validMove;
