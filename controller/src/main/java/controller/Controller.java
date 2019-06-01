@@ -72,7 +72,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	public final void play() throws InterruptedException {
 
 		while (this.getModel().getMyPlayer().isAlive()) {
-
+			Thread.sleep(speed);
 			switch (this.getStackOrder()) {
 			case RIGHT:
 				getModel().getMyPlayer().moveRight();

@@ -28,10 +28,10 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	private CommonMobile myPlayer;
 
 	/** The Constant mapView. */
-	private static final int mapView = 16;
+	private static final int mapView = 22;
 
 	/** The Constant squareSize. */
-	private static final int squareSize = 50;
+	private static final int squareSize = 45;
 
 	/** The Constant closeView. */
 	private Rectangle closeView = new Rectangle();

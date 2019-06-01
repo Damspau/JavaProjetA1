@@ -1,11 +1,13 @@
 package mobile;
 
-import elements.*;
-
 import java.awt.Point;
 
-import contract.*;
-import org.showboard.*;
+import org.showboard.IBoard;
+
+import contract.IMap;
+import contract.Permeability;
+import contract.Sprite;
+import elements.Elements;
 
 public abstract class CommonMobile extends Elements {
 
