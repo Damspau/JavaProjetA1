@@ -89,15 +89,6 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	        boardFrame.setVisible(true);
 	    }
 
-
-
-	
-
-
-
-
-
-
 	protected UserOrder keyCodeToUserOrder(int keyCode) {
 		switch (keyCode) {
 		case KeyEvent.VK_LEFT:

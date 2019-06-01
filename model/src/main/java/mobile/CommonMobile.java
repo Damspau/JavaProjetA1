@@ -7,7 +7,7 @@ import java.awt.Point;
 import contract.*;
 import org.showboard.*;
 
-public abstract class CommonMobile  extends Elements {
+public abstract class CommonMobile extends Elements {
 
 	private Point position;
 	private IBoard board;
@@ -16,25 +16,24 @@ public abstract class CommonMobile  extends Elements {
 	public IMap getMap() {
 		return map;
 	}
+
 	public void setMap(IMap map) {
 		this.map = map;
 	}
-	
-	
+
 	public CommonMobile(Sprite sprite, Permeability permeability, IMap map) {
 		super(sprite, permeability);
 		this.setMap(map);
 		// TODO Auto-generated constructor stub
 	}
 
-
-	//Override
+	// Override
 	protected CommonMobile(Sprite sprite, Permeability permeability, int x, int y) {
-		
+
 		super(sprite, permeability);
-		
-		
+
 	}
+
 	public Point getPosition() {
 		return position;
 	}
@@ -46,53 +45,42 @@ public abstract class CommonMobile  extends Elements {
 	public IBoard getBoard() {
 		return board;
 	}
-	
-	
+
 	public void moveLeft() {
-		 this.setX(this.getX() - 1);
-	        this.setHasMoved();
-		
+		this.setX(this.getX() - 1);
+		this.setHasMoved();
+
 	}
-	
-	
-	
+
 	public void moveRight() {
-		 this.setX(this.getX() + 1);
-	        this.setHasMoved();
-		
+		this.setX(this.getX() + 1);
+		this.setHasMoved();
+
 	}
-	
-	
-	
-	
+
 	public void moveUp() {
-		 this.setX(this.getY() + -1);
-	        this.setHasMoved();
-		
+		this.setX(this.getY() + -1);
+		this.setHasMoved();
+
 	}
-	
-	
-	
-	
-	
+
 	public void moveDown() {
-		 this.setX(this.getY() + +1);
-	        this.setHasMoved();
-		
+		this.setX(this.getY() + +1);
+		this.setHasMoved();
+
 	}
-	
-	
-	    
+
 	public void doNothing() {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	 private void setHasMoved() {
-	        this.getMap().setMobileHasChanged();
-	 }
+
+	private void setHasMoved() {
+		this.getMap().setMobileHasChanged();
+	}
+
 	public boolean isAlive() {
-		
+
 		return true;
 	}
 
