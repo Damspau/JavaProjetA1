@@ -25,7 +25,6 @@ public class Map extends Observable implements IMap {
 	private IElements[][] onTheMap;
 	private int actualXPlayer;
 	private int actualYPlayer;
-	private CommonMobile playerDetector;
 
 	public Map(final String fileName) throws IOException {
 		super();
@@ -51,18 +50,30 @@ public class Map extends Observable implements IMap {
 		while (line != null) {
 
 			for (int x = 0; x < line.toCharArray().length; x++) {
-
+				char c = line.toCharArray()[x];
 				CommonMotionless motionLessElement = factoryMotionless.getFromFileSymbol(line.toCharArray()[x]);
 				if (motionLessElement == null) {
-					CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x], x, x);
-					mobileElement.setX(x);
-					mobileElement.setY(y);
-					this.setOnTheMap(mobileElement, x, y);
-				} else {
+					if (c == 'P') {
+						System.out.println(x);
+						System.out.println(y);
+						setActualXPlayer(x);
+						setActualYPlayer(y);
+						motionLessElement = factoryMotionless.getFromFileSymbol('*');
+						motionLessElement.setX(x);
+						motionLessElement.setY(y);
+						this.setOnTheMap(motionLessElement, x, y);
+					} else {
+						CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x], x, y);
+						mobileElement.setX(x);
+						mobileElement.setY(y);
+						this.setOnTheMap(mobileElement, x, y);
+					}
+				}
+
+				else {
 					motionLessElement.setX(x);
 					motionLessElement.setY(y);
 					this.setOnTheMap(motionLessElement, x, y);
-
 				}
 
 			}
@@ -135,22 +146,20 @@ public class Map extends Observable implements IMap {
 		return lines;
 	}
 
-	@Override
 	public int getActualXPlayer() {
-		// TODO Auto-generated method stub
-		return 0;
+		return actualXPlayer;
 	}
 
-	@Override
+	public void setActualXPlayer(int actualXPlayer) {
+		this.actualXPlayer = actualXPlayer;
+	}
+
 	public int getActualYPlayer() {
-		// TODO Auto-generated method stub
-		return 0;
+		return actualYPlayer;
 	}
 
-	@Override
-	public void setActualYPlayer() {
-		// TODO Auto-generated method stub
-
+	public void setActualYPlayer(int actualYPlayer) {
+		this.actualYPlayer = actualYPlayer;
 	}
 
 }

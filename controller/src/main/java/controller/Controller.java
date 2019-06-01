@@ -6,7 +6,6 @@ import contract.IBoulderdashController;
 import contract.IBoulderdashView;
 import contract.IOrderPerformer;
 import contract.UserOrder;
-import mobile.CommonMobile;
 import model.IBoulderdashModel;
 
 /**
@@ -72,6 +71,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	public final void play() throws InterruptedException {
 
 		while (this.getModel().getMyPlayer().isAlive()){
+			
 			Thread.sleep(300);
 
 			switch (this.getStackOrder()) {
@@ -102,6 +102,10 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 			}
 
 			this.clearStackOrder();
+			
+		    this.canBeDig();
+		    
+		    this.collect();
 
 		}
 
@@ -126,10 +130,14 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	}
 
 	public void collect() {
+		
+//		if getMyPlayer
 
 	}
 
 	public void canBePushed() {
+		
+		
 
 	}
 
