@@ -15,6 +15,7 @@ import mobile.CommonMobile;
 import mobile.MobileElementsFactory;
 import motionless.CommonMotionless;
 import motionless.MotionlessElementsFactory;
+import model.*;
 
 public class Map extends Observable implements IMap {
 
@@ -26,6 +27,7 @@ public class Map extends Observable implements IMap {
 	public Map(String fileName) throws IOException {
 		super();
 		DB.lireEnBase();
+		this.loadFile(fileName);
 
 	private IElements [][] onTheMap;
 	private int actualXPlayer;
