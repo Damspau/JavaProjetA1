@@ -85,20 +85,23 @@ public class Map extends Observable implements IMap {
 	}
 
 	public void updateMap(int playerActualXPosition, int playerActualYPosition) throws IOException {
-		
+
 		MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
-		
+
 		CommonMotionless motionLessElement;
 
-		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName() == "-.jpg") {
+		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
+				.getImageName() == "-.jpg") {
 			System.out.println("-.jpg");
 			motionLessElement = factoryMotionless.getFromFileSymbol('*');
 			motionLessElement.setX(playerActualXPosition);
 			motionLessElement.setY(playerActualYPosition);
 			setOnTheMap(motionLessElement, playerActualXPosition, playerActualYPosition);
-			System.out.println(((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName());
+			System.out.println(
+					((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName());
 		}
 
+		this.setMobileHasChanged();
 	}
 
 	public void setOnTheMap(IElements mobileElement, int x, int y) {
