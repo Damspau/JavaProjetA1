@@ -134,8 +134,8 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 		System.out.println(playerActualXPosition);
 		System.out.println(playerActualYPosition);
-		
-		Map.updateMap(playerActualXPosition, playerActualYPosition);
+
+		((Map) this.getModel().getMap()).updateMap(playerActualXPosition, playerActualYPosition);
 	}
 
 	public void fallAndKill() {
