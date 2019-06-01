@@ -21,7 +21,10 @@ public class BoulderdashModel implements IBoulderdashModel {
 	public BoulderdashModel(final String fileName) throws IOException {
 		// TODO Auto-generated constructor stub
 		this.setMap(new Map(fileName));
+		System.out.println(this.getMap().getActualXPlayer());
 		this.setMyPlayer(new Player(this.getMap().getActualXPlayer(), this.getMap().getActualYPlayer(),getMap()));
+		this.getMyPlayer().setX(getMap().getActualXPlayer());
+		this.getMyPlayer().setY(getMap().getActualYPlayer());
 	}
 
 

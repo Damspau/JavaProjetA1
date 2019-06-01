@@ -33,6 +33,7 @@ public abstract class CommonMobile  extends Elements {
 		
 		super(sprite, permeability);
 		this.setMap(map);
+		this.position = new Point();
 		
 		
 	}

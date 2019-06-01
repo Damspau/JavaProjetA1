@@ -29,7 +29,7 @@ public abstract class Elements implements IElements, IPawn{
 
 	
 	
-	public Elements (Sprite sprite, Permeability permeability) {
+	public Elements (Sprite sprite, Permeability per55meability) {
 		this.setSprite(sprite);
 		this.setPermeability(permeability);
 	}

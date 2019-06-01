@@ -2,9 +2,11 @@ package contract;
 
 import java.util.Observable;
 
-import org.showboard.*;;
+import org.showboard.ISquare;;
 
 public interface IMap {
+	
+
 	//get the width of the map
 	public int getWidth();
 	

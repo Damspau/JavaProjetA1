@@ -25,7 +25,8 @@ public class Map extends Observable implements IMap {
 	private IElements [][] onTheMap;
 	private int actualXPlayer;
 	private int actualYPlayer;
-	private CommonMobile playerDetector;
+
+	private char temporyCharacter;
 	
 	
 	public Map(final String fileName) throws IOException {
@@ -79,18 +80,29 @@ public class Map extends Observable implements IMap {
         while (line != null) {
         	
             for (int x = 0; x < line.toCharArray().length; x++) {
-            	CommonMotionless motionLessElement = factoryMotionless.getFromFileSymbol(line.toCharArray()[x]);
+            	setTemporyCharacter(line.toCharArray()[x]);
+            	CommonMotionless motionLessElement = factoryMotionless.getFromFileSymbol(getTemporyCharacter());
             	if (motionLessElement==null) {
-            		CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x],x,y);
-            		if (line.toCharArray()[x]=='p') {
+            		if (getTemporyCharacter()=='p') {
+            			System.out.println(x);
+            			System.out.println(y);
             			setActualXPlayer(x);
             			setActualYPlayer(y);
+            			 motionLessElement = factoryMotionless.getFromFileSymbol('b');
+            			 motionLessElement.setX(x);
+                     	 motionLessElement.setY(y);
+                         this.setOnTheMap(motionLessElement, x, y);
             			
             		}
-            		mobileElement.setX(x);
-                	mobileElement.setY(y);
+            		else {
+            			CommonMobile mobileElement = factoryMobile.getFromFileSymbol(line.toCharArray()[x],x,y);
+            			mobileElement.setX(x);
+                    	mobileElement.setY(y);
+                    	this.setOnTheMap(mobileElement, x, y);
+            		}
+            		
                 	
-                	this.setOnTheMap(mobileElement, x, y);
+                	
             	}
             	else {
             		motionLessElement.setX(x);
@@ -171,6 +183,14 @@ public class Map extends Observable implements IMap {
 		// TODO Auto-generated method stub
 		
 	}
+	public char getTemporyCharacter() {
+		return temporyCharacter;
+	}
+	public void setTemporyCharacter(char temporyCharacter) {
+		this.temporyCharacter = temporyCharacter;
+	}
+	
+	
 
 
 }

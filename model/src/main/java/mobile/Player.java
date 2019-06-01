@@ -1,5 +1,7 @@
 package mobile;
 
+import java.io.IOException;
+
 import contract.IMap;
 import contract.Permeability;
 import contract.Sprite;
@@ -11,8 +13,13 @@ public class Player extends CommonMobile {
 
 
 
-	public Player(int x,int y, IMap map) {
+	public Player(int x,int y, IMap map) throws IOException {
 		super(sprite, Permeability.BREAKABLE, x, y, map);
+		spriteMoveLeft.loadImage();
+		spriteMoveRight.loadImage();
+		spriteMoveDown.loadImage();
+		spriteMoveUp.loadImage();
+		
 	}
 	
 //	public Player(IMap map) {
