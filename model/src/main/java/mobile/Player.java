@@ -11,13 +11,13 @@ public class Player extends CommonMobile {
 
 
 
-	public Player(int x,int y) {
-		super(sprite, Permeability.BREAKABLE, x, y);
+	public Player(int x,int y, IMap map) {
+		super(sprite, Permeability.BREAKABLE, x, y, map);
 	}
 	
-	public Player(IMap map) {
-		super(sprite, Permeability.BREAKABLE, map);
-	}
+//	public Player(IMap map) {
+//		super(sprite, Permeability.BREAKABLE, map);
+//	}
 	
 	
 

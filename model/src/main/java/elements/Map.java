@@ -9,6 +9,7 @@ import java.util.Observable;
 
 import org.showboard.ISquare;
 
+
 import contract.IElements;
 import contract.IMap;
 import entity.DB;
@@ -21,13 +22,24 @@ public class Map extends Observable implements IMap {
 
 	private int width;
 	private int height;
-	private IElements[][] onTheMap;
+
+
 
 	public Map(String fileName) throws IOException {
 		super();
 		DB.lireEnBase();
-		this.loadFile(fileName);
-	}
+
+	private IElements [][] onTheMap;
+	private int actualXPlayer;
+	private int actualYPlayer;
+	private CommonMobile playerDetector;
+
+
+	// public Map(final String fileName) throws IOException {
+		
+
+		// this.loadFile(fileName);
+	// }
 
 	private void loadFile(final String fileName) throws IOException {
 
