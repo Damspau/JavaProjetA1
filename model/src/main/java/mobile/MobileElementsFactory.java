@@ -8,7 +8,7 @@ public class MobileElementsFactory {
 	public CommonMobile getFromFileSymbol(final char fileSymbol, int x, int y) throws IOException {
 		switch (fileSymbol) {
 		case 'P':
-			Player player = new Player(x, y);
+			Player player = new Player(x, y,null);
 			toReturn = player;
 
 			break;
