@@ -13,12 +13,12 @@ public class MobileElementsFactory {
 
 			break;
 		case 'R':
-			Rock rock = new Rock(x, y);
+			Rock rock = new Rock(x, y, null);
 			toReturn = rock;
 
 			break;
 		case 'D':
-			Diamond diamond = new Diamond(x, y);
+			Diamond diamond = new Diamond(x, y, null);
 			toReturn = diamond;
 
 			break;

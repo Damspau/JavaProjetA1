@@ -12,13 +12,13 @@ public class Diamond extends CommonMobile {
 	/** The Constant SPRITE. */
 	private final static Sprite sprite = new Sprite('D', "D.jpg");
 
-	// public Diamond(int x,int y) {
-	// 	super(sprite, Permeability.BREAKABLE, x, y);
-	// }
-	//
-	// public Diamond(IMap map) {
-	// 	super(sprite, Permeability.BREAKABLE, map);
-	// }
+	 public Diamond(int x,int y, IMap map) {
+	 	super(sprite, Permeability.BREAKABLE, x, y, map);
+	 }
+	
+//	 public Diamond(IMap map) {
+//	 	super(sprite, Permeability.BREAKABLE, map);
+//	 }
 
 	public boolean isValidMove() {
 		return validMove;

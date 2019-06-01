@@ -9,13 +9,13 @@ public class Rock extends CommonMobile {
 	private final static Sprite sprite = new Sprite('R', "R.jpg");
 
 
-	// public Rock(int x,int y) {
-	// 	super(sprite, Permeability.BREAKABLE, x, y);
-	// }
-	//
-	// public Rock(IMap map) {
-	// 	super(sprite, Permeability.BREAKABLE, map);
-	// }
+	 public Rock(int x,int y, IMap map) {
+	 	super(sprite, Permeability.BREAKABLE, x, y, map);
+	 }
+	
+//	 public Rock(IMap map) {
+//	 	super(sprite, Permeability.BREAKABLE, map);
+//	 }
 
 	public boolean isValidMove() {
 		return validMove;
