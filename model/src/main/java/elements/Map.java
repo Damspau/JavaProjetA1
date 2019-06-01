@@ -16,7 +16,6 @@ import mobile.CommonMobile;
 import mobile.MobileElementsFactory;
 import motionless.CommonMotionless;
 import motionless.MotionlessElementsFactory;
-import contract.Sprite;
 
 public class Map extends Observable implements IMap {
 
