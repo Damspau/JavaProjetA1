@@ -58,7 +58,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 		
 		this.setMyPlayer(Player);	
 		this.getMyPlayer().getSprite().loadImage();
-		this.setCloseView(new Rectangle(0, this.getMyPlayer().getY(), this.getMap().getWidth(), mapView));
+		this.setCloseView(new Rectangle(0, 0, this.getMap().getWidth(), mapView));
 		
 	SwingUtilities.invokeLater(this);
 
