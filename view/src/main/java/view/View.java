@@ -94,10 +94,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 		UserOrder userOrder;
 		switch (keyCode) {
 		case KeyEvent.VK_LEFT:
-			System.out.println(keyCode);
-			System.out.println(KeyEvent.VK_LEFT);
 			userOrder = UserOrder.LEFT;
-			System.out.println("okkey");
 			break;
 		case KeyEvent.VK_UP:
 			userOrder = UserOrder.UP;

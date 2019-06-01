@@ -23,13 +23,14 @@ public class Map extends Observable implements IMap {
 	private int height;
 
 	private IElements[][] onTheMap;
+	private static IElements[][] onTheMapUpdate;
 	private int actualXPlayer;
 	private int actualYPlayer;
 
 	public Map(final String fileName) throws IOException {
 		super();
-		this.loadFile(fileName);
 		DB.lireEnBase();
+		this.loadFile(fileName);
 	}
 
 	private void loadFile(final String fileName) throws IOException {
@@ -83,8 +84,42 @@ public class Map extends Observable implements IMap {
 		buffer.close();
 	}
 
-	private void setOnTheMap(IElements mobileElement, int x, int y) {
+	public static void updateMap(int playerActualXPosition, int playerActualYPosition) throws IOException {
+
+		final BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream("map.txt")));
+		String line = buffer.readLine();
+		int y = 0;
+
+		MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
+
+		while (line != null) {
+			if (y == playerActualYPosition) {
+
+				char c = line.toCharArray()[playerActualXPosition];
+				System.out.println(c);
+				if (c == '-') {
+					CommonMotionless motionLessElement = factoryMotionless.getFromFileSymbol('*');
+					motionLessElement.setX(playerActualXPosition);
+					motionLessElement.setY(playerActualYPosition);
+					setOnTheMapUpdate(motionLessElement, playerActualXPosition, playerActualYPosition);
+					System.out.println("Dirt !!!!");
+				}
+
+			}
+			line = buffer.readLine();
+			y++;
+		}
+		buffer.close();
+
+	}
+
+	public void setOnTheMap(IElements mobileElement, int x, int y) {
 		this.onTheMap[x][y] = mobileElement;
+
+	}
+
+	public static void setOnTheMapUpdate(IElements mobileElement, int x, int y) {
+		onTheMapUpdate[x][y] = mobileElement;
 
 	}
 

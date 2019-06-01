@@ -1,12 +1,18 @@
 package controller;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import contract.IBoulderdashController;
 import contract.IBoulderdashView;
 import contract.IOrderPerformer;
 import contract.UserOrder;
+import elements.Map;
 import model.IBoulderdashModel;
+import motionless.CommonMotionless;
+import motionless.MotionlessElementsFactory;
 
 /**
  * <h1>The Class Controller.</h1>
@@ -21,17 +27,10 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	/** The model. */
 	private IBoulderdashModel model;
 
-	/** The view. */
-	private IBoulderdashView view;
-
-	/** The Constant speed. */
-	private static final int speed = 300;
-
 	/** The stack order (RIGHT, LEFT, UP, DOWN and NOP) */
 	private UserOrder stackOrder;
 
-	private int playerActualXPosition;
-	private int playerActualYPosition;
+	private IBoulderdashView view;
 
 	public Controller(final IBoulderdashView view, final IBoulderdashModel model) {
 		this.setView(view);
@@ -43,10 +42,6 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 		this.view = view;
 	}
 
-	private IBoulderdashView getView() {
-		return this.view;
-	}
-
 	private void setModel(final IBoulderdashModel model) {
 		this.model = model;
 	}
@@ -54,9 +49,6 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	private IBoulderdashModel getModel() {
 		return this.model;
 	}
-
-
-
 
 	private UserOrder getStackOrder() {
 
@@ -68,44 +60,40 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	}
 
 	@Override
-	public final void play() throws InterruptedException {
+	public final void play() throws InterruptedException, IOException {
 
-		while (this.getModel().getMyPlayer().isAlive()){
-			
+		while (this.getModel().getMyPlayer().isAlive()) {
+
 			Thread.sleep(300);
 
 			switch (this.getStackOrder()) {
-				case RIGHT:
-					getModel().getMyPlayer().moveRight();
+			case RIGHT:
+				getModel().getMyPlayer().moveRight();
+				break;
 
-					break;
+			case LEFT:
+				getModel().getMyPlayer().moveLeft();
 
-				case LEFT:
-					System.out.println("test");
-					getModel().getMyPlayer().moveLeft();
+				break;
 
-					break;
+			case UP:
+				getModel().getMyPlayer().moveUp();
+				break;
 
-				case UP:
-					getModel().getMyPlayer().moveUp();
-					break;
+			case DOWN:
+				getModel().getMyPlayer().moveDown();
+				break;
 
-				case DOWN:
-					getModel().getMyPlayer().moveDown();
-					break;
+			case FACE:
 
-				case FACE:
-
-				default:
-					getModel().getMyPlayer().doNothing();
-					break;
+			default:
+				getModel().getMyPlayer().doNothing();
+				break;
 			}
 
+			this.canBeDig();
+
 			this.clearStackOrder();
-			
-		    this.canBeDig();
-		    
-		    this.collect();
 
 		}
 
@@ -130,24 +118,30 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	}
 
 	public void collect() {
-		
+
 //		if getMyPlayer
 
 	}
 
 	public void canBePushed() {
-		
-		
 
 	}
 
-	public void canBeDig() {
+	public void canBeDig() throws IOException {
 
+		int playerActualXPosition = getModel().getMyPlayer().getX();
+		int playerActualYPosition = getModel().getMyPlayer().getY();
+
+		System.out.println(playerActualXPosition);
+		System.out.println(playerActualYPosition);
+		
+		Map.updateMap(playerActualXPosition, playerActualYPosition);
 	}
 
 	public void fallAndKill() {
 
 	}
+
 	private void setStackOrder(final UserOrder stackOrder) {
 
 		this.stackOrder = stackOrder;
