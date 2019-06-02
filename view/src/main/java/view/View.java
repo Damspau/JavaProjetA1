@@ -21,7 +21,7 @@ import mobile.CommonMobile;
  *
  * @author Maxime G, Damiens et Benoît D
  */
-public final class View implements IBoulderdashView, Runnable, KeyListener{
+public final class View implements IBoulderdashView, Runnable, KeyListener {
 
 	// All the different attributes.
 
@@ -45,50 +45,78 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	/** The order performer. */
 	private IOrderPerformer orderPerformer;
 
+	private BoardFrame boardFrame;
 
+	public BoardFrame getBoardFrame() {
+		return boardFrame;
+	}
 
-
-
-
+	public void setBoardFrame(BoardFrame boardFrame) {
+		this.boardFrame = boardFrame;
+	}
 
 	public View(final IMap map, CommonMobile Player) throws IOException {
 		this.setView(mapView);
 		this.setMap(map);
-		//set the window :
+		// set the window :
 
 		this.setMyPlayer(Player);
 		this.getMyPlayer().getSprite().loadImage();
 		this.setCloseView(new Rectangle(0, 0, this.getMap().getWidth(), this.getMap().getHeight()));
 
-	SwingUtilities.invokeLater(this);
-
+		SwingUtilities.invokeLater(this);
 
 	}
 
+//	public final void run() {
+//		final BoardFrame boardFrame = new BoardFrame("BoulderDash");
+//		 boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
+//	        boardFrame.setDisplayFrame(this.closeView);
+//	        boardFrame.setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
+//	        boardFrame.setHeightLooped(false);
+//	        boardFrame.addKeyListener(this);
+//	        boardFrame.setFocusable(true);
+//	        boardFrame.setFocusTraversalKeysEnabled(false);
+//
+//	        for (int x = 0; x < this.getMap().getWidth(); x++) {
+//
+//	            for (int y = 0; y < this.getMap().getHeight(); y++) {
+//
+//	                boardFrame.addSquare(this.map.getOnTheMap(x, y), x, y);
+//	            }
+//	        }
+//	        boardFrame.addPawn(this.getMyPlayer());
+//
+//	        this.getMap().getObservable().addObserver(boardFrame.getObserver());
+//	        this.followMyPlayer();
+//
+//	        boardFrame.setVisible(true);
+//	    }
+
 	public final void run() {
-		final BoardFrame boardFrame = new BoardFrame("BoulderDash");
-		 boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
-	        boardFrame.setDisplayFrame(this.closeView);
-	        boardFrame.setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
-	        boardFrame.setHeightLooped(false);
-	        boardFrame.addKeyListener(this);
-	        boardFrame.setFocusable(true);
-	        boardFrame.setFocusTraversalKeysEnabled(false);
+		this.setBoardFrame(new BoardFrame("BoulderDash"));
+		this.getBoardFrame().setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
+		this.getBoardFrame().setDisplayFrame(this.closeView);
+		this.getBoardFrame().setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
+		this.getBoardFrame().setHeightLooped(false);
+		// add a key listener on THIS window
+		this.getBoardFrame().addKeyListener(this);
+		// special key disabled :
+		this.getBoardFrame().setFocusTraversalKeysEnabled(false);
 
-	        for (int x = 0; x < this.getMap().getWidth(); x++) {
+		for (int x = 0; x < this.getMap().getWidth(); x++) {
 
-	            for (int y = 0; y < this.getMap().getHeight(); y++) {
+			for (int y = 0; y < this.getMap().getHeight(); y++) {
 
-	                boardFrame.addSquare(this.map.getOnTheMap(x, y), x, y);
-	            }
-	        }
-	        boardFrame.addPawn(this.getMyPlayer());
+				this.getBoardFrame().addSquare(this.map.getOnTheMap(x, y), x, y);
+			}
+		}
+		this.getBoardFrame().addPawn(this.getMyPlayer());
 
-	        this.getMap().getObservable().addObserver(boardFrame.getObserver());
-	        this.followMyPlayer();
+		this.getMap().getObservable().addObserver(boardFrame.getObserver());
 
-	        boardFrame.setVisible(true);
-	    }
+		this.getBoardFrame().setVisible(true);
+	}
 
 	protected UserOrder keyCodeToUserOrder(int keyCode) {
 		UserOrder userOrder;
@@ -113,26 +141,32 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	}
 
 	public void keyTyped(final KeyEvent e) {
-		/* not important for our program but necessary to implements because of the intefaces */
+		/*
+		 * not important for our program but necessary to implements because of the
+		 * intefaces
+		 */
 
 	}
+
 	@Override
 	public void keyPressed(final KeyEvent keyInput) {
-	    try {
+		try {
 
-            this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyInput.getKeyCode()));
-        } catch (final IOException exception) {
-            exception.printStackTrace();
-        }
-    }
-
+			this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyInput.getKeyCode()));
+		} catch (final IOException exception) {
+			exception.printStackTrace();
+		}
+	}
 
 	public void keyReleased(final KeyEvent e) {
-		/* not important for our program but necessary to implements because of the intefaces */
+		/*
+		 * not important for our program but necessary to implements because of the
+		 * intefaces
+		 */
 	}
 
 	public void followMyPlayer() {
-	//	this.getCloseView().y = this.getMyPlayer().getY() - 5;
+		// this.getCloseView().y = this.getMyPlayer().getY() - 5;
 	}
 
 	public IMap getMap() {
@@ -146,7 +180,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 //            for (int y = 0; y < this.getMap().getHeight(); y++) {
 //               ((IElements) this.getMap().getOnTheMap(x, y)).getSprite().loadImage();
 //            }
-        }
+	}
 
 //	}
 	public CommonMobile getMyPlayer() {
@@ -156,9 +190,6 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	public void setMyPlayer(CommonMobile myPlayer) {
 		this.myPlayer = myPlayer;
 	}
-
-
-
 
 	public Rectangle getCloseView() {
 		return closeView;
@@ -186,14 +217,4 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 		this.view = view;
 	}
 
-
-
-
-
-
-
-
-
-
-
-	}
+}

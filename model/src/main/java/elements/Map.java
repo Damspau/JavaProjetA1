@@ -11,6 +11,7 @@ import org.showboard.ISquare;
 
 import contract.IElements;
 import contract.IMap;
+import contract.Sprite;
 import entity.DB;
 import mobile.CommonMobile;
 import mobile.MobileElementsFactory;
@@ -83,7 +84,7 @@ public class Map extends Observable implements IMap {
 		buffer.close();
 	}
 
-	public void updateMap(int playerActualXPosition, int playerActualYPosition) throws IOException {
+	public Boolean updateMap(int playerActualXPosition, int playerActualYPosition) throws IOException {
 
 		MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
 
@@ -91,16 +92,18 @@ public class Map extends Observable implements IMap {
 
 		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
 				.getImageName() == "-.jpg") {
-			System.out.println("-.jpg");
+
+//			System.out.println("-.jpg");
 			motionLessElement = factoryMotionless.getFromFileSymbol('*');
 			motionLessElement.setX(playerActualXPosition);
 			motionLessElement.setY(playerActualYPosition);
 			setOnTheMap(motionLessElement, playerActualXPosition, playerActualYPosition);
 			System.out.println(
 					((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName());
+			return (true);
+		} else {
+			return (false);
 		}
-
-		this.setMobileHasChanged();
 	}
 
 	public void setOnTheMap(IElements mobileElement, int x, int y) {

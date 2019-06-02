@@ -1,9 +1,6 @@
 package controller;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import contract.IBoulderdashController;
 import contract.IBoulderdashView;
@@ -11,8 +8,6 @@ import contract.IOrderPerformer;
 import contract.UserOrder;
 import elements.Map;
 import model.IBoulderdashModel;
-import motionless.CommonMotionless;
-import motionless.MotionlessElementsFactory;
 
 /**
  * <h1>The Class Controller.</h1>
@@ -40,6 +35,10 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	private void setView(final IBoulderdashView view) {
 		this.view = view;
+	}
+
+	private IBoulderdashView getView() {
+		return this.view;
 	}
 
 	private void setModel(final IBoulderdashModel model) {
@@ -135,7 +134,11 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 		System.out.println(playerActualXPosition);
 		System.out.println(playerActualYPosition);
 
-		((Map) this.getModel().getMap()).updateMap(playerActualXPosition, playerActualYPosition);
+		if (((Map) this.getModel().getMap()).updateMap(playerActualXPosition, playerActualYPosition)) {
+
+			this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(this.getModel().getMyPlayer().getX(),this.getModel().getMyPlayer().getY()),this.getModel().getMyPlayer().getX(), this.getModel().getMyPlayer().getY());
+
+		}
 	}
 
 	public void fallAndKill() {
