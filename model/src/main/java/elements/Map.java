@@ -84,7 +84,7 @@ public class Map extends Observable implements IMap {
 		buffer.close();
 	}
 
-	public Boolean updateMap(int playerActualXPosition, int playerActualYPosition) throws IOException {
+	public Boolean updateMapDirt(int playerActualXPosition, int playerActualYPosition) throws IOException {
 
 		MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
 
@@ -93,18 +93,46 @@ public class Map extends Observable implements IMap {
 		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
 				.getImageName() == "-.jpg") {
 
-//			System.out.println("-.jpg");
 			motionLessElement = factoryMotionless.getFromFileSymbol('*');
 			motionLessElement.setX(playerActualXPosition);
 			motionLessElement.setY(playerActualYPosition);
 			setOnTheMap(motionLessElement, playerActualXPosition, playerActualYPosition);
-			System.out.println(
-					((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName());
+
 			return (true);
 		} else {
 			return (false);
 		}
 	}
+	
+	public Boolean updateMapDiams(int playerActualXPosition, int playerActualYPosition) throws IOException {
+
+		MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
+
+		CommonMotionless motionLessElement;
+
+		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
+				.getImageName() == "D.jpg") {
+
+			motionLessElement = factoryMotionless.getFromFileSymbol('*');
+			motionLessElement.setX(playerActualXPosition);
+			motionLessElement.setY(playerActualYPosition);
+			setOnTheMap(motionLessElement, playerActualXPosition, playerActualYPosition);
+			return (true);
+		} else {
+			return (false);
+		}
+	}
+	
+	public Boolean ifiamonExitDoor(int playerActualXPosition, int playerActualYPosition) throws IOException {
+
+		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
+				.getImageName() == "E.jpg") {
+			return (true);
+		} else {
+			return (false);
+		}
+	}
+
 
 	public void setOnTheMap(IElements mobileElement, int x, int y) {
 		this.onTheMap[x][y] = mobileElement;

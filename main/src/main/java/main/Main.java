@@ -17,6 +17,7 @@ public abstract class Main {
 
 
     public static void main(final String[] args) throws IOException, InterruptedException {
+    
         final IBoulderdashModel model = new BoulderdashModel("map.txt");
         final View view = new View(model.getMap(), model.getMyPlayer());
         final IBoulderdashController controller = new Controller(view, model);

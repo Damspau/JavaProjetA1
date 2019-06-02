@@ -1,6 +1,12 @@
 package controller;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.io.IOException;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import contract.IBoulderdashController;
 import contract.IBoulderdashView;
@@ -17,7 +23,7 @@ import model.IBoulderdashModel;
 
 public final class Controller implements IBoulderdashController, IOrderPerformer {
 
-	private int diamondCount;
+	private int diamondCount = 0;
 
 	/** The model. */
 	private IBoulderdashModel model;
@@ -92,6 +98,10 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 			this.canBeDig();
 
+			this.collect();
+
+			this.exidDoorAvailable();
+
 			this.clearStackOrder();
 
 		}
@@ -112,13 +122,79 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 		return diamondCount;
 	}
 
-	public void setDiamondCount(int diamondCount) {
-		this.diamondCount = diamondCount;
+	public void collect() throws IOException {
+
+		int playerActualXPosition = getModel().getMyPlayer().getX();
+		int playerActualYPosition = getModel().getMyPlayer().getY();
+
+		if (((Map) this.getModel().getMap()).updateMapDiams(playerActualXPosition, playerActualYPosition)) {
+
+			this.getView().getBoardFrame().addSquare(
+					this.getView().getMap().getOnTheMap(this.getModel().getMyPlayer().getX(),
+							this.getModel().getMyPlayer().getY()),
+					this.getModel().getMyPlayer().getX(), this.getModel().getMyPlayer().getY());
+			diamondCount = diamondCount + 1;
+			System.out.println("nbr diams" + diamondCount);
+
+		}
+
 	}
 
-	public void collect() {
 
-//		if getMyPlayer
+	public void exidDoorAvailable() throws IOException {
+
+		int playerActualXPosition = getModel().getMyPlayer().getX();
+		int playerActualYPosition = getModel().getMyPlayer().getY();
+
+//		if (((Map) this.getModel().getMap()).ifiamonExitDoor(playerActualXPosition, playerActualYPosition)) {
+
+//			if (getDiamondCount() == 5) {
+				
+				news("You Win !!!");
+				
+				this.getView().getBoardFrame().setVisible(false);
+				
+//			}
+
+//		}
+
+	}
+
+	public void news(String msg) {
+
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.setSize(600, 400);
+
+		JPanel panel = new JPanel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.setColor(Color.BLUE);
+				g.fillRect(0, 0, 100, 100);
+			}
+		};
+		frame.add(panel);
+
+		Graphics g = panel.getGraphics();
+
+		int SQUARE_DIMEN = 25;
+		g.setColor(Color.darkGray);
+		g.fillRect(SQUARE_DIMEN * 2, SQUARE_DIMEN * 4, SQUARE_DIMEN * 16, SQUARE_DIMEN * 5);
+
+		g.fillRect(SQUARE_DIMEN * 3, SQUARE_DIMEN * 5, SQUARE_DIMEN * 14, SQUARE_DIMEN * 3);
+
+		g.setFont(new Font("Helvetica", Font.BOLD | Font.ITALIC, 20));
+		g.drawString(msg, SQUARE_DIMEN * 6 - 10, SQUARE_DIMEN * 7 - 5);
+
+		frame.validate(); // because you added panel after setVisible was called
+		frame.repaint(); // because you added panel after setVisible was called
 
 	}
 
@@ -131,12 +207,12 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 		int playerActualXPosition = getModel().getMyPlayer().getX();
 		int playerActualYPosition = getModel().getMyPlayer().getY();
 
-		System.out.println(playerActualXPosition);
-		System.out.println(playerActualYPosition);
+		if (((Map) this.getModel().getMap()).updateMapDirt(playerActualXPosition, playerActualYPosition)) {
 
-		if (((Map) this.getModel().getMap()).updateMap(playerActualXPosition, playerActualYPosition)) {
-
-			this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(this.getModel().getMyPlayer().getX(),this.getModel().getMyPlayer().getY()),this.getModel().getMyPlayer().getX(), this.getModel().getMyPlayer().getY());
+			this.getView().getBoardFrame().addSquare(
+					this.getView().getMap().getOnTheMap(this.getModel().getMyPlayer().getX(),
+							this.getModel().getMyPlayer().getY()),
+					this.getModel().getMyPlayer().getX(), this.getModel().getMyPlayer().getY());
 
 		}
 	}

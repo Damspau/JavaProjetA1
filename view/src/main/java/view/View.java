@@ -22,6 +22,8 @@ import mobile.CommonMobile;
  * @author Maxime G, Damiens et Benoît D
  */
 public final class View implements IBoulderdashView, Runnable, KeyListener {
+	
+	
 
 	// All the different attributes.
 
@@ -46,6 +48,9 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 	private IOrderPerformer orderPerformer;
 
 	private BoardFrame boardFrame;
+	
+
+
 
 	public BoardFrame getBoardFrame() {
 		return boardFrame;
@@ -68,31 +73,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 
 	}
 
-//	public final void run() {
-//		final BoardFrame boardFrame = new BoardFrame("BoulderDash");
-//		 boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
-//	        boardFrame.setDisplayFrame(this.closeView);
-//	        boardFrame.setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
-//	        boardFrame.setHeightLooped(false);
-//	        boardFrame.addKeyListener(this);
-//	        boardFrame.setFocusable(true);
-//	        boardFrame.setFocusTraversalKeysEnabled(false);
-//
-//	        for (int x = 0; x < this.getMap().getWidth(); x++) {
-//
-//	            for (int y = 0; y < this.getMap().getHeight(); y++) {
-//
-//	                boardFrame.addSquare(this.map.getOnTheMap(x, y), x, y);
-//	            }
-//	        }
-//	        boardFrame.addPawn(this.getMyPlayer());
-//
-//	        this.getMap().getObservable().addObserver(boardFrame.getObserver());
-//	        this.followMyPlayer();
-//
-//	        boardFrame.setVisible(true);
-//	    }
-
+	@Override
 	public final void run() {
 		this.setBoardFrame(new BoardFrame("BoulderDash"));
 		this.getBoardFrame().setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
@@ -117,6 +98,8 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 
 		this.getBoardFrame().setVisible(true);
 	}
+	
+	
 
 	protected UserOrder keyCodeToUserOrder(int keyCode) {
 		UserOrder userOrder;
