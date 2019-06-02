@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.io.IOException;
@@ -140,23 +139,22 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	}
 
-
 	public void exidDoorAvailable() throws IOException {
 
 		int playerActualXPosition = getModel().getMyPlayer().getX();
 		int playerActualYPosition = getModel().getMyPlayer().getY();
 
-//		if (((Map) this.getModel().getMap()).ifiamonExitDoor(playerActualXPosition, playerActualYPosition)) {
+		if (((Map) this.getModel().getMap()).ifiamonExitDoor(playerActualXPosition, playerActualYPosition)) {
 
-//			if (getDiamondCount() == 5) {
-				
+			if (getDiamondCount() == 5) {
+
+				getModel().getMyPlayer().setAlive(false);
+
 				news("You Win !!!");
-				
-				this.getView().getBoardFrame().setVisible(false);
-				
-//			}
 
-//		}
+			}
+
+		}
 
 	}
 
@@ -176,22 +174,13 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 			@Override
 			public void paintComponent(Graphics g) {
 				super.paintComponent(g);
-				g.setColor(Color.BLUE);
-				g.fillRect(0, 0, 100, 100);
+				int SQUARE_DIMEN = 25;
+
+				g.setFont(new Font("Helvetica", Font.BOLD | Font.ITALIC, 20));
+				g.drawString(msg, SQUARE_DIMEN * 6 - 10, SQUARE_DIMEN * 7 - 5);
 			}
 		};
 		frame.add(panel);
-
-		Graphics g = panel.getGraphics();
-
-		int SQUARE_DIMEN = 25;
-		g.setColor(Color.darkGray);
-		g.fillRect(SQUARE_DIMEN * 2, SQUARE_DIMEN * 4, SQUARE_DIMEN * 16, SQUARE_DIMEN * 5);
-
-		g.fillRect(SQUARE_DIMEN * 3, SQUARE_DIMEN * 5, SQUARE_DIMEN * 14, SQUARE_DIMEN * 3);
-
-		g.setFont(new Font("Helvetica", Font.BOLD | Font.ITALIC, 20));
-		g.drawString(msg, SQUARE_DIMEN * 6 - 10, SQUARE_DIMEN * 7 - 5);
 
 		frame.validate(); // because you added panel after setVisible was called
 		frame.repaint(); // because you added panel after setVisible was called

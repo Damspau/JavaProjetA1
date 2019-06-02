@@ -8,12 +8,12 @@ import java.io.IOException;
 
 import javax.swing.SwingUtilities;
 
+import org.showboard.BoardFrame;
+
 import contract.IBoulderdashView;
 import contract.IMap;
 import contract.IOrderPerformer;
 import contract.UserOrder;
-import contract.IElements;
-import org.showboard.*;
 import mobile.CommonMobile;
 
 /**

@@ -11,7 +11,6 @@ import org.showboard.ISquare;
 
 import contract.IElements;
 import contract.IMap;
-import contract.Sprite;
 import entity.DB;
 import mobile.CommonMobile;
 import mobile.MobileElementsFactory;
@@ -55,8 +54,6 @@ public class Map extends Observable implements IMap {
 				CommonMotionless motionLessElement = factoryMotionless.getFromFileSymbol(line.toCharArray()[x]);
 				if (motionLessElement == null) {
 					if (c == 'P') {
-						System.out.println(x);
-						System.out.println(y);
 						setActualXPlayer(x);
 						setActualYPlayer(y);
 						motionLessElement = factoryMotionless.getFromFileSymbol('*');
@@ -103,7 +100,7 @@ public class Map extends Observable implements IMap {
 			return (false);
 		}
 	}
-	
+
 	public Boolean updateMapDiams(int playerActualXPosition, int playerActualYPosition) throws IOException {
 
 		MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
@@ -122,7 +119,7 @@ public class Map extends Observable implements IMap {
 			return (false);
 		}
 	}
-	
+
 	public Boolean ifiamonExitDoor(int playerActualXPosition, int playerActualYPosition) throws IOException {
 
 		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
@@ -132,7 +129,6 @@ public class Map extends Observable implements IMap {
 			return (false);
 		}
 	}
-
 
 	public void setOnTheMap(IElements mobileElement, int x, int y) {
 		this.onTheMap[x][y] = mobileElement;
