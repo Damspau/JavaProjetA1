@@ -21,16 +21,16 @@ import mobile.CommonMobile;
  *
  * @author Maxime G, Damiens et Benoît D
  */
-public final class View implements IBoulderdashView, Runnable, KeyListener{
+public final class View implements IBoulderdashView, Runnable, KeyListener {
 
 	// All the different attributes.
 
 	private CommonMobile myPlayer;
 
 	/** The Constant mapView. */
-	private static final int mapView = 16;
+	private static final int mapView = 22;
 
-	/** The size of the elements */
+	/** The Constant squareSize. */
 	private static final int squareSize = 45;
 
 	/** The Constant closeView. */
@@ -44,71 +44,62 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 
 	/** The order performer. */
 	private IOrderPerformer orderPerformer;
-	private BoardFrame boardFrame; 
-	
 
+	private BoardFrame boardFrame;
 
+	public BoardFrame getBoardFrame() {
+		return boardFrame;
+	}
 
-
-
+	public void setBoardFrame(BoardFrame boardFrame) {
+		this.boardFrame = boardFrame;
+	}
 
 	public View(final IMap map, CommonMobile Player) throws IOException {
 		this.setView(mapView);
 		this.setMap(map);
-		//set the window :
-		
-		this.setMyPlayer(Player);	
+		// set the window :
+
+		this.setMyPlayer(Player);
 		this.getMyPlayer().getSprite().loadImage();
 		this.setCloseView(new Rectangle(0, 0, this.getMap().getWidth(), this.getMap().getHeight()));
-		
-	SwingUtilities.invokeLater(this);
 
+		SwingUtilities.invokeLater(this);
 
 	}
+
+
 
 	public final void run() {
 		this.setBoardFrame(new BoardFrame("BoulderDash"));
 		this.getBoardFrame().setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
-	        this.getBoardFrame().setDisplayFrame(this.closeView);
-	        this.getBoardFrame().setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
-	        this.getBoardFrame().setHeightLooped(false);
-	        //add a key listener on THIS window
-	        this.getBoardFrame().addKeyListener(this);
-	      //special key disabled :
-	        this.getBoardFrame().setFocusTraversalKeysEnabled(false);
+		this.getBoardFrame().setDisplayFrame(this.closeView);
+		this.getBoardFrame().setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
+		this.getBoardFrame().setHeightLooped(false);
+		// add a key listener on THIS window
+		this.getBoardFrame().addKeyListener(this);
+		// special key disabled :
+		this.getBoardFrame().setFocusTraversalKeysEnabled(false);
 
-	        for (int x = 0; x < this.getMap().getWidth(); x++) {
-	      
-	            for (int y = 0; y < this.getMap().getHeight(); y++) {
-		        	
-	            	this.getBoardFrame().addSquare(this.map.getOnTheMap(x, y), x, y);
-	            }
-	        }
-	        this.getBoardFrame().addPawn(this.getMyPlayer());
+		for (int x = 0; x < this.getMap().getWidth(); x++) {
 
-	        this.getMap().getObservable().addObserver(boardFrame.getObserver());
-	     
+			for (int y = 0; y < this.getMap().getHeight(); y++) {
 
-	        this.getBoardFrame().setVisible(true);
-	    }
+				this.getBoardFrame().addSquare(this.map.getOnTheMap(x, y), x, y);
+			}
+		}
+		this.getBoardFrame().addPawn(this.getMyPlayer());
 
+		this.getMap().getObservable().addObserver(boardFrame.getObserver());
 
-
-//	
-
-
-
-
-
+		this.getBoardFrame().setVisible(true);
+	}
 
 	protected UserOrder keyCodeToUserOrder(int keyCode) {
 		UserOrder userOrder;
 		switch (keyCode) {
 		case KeyEvent.VK_LEFT:
-			System.out.println(keyCode);
-			System.out.println(KeyEvent.VK_LEFT);
 			userOrder = UserOrder.LEFT;
-			System.out.println("okkey");
 			break;
 		case KeyEvent.VK_UP:
 			userOrder = UserOrder.UP;
@@ -127,22 +118,28 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	}
 
 	public void keyTyped(final KeyEvent e) {
-		/* not important for our program but necessary to implements because of the intefaces */
+		/*
+		 * not important for our program but necessary to implements because of the
+		 * intefaces
+		 */
 
 	}
+
 	@Override
 	public void keyPressed(final KeyEvent keyInput) {
-	    try {
-	    	
-            this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyInput.getKeyCode()));
-        } catch (final IOException exception) {
-            exception.printStackTrace();
-        }
-    }
+		try {
 
+			this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyInput.getKeyCode()));
+		} catch (final IOException exception) {
+			exception.printStackTrace();
+		}
+	}
 
 	public void keyReleased(final KeyEvent e) {
-		/* not important for our program but necessary to implements because of the intefaces */
+		/*
+		 * not important for our program but necessary to implements because of the
+		 * intefaces
+		 */
 	}
 
 
@@ -154,8 +151,11 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 
 	public void setMap(IMap map) throws IOException {
 		this.map = map;
- 
-        }
+//        for (int x = 0; x < this.getMap().getWidth(); x++) {
+//            for (int y = 0; y < this.getMap().getHeight(); y++) {
+//               ((IElements) this.getMap().getOnTheMap(x, y)).getSprite().loadImage();
+//            }
+	}
 
 	public CommonMobile getMyPlayer() {
 		return myPlayer;
@@ -164,9 +164,6 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	public void setMyPlayer(CommonMobile myPlayer) {
 		this.myPlayer = myPlayer;
 	}
-
-
-
 
 	public Rectangle getCloseView() {
 		return closeView;
@@ -182,7 +179,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	}
 
 	public void setOrderPerformer(IOrderPerformer orderPerformer) {
-		
+
 		this.orderPerformer = orderPerformer;
 	}
 
@@ -202,7 +199,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 		this.boardFrame = boardFrame;
 	}
 
-	
+
 
 
 
@@ -215,13 +212,3 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 
 
 	}
-
-
-
-
-	
-
-
-	
-
-

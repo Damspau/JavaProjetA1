@@ -6,7 +6,7 @@ import contract.Permeability;
 import contract.Sprite;
 
 public class Dirt extends CommonMotionless{
-	private final static Sprite sprite = new Sprite('t', "t.png");
+	private final static Sprite sprite = new Sprite('-', "-.jpg");
 	
 	public Dirt() {
 		// TODO Auto-generated constructor stub

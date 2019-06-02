@@ -14,7 +14,7 @@ public interface IBoulderdashController {
 	public void orderPerform(UserOrder controllerOrder) throws IOException;
 
 
-	void play() throws InterruptedException;
+	void play() throws InterruptedException, IOException;
 
 	
 	IOrderPerformer getOrderPerformer();

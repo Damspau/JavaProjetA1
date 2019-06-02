@@ -1,13 +1,15 @@
 package mobile;
 
-import elements.*;
-
 import java.awt.Point;
 
-import contract.*;
-import org.showboard.*;
+import org.showboard.IBoard;
 
-public abstract class CommonMobile  extends Elements {
+import contract.IMap;
+import contract.Permeability;
+import contract.Sprite;
+import elements.Elements;
+
+public abstract class CommonMobile extends Elements {
 
 	private Point position;
 	private IBoard board;
@@ -16,11 +18,12 @@ public abstract class CommonMobile  extends Elements {
 	public IMap getMap() {
 		return map;
 	}
+
 	public void setMap(IMap map) {
 		this.map = map;
 	}
-	
-	
+
+
 //	public CommonMobile(Sprite sprite, Permeability permeability, IMap map) {
 //		super(sprite, permeability);
 //		this.setMap(map);
@@ -30,13 +33,13 @@ public abstract class CommonMobile  extends Elements {
 
 	//Override
 	protected CommonMobile(Sprite sprite, Permeability permeability, int x, int y, IMap map) {
-		
+
 		super(sprite, permeability);
 		this.setMap(map);
-		
-		
-		
+
+
 	}
+
 	public Point getPosition() {
 		return position;
 	}
@@ -48,53 +51,42 @@ public abstract class CommonMobile  extends Elements {
 	public IBoard getBoard() {
 		return board;
 	}
-	
-	
+
 	public void moveLeft() {
-		 this.setX(this.getX() - 1);
-	        this.setHasMoved();
-		
+		this.setX(this.getX() - 1);
+		this.setHasMoved();
+
 	}
-	
-	
-	
+
 	public void moveRight() {
-		 this.setX(this.getX() + 1);
-	        this.setHasMoved();
-		
+		this.setX(this.getX() + 1);
+		this.setHasMoved();
+
 	}
-	
-	
-	
-	
+
 	public void moveUp() {
 		 this.setY(this.getY()  -1);
 	        this.setHasMoved();
-		
+
 	}
-	
-	
-	
-	
-	
+
 	public void moveDown() {
 		 this.setY(this.getY() + 1);
 	        this.setHasMoved();
-		
+
 	}
-	
-	
-	    
+
 	public void doNothing() {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	 private void setHasMoved() {
-	        this.getMap().setMobileHasChanged();
-	 }
+
+	private void setHasMoved() {
+		this.getMap().setMobileHasChanged();
+	}
+
 	public boolean isAlive() {
-		
+
 		return true;
 	}
 

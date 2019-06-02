@@ -64,7 +64,7 @@ public class BoardFrame extends JFrame implements IBoard {
      *            the title display, false is for the border
      */
     public BoardFrame(final String title) {
-        this(title, false);
+        this(title, true);
     }
 
     /**

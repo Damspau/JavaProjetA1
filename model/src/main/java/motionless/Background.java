@@ -7,7 +7,7 @@ import contract.*;
 
 
 public class Background extends CommonMotionless{
-	private final static Sprite sprite = new Sprite('b', "b.jpg");
+	private final static Sprite sprite = new Sprite('*', "background.jpg");
 	
 	public Background() {
 

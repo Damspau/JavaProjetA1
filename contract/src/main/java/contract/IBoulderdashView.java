@@ -1,8 +1,7 @@
 package contract;
 
 import contract.IMap;
-
-
+import org.showboard.*;
 
 /**
  * The Interface IBoulderdashView.
@@ -13,11 +12,13 @@ public interface IBoulderdashView {
 
 
 
-	
-	
-	
+
+
+
 
 	IMap getMap();
 
 	IElements getMyPlayer();
+
+	BoardFrame getBoardFrame();
 }
