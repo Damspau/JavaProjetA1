@@ -14,6 +14,7 @@ public abstract class CommonMobile extends Elements {
 	private Point position;
 	private IBoard board;
 	private IMap map;
+	private int velocity;
 
 	public IMap getMap() {
 		return map;
@@ -93,6 +94,14 @@ public abstract class CommonMobile extends Elements {
 	public void setAlive(boolean b) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public int getVelocity() {
+		return velocity;
+	}
+
+	public void setVelocity(int velocity) {
+		this.velocity = velocity;
 	}
 
 }

@@ -5,6 +5,7 @@ import contract.*;
 public class Rock extends CommonMobile {
 	private boolean validMove;
 
+
 	/** The Constant SPRITE. */
 	private final static Sprite sprite = new Sprite('R', "R.jpg");
 
@@ -42,10 +43,15 @@ public class Rock extends CommonMobile {
 		// TODO Auto-generated constructor stub
 	}
 
+
+
 //	public Rock(Sprite sprite, Permeability permeability) {
 ////		super(sprite, permeability, null);
 ////		// TODO Auto-generated constructor stub
 	//}
+	
+	
+	
 
 
 }

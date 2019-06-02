@@ -19,5 +19,9 @@ public interface ISquare {
      */
     Image getImage();
 
+	
+
+	
+
 
 }
