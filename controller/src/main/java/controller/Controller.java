@@ -95,6 +95,8 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 				break;
 			}
 
+			this.checkBorderPlayer();
+
 			this.canBeDig();
 
 			this.collect();
@@ -102,6 +104,33 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 			this.exidDoorAvailable();
 
 			this.clearStackOrder();
+
+		}
+
+	}
+
+	public void checkBorderPlayer() throws IOException {
+
+		int playerActualXPosition = getModel().getMyPlayer().getX();
+		int playerActualYPosition = getModel().getMyPlayer().getY();
+
+		System.out.println("X=" + playerActualXPosition);
+		System.out.println("Y=" + playerActualYPosition);
+
+		if (((Map) this.getModel().getMap()).ifiamonBorder(playerActualXPosition, playerActualYPosition)) {
+
+			if (playerActualXPosition == 0) {
+				getModel().getMyPlayer().moveRight();
+			}
+			if (playerActualXPosition == 39) {
+				getModel().getMyPlayer().moveLeft();
+			}
+			if (playerActualYPosition == 0) {
+				getModel().getMyPlayer().moveDown();
+			}
+			if (playerActualYPosition == 21) {
+				getModel().getMyPlayer().moveUp();
+			}
 
 		}
 

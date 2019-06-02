@@ -129,6 +129,16 @@ public class Map extends Observable implements IMap {
 			return (false);
 		}
 	}
+	
+	public Boolean ifiamonBorder(int playerActualXPosition, int playerActualYPosition) throws IOException {
+
+		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
+				.getImageName() == "B.jpg") {
+			return (true);
+		} else {
+			return (false);
+		}
+	}
 
 	public void setOnTheMap(IElements mobileElement, int x, int y) {
 		this.onTheMap[x][y] = mobileElement;
