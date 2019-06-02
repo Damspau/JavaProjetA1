@@ -30,8 +30,8 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	/** The Constant mapView. */
 	private static final int mapView = 16;
 
-	/** The Constant squareSize. */
-	private static final int squareSize = 50;
+	/** The size of the elements */
+	private static final int squareSize = 45;
 
 	/** The Constant closeView. */
 	private Rectangle closeView;
@@ -44,6 +44,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 
 	/** The order performer. */
 	private IOrderPerformer orderPerformer;
+	private BoardFrame boardFrame; 
 	
 
 
@@ -58,7 +59,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 		
 		this.setMyPlayer(Player);	
 		this.getMyPlayer().getSprite().loadImage();
-		this.setCloseView(new Rectangle(0, 0, this.getMap().getWidth(), mapView));
+		this.setCloseView(new Rectangle(0, 0, this.getMap().getWidth(), this.getMap().getHeight()));
 		
 	SwingUtilities.invokeLater(this);
 
@@ -66,33 +67,34 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	}
 
 	public final void run() {
-		final BoardFrame boardFrame = new BoardFrame("BoulderDash");
-		 boardFrame.setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
-	        boardFrame.setDisplayFrame(this.closeView);
-	        boardFrame.setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
-	        boardFrame.setHeightLooped(false);
-	        boardFrame.addKeyListener(this);
-	        boardFrame.setFocusable(true);
-	        boardFrame.setFocusTraversalKeysEnabled(false);
+		this.setBoardFrame(new BoardFrame("BoulderDash"));
+		this.getBoardFrame().setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
+	        this.getBoardFrame().setDisplayFrame(this.closeView);
+	        this.getBoardFrame().setSize(this.closeView.width * squareSize, this.closeView.height * squareSize);
+	        this.getBoardFrame().setHeightLooped(false);
+	        //add a key listener on THIS window
+	        this.getBoardFrame().addKeyListener(this);
+	      //special key disabled :
+	        this.getBoardFrame().setFocusTraversalKeysEnabled(false);
 
 	        for (int x = 0; x < this.getMap().getWidth(); x++) {
 	      
 	            for (int y = 0; y < this.getMap().getHeight(); y++) {
 		        	
-	                boardFrame.addSquare(this.map.getOnTheMap(x, y), x, y);
+	            	this.getBoardFrame().addSquare(this.map.getOnTheMap(x, y), x, y);
 	            }
 	        }
-	        boardFrame.addPawn(this.getMyPlayer());
+	        this.getBoardFrame().addPawn(this.getMyPlayer());
 
 	        this.getMap().getObservable().addObserver(boardFrame.getObserver());
-	        //this.followMyPlayer();
+	     
 
-	        boardFrame.setVisible(true);
+	        this.getBoardFrame().setVisible(true);
 	    }
 
 
 
-	
+//	
 
 
 
@@ -143,9 +145,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 		/* not important for our program but necessary to implements because of the intefaces */
 	}
 
-	public void followMyPlayer() {
-	//	this.getCloseView().y = this.getMyPlayer().getY() - 5;
-	}
+
 
 	public IMap getMap() {
 		return map;
@@ -154,13 +154,9 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 
 	public void setMap(IMap map) throws IOException {
 		this.map = map;
-//        for (int x = 0; x < this.getMap().getWidth(); x++) {
-//            for (int y = 0; y < this.getMap().getHeight(); y++) {
-//               ((IElements) this.getMap().getOnTheMap(x, y)).getSprite().loadImage();
-//            }
+ 
         }
 
-//	}
 	public CommonMobile getMyPlayer() {
 		return myPlayer;
 	}
@@ -197,6 +193,16 @@ public final class View implements IBoulderdashView, Runnable, KeyListener{
 	public void setView(int view) {
 		this.view = view;
 	}
+
+	public BoardFrame getBoardFrame() {
+		return boardFrame;
+	}
+
+	public void setBoardFrame(BoardFrame boardFrame) {
+		this.boardFrame = boardFrame;
+	}
+
+	
 
 
 

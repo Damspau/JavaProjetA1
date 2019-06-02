@@ -28,10 +28,10 @@ import javax.swing.JFrame;
 public class BoardFrame extends JFrame implements IBoard {
 
     /** The Constant serialVersionUID. */
-    private static final long serialVersionUID = -6563585351564617603L;
+    private final long serialVersionUID = -6563585351564617603L;
 
     /** The initial frame size. */
-    private static final int  defaultFrameSize = 700;
+    private  final int  defaultFrameSize = 700;
 
     /** The board panel. */
     private final BoardPanel  boardPanel;
@@ -61,7 +61,7 @@ public class BoardFrame extends JFrame implements IBoard {
      * Instantiates a new board frame.
      *
      * @param title
-     *            the title
+     *            the title display, false is for the border
      */
     public BoardFrame(final String title) {
         this(title, false);

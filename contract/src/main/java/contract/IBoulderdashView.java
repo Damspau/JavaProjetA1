@@ -15,7 +15,7 @@ public interface IBoulderdashView {
 
 	
 	
-	void followMyPlayer();
+	
 
 	IMap getMap();
 

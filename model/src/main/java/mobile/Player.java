@@ -14,11 +14,11 @@ public class Player extends CommonMobile {
 
 
 	public Player(int x,int y, IMap map) throws IOException {
+		
 		super(sprite, Permeability.BREAKABLE, x, y, map);
-		spriteMoveLeft.loadImage();
-		spriteMoveRight.loadImage();
-		spriteMoveDown.loadImage();
-		spriteMoveUp.loadImage();
+		
+		
+		
 		
 	}
 	
