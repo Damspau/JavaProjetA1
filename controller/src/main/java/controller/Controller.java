@@ -4,9 +4,12 @@ import java.io.IOException;
 
 import contract.IBoulderdashController;
 import contract.IBoulderdashView;
+import contract.IElements;
 import contract.IOrderPerformer;
 import contract.UserOrder;
+import elements.Elements;
 import elements.Map;
+import mobile.CommonMobile;
 import model.IBoulderdashModel;
 
 /**
@@ -62,8 +65,9 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	public final void play() throws InterruptedException, IOException {
 
 		while (this.getModel().getMyPlayer().isAlive()) {
-
+			
 			Thread.sleep(300);
+			
 
 			switch (this.getStackOrder()) {
 			case RIGHT:
@@ -89,12 +93,22 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 				getModel().getMyPlayer().doNothing();
 				break;
 			}
-
+		
 			this.canBeDig();
+			Thread.sleep(100);
+			this.fallAndKill();
+			this.IsThereARock();
+			
+			
 
 			this.clearStackOrder();
-
 		}
+	
+			
+			
+			
+
+		
 
 	}
 
@@ -131,8 +145,8 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 		int playerActualXPosition = getModel().getMyPlayer().getX();
 		int playerActualYPosition = getModel().getMyPlayer().getY();
 
-		System.out.println(playerActualXPosition);
-		System.out.println(playerActualYPosition);
+
+
 
 		if (((Map) this.getModel().getMap()).updateMap(playerActualXPosition, playerActualYPosition)) {
 
@@ -141,14 +155,89 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 		}
 	}
 
-	public void fallAndKill() {
+	public void IsThereARock() throws IOException {
+		int playerActualXPosition = getModel().getMyPlayer().getX();
+		int playerActualYPosition = getModel().getMyPlayer().getY();
+		String result = ((Map) this.getModel().getMap()).updateRockMap(playerActualXPosition, playerActualYPosition, getStackOrder());
 
-	}
+		
+		switch (result) {
+			case "rockPushRight":
+				//even if this line is quite scary it only add a background to where the rock was and the next one add a rock next to it
+				this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(this.getModel().getMyPlayer().getX(),this.getModel().getMyPlayer().getY()),this.getModel().getMyPlayer().getX(), this.getModel().getMyPlayer().getY());
+				this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(this.getModel().getMyPlayer().getX()+1,this.getModel().getMyPlayer().getY()),this.getModel().getMyPlayer().getX()+1, this.getModel().getMyPlayer().getY());
+				break;
+				
+			case "rockPushLeft":
+				this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(this.getModel().getMyPlayer().getX(),this.getModel().getMyPlayer().getY()),this.getModel().getMyPlayer().getX(), this.getModel().getMyPlayer().getY());
+				this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(this.getModel().getMyPlayer().getX()-1,this.getModel().getMyPlayer().getY()),this.getModel().getMyPlayer().getX()-1, this.getModel().getMyPlayer().getY());
+				break;
+			case "playerGoBackRight":
+					getModel().getMyPlayer().moveRight();
+				break;
+			case "playerGoBackLeft":
+			
+					getModel().getMyPlayer().moveLeft();
+				
+				break;
+			case "playerGoBackUp" :
+					getModel().getMyPlayer().moveUp();
+			case "YouDied" :
+				 getModel().getMyPlayer().setAlive(false);
+				 System.out.println("u dead");
+					 
+			
+	
+			default:
+				break;
+		}
+		
+			
+				
+											}
+
+	
+	
+	
+	public void fallAndKill() {
+		
+		//we go through the all map to detect if there is a rock who is waiting to fall
+		for (int x = 0; x < this.getView().getMap().getWidth(); x++) {
+
+			for (int y = 0; y < this.getView().getMap().getHeight(); y++) {
+
+				if (	(	((Elements) this.getView().getMap().getOnTheMap(x, y)).getSprite().getImageName()==("R.jpg") 	) 	||	(	((Elements) this.getView().getMap().getOnTheMap(x, y)).getSprite().getImageName()==("D.jpg")	)	){
+					if (((Elements) this.getView().getMap().getOnTheMap(x, y+1)).getSprite().getImageName()=="background.jpg") {
+					
+					//this line is setting up the rock in his new position
+					this.getView().getMap().setOnTheMap((IElements) this.getView().getMap().getOnTheMap(x, y),x,y+1);
+
+//					this.getView().getMap().setOnTheMap((IElements) this.getView().getMap().getOnTheMap(x, y),(((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).getX()), (((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).getY()));
+					this.getView().getMap().setOnTheMap(this.getModel().backgroundFastCreator(), x, y);
+					//adding on the boardframe
+					this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(x,y),x, y);
+					this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(x,y+1),x, y+1);
+					}
+					if (	(x==getModel().getMyPlayer().getX()) && (y+1==getModel().getMyPlayer().getY())	) {
+						
+						
+					}
+					
+					
+					
+					}
+				}
+			}
+		}
+		
+		
+		
+	
 
 	private void setStackOrder(final UserOrder stackOrder) {
 
 		this.stackOrder = stackOrder;
-		System.out.println(stackOrder);
+		
 	}
-
+	
 }

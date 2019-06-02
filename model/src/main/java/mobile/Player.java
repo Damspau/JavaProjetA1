@@ -87,7 +87,7 @@ public class Player extends CommonMobile {
 	public boolean isAlive() {
 		return alive;
 	}
-
+	@Override
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}

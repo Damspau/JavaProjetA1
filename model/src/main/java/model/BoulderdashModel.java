@@ -6,6 +6,8 @@ import contract.IMap;
 import elements.Map;
 import mobile.CommonMobile;
 import mobile.Player;
+import motionless.Background;
+import motionless.CommonMotionless;
 
 public class BoulderdashModel implements IBoulderdashModel {
 
@@ -34,6 +36,10 @@ public class BoulderdashModel implements IBoulderdashModel {
 	public void setMyPlayer(CommonMobile myPlayer) {
 		this.myPlayer = myPlayer;
 
+	}
+	//i know i should create a function to get the factory but I don't have anymore time so I'm instatiating a new background directly
+	public CommonMotionless backgroundFastCreator() {
+		return new Background();
 	}
 
 	public IMap getMap() {

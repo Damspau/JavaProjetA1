@@ -6,6 +6,7 @@ package model;
 
 import contract.IMap;
 import mobile.CommonMobile;
+import motionless.CommonMotionless;
 
 /**
  * The Interface IBoulderdashModel.
@@ -19,5 +20,6 @@ public interface IBoulderdashModel {
 
 	public CommonMobile getMyPlayer ();
 	IMap getMap();
+	public CommonMotionless backgroundFastCreator();
 
 }

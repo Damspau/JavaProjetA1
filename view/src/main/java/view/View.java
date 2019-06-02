@@ -47,13 +47,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 
 	private BoardFrame boardFrame;
 
-	public BoardFrame getBoardFrame() {
-		return boardFrame;
-	}
 
-	public void setBoardFrame(BoardFrame boardFrame) {
-		this.boardFrame = boardFrame;
-	}
 
 	public View(final IMap map, CommonMobile Player) throws IOException {
 		this.setView(mapView);

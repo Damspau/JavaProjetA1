@@ -90,4 +90,9 @@ public abstract class CommonMobile extends Elements {
 		return true;
 	}
 
+	public void setAlive(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
