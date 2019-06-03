@@ -72,17 +72,19 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 				break;
 			}
 
-			this.checkBorderPlayer();
+			this.ifiamonBorder(this.getStackOrder());
 
 			this.IsThereARock();
-			this.resetVelocity();
-			this.fallAndKill();
+			
+			
 
 			this.canBeDig();
 
 			this.collect();
 
 			this.exidDoorAvailable();
+			this.resetVelocity();
+			this.fallAndKill();
 
 			this.clearStackOrder();
 
@@ -93,6 +95,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	public void IsThereARock() throws IOException {
 		int playerActualXPosition = getModel().getMyPlayer().getX();
 		int playerActualYPosition = getModel().getMyPlayer().getY();
+		
 		String result = ((Map) this.getModel().getMap()).updateRockMap(playerActualXPosition, playerActualYPosition,
 				getStackOrder());
 
@@ -130,6 +133,9 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 			break;
 		case "playerGoBackUp":
 			getModel().getMyPlayer().moveUp();
+			break;
+		case "playerGoBackDown":
+			getModel().getMyPlayer().moveDown();
 
 		default:
 			break;
@@ -264,33 +270,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	}
 
-	/**
-	 * Manage the map borders
-	 * 
-	 */
-	public void checkBorderPlayer() throws IOException {
 
-		int playerActualXPosition = getModel().getMyPlayer().getX();
-		int playerActualYPosition = getModel().getMyPlayer().getY();
-
-		if (((Map) this.getModel().getMap()).ifiamonBorder(playerActualXPosition, playerActualYPosition)) {
-
-			if (playerActualXPosition == 0) {
-				getModel().getMyPlayer().moveRight();
-			}
-			if (playerActualXPosition == 39) {
-				getModel().getMyPlayer().moveLeft();
-			}
-			if (playerActualYPosition == 0) {
-				getModel().getMyPlayer().moveDown();
-			}
-			if (playerActualYPosition == 21) {
-				getModel().getMyPlayer().moveUp();
-			}
-
-		}
-
-	}
 
 	public int getDiamondCount() {
 		return diamondCount;
@@ -395,9 +375,36 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 		}
 	}
+	/**
+	 * Manage the map borders
+	 * 
+	 */
 
-	public void canBePushed() {
+	public void ifiamonBorder(UserOrder userOrder) throws IOException {
+		int playerActualXPosition = getModel().getMyPlayer().getX();
+		int playerActualYPosition = getModel().getMyPlayer().getY();
 
+		if (((IElements) this.getView().getMap().getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName() == "B.jpg") {
+			switch (userOrder) {
+			case LEFT:
+				getModel().getMyPlayer().moveRight();
+				break;
+			case RIGHT:
+				getModel().getMyPlayer().moveLeft();
+				break;
+			case UP:
+				getModel().getMyPlayer().moveDown();
+				break;
+				
+			case DOWN:
+				getModel().getMyPlayer().moveUp();
+				break;
+
+			default:
+				break;
+			}
+		
+		}
 	}
 
 	public IOrderPerformer getOrderPerformer() {
@@ -440,5 +447,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	private IBoulderdashModel getModel() {
 		return this.model;
 	}
+	
+	
 
 }

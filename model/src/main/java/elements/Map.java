@@ -91,8 +91,7 @@ public class Map extends Observable implements IMap {
 	public String updateRockMap(int playerActualXPosition, int playerActualYPosition, UserOrder userOrder)
 			throws IOException {
 		String retour;
-		if ((((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
-				.getImageName() == "R.jpg") && (userOrder == UserOrder.RIGHT)) {
+		if ((((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName() == "R.jpg") && (userOrder == UserOrder.RIGHT)) {
 
 			if (((IElements) getOnTheMap(playerActualXPosition + 1, playerActualYPosition)).getSprite()
 					.getImageName() == "background.jpg") {
@@ -114,8 +113,7 @@ public class Map extends Observable implements IMap {
 			}
 
 			return retour;
-		} else if ((((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
-				.getImageName() == "R.jpg") && (userOrder == UserOrder.LEFT)) {
+		} else if ((((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName() == "R.jpg") && (userOrder == UserOrder.LEFT)) {
 
 			if (((IElements) getOnTheMap(playerActualXPosition - 1, playerActualYPosition)).getSprite()
 					.getImageName() == "background.jpg") {
@@ -136,10 +134,13 @@ public class Map extends Observable implements IMap {
 
 			}
 			return retour;
-		} else if ((((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
-				.getImageName() == "R.jpg") && (userOrder == UserOrder.DOWN)) {
+		} else if ((((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName() == "R.jpg") && (userOrder == UserOrder.DOWN)) {
 
 			retour = "playerGoBackUp";
+			return retour;
+		}
+		else if ((((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName() == "R.jpg") && (userOrder == UserOrder.UP)) {
+			retour = "playerGoBackDown";
 			return retour;
 		}
 
@@ -198,15 +199,7 @@ public class Map extends Observable implements IMap {
 		}
 	}
 
-	public Boolean ifiamonBorder(int playerActualXPosition, int playerActualYPosition) throws IOException {
-
-		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
-				.getImageName() == "B.jpg") {
-			return (true);
-		} else {
-			return (false);
-		}
-	}
+	
 
 	public void setOnTheMap(IElements mobileElement, int x, int y) {
 		this.onTheMap[x][y] = mobileElement;
