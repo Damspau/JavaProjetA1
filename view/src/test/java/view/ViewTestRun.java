@@ -1,8 +1,6 @@
-package model;
+package view;
 
 import static org.junit.Assert.assertNotNull;
-
-import java.io.IOException;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -10,9 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import elements.Map;
-
-public class ModelTest {
+public class ViewTestRun {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -22,13 +18,10 @@ public class ModelTest {
 	public static void tearDownAfterClass() throws Exception {
 	}
 
-	private String filename = "main/map.txt";
-	private Map map;
-	private void setMap(Map map) {
-		this.map = map;
-		
-	}
-
+	private int mapView;
+	@SuppressWarnings("unused")
+	private int view;
+	
 	@Before
 	public void setUp() throws Exception {
 	}
@@ -38,10 +31,18 @@ public class ModelTest {
 	}
 
 	@Test
-	public void testBoulderdashModel() throws IOException {
-		this.setMap(new Map(filename));
-		assertNotNull("Map is not null", map);
+	public void ViewTest() {
+	this.setView(mapView);
+	assertNotNull("Mapview isn't empty", mapView);
 	}
+
+	private void setView(int view) {
+		this.view = view;
+	}
+
+	
+
+	
 
 	
 

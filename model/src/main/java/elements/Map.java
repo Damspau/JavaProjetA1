@@ -9,12 +9,10 @@ import java.util.Observable;
 
 import org.showboard.ISquare;
 
-
 import contract.IElements;
 import contract.IMap;
 import mobile.CommonMobile;
 import mobile.MobileElementsFactory;
-import mobile.Player;
 import motionless.CommonMotionless;
 import motionless.MotionlessElementsFactory;
 
@@ -25,9 +23,6 @@ public class Map extends Observable implements IMap {
 	private IElements [][] onTheMap;
 	private int actualXPlayer;
 	private int actualYPlayer;
-	private CommonMobile playerDetector;
-	
-	
 	public Map(final String fileName) throws IOException {
 		
 		this.loadFile(fileName);

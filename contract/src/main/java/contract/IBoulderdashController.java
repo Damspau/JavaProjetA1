@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * The Interface IBoulderdashController.
  *
- * @author Benoît D, Damiens and Maxime G
+ * @author Benoît D, Damien and Maxime G
  */
 public interface IBoulderdashController {
 

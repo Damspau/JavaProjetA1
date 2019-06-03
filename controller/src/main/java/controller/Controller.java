@@ -2,11 +2,7 @@ package controller;
 
 import java.io.IOException;
 
-import contract.IBoulderdashController;
-import contract.IBoulderdashView;
-import contract.IOrderPerformer;
-import contract.UserOrder;
-import mobile.CommonMobile;
+import contract.*;
 import model.IBoulderdashModel;
 
 
@@ -156,7 +152,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	public void fallAndKill() {
 
 	}
-	private void setStackOrder(final UserOrder stackOrder) {
+	public void setStackOrder(final UserOrder stackOrder) {
 		
 		this.stackOrder = stackOrder;
 		System.out.println(stackOrder);
