@@ -11,11 +11,11 @@ import java.sql.SQLException;
 /**
  * <h1>The Class DB.</h1>
  *
- * @author Damiens, Benoît D et Maxime G
+ * @author  Maxime G, Benoît D and Damien B,
  */
 public class DB {
-
-	public static void lireEnBase() throws IOException {
+	
+	public static void dbReading() throws IOException {
 
 		String url = "jdbc:mysql://localhost:3306/maps?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		String login = "root";

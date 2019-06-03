@@ -8,13 +8,19 @@ import mobile.CommonMobile;
 import mobile.Player;
 import motionless.Background;
 import motionless.CommonMotionless;
-
+/**
+ * <h1>the class Model</h1>
+ * @author  Damien B, Maxime G and Benoît D
+ * @version 1.0
+ */
 public class BoulderdashModel implements IBoulderdashModel {
 
 	private IMap map;
 
 	private CommonMobile myPlayer;
-
+	/**
+	 * create the model
+	 */
 	public BoulderdashModel(final String fileName) throws IOException {
 		// TODO Auto-generated constructor stub
 		this.setMap(new Map(fileName));
@@ -46,7 +52,9 @@ public class BoulderdashModel implements IBoulderdashModel {
 		this.map = map;
 
 	}
-	
+	/**
+	 * i know i should create a function to get the factory but I don't have anymore time so I'm instatiating a new background directly
+	 */
 	//i know i should create a function to get the factory but I don't have anymore time so I'm instatiating a new background directly
 	public CommonMotionless backgroundFastCreator() {
 		return new Background();

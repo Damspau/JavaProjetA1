@@ -22,8 +22,6 @@ public class Sprite {
 	private String imageName;
 	/**
 	 * Constructor, setting up the imagename and loading the image
-	 * @param character
-	 * @param imageName
 	 */
 	public Sprite(char character, String imageName) {
 		try {

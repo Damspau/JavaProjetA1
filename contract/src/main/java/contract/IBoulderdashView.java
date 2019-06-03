@@ -12,18 +12,18 @@ public interface IBoulderdashView {
 	
 	/**
 	 * return the maps
-	 * @return
+	 
 	 */
 	IMap getMap();
 	
 	/**
 	 * return the player
-	 * @return
+	 
 	 */
 	IElements getMyPlayer();
 	/**
 	 * return the boardFrame
-	 * @return
+	 
 	 */
 	BoardFrame getBoardFrame();
 

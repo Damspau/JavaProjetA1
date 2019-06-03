@@ -40,9 +40,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	 */
 	private IBoulderdashView view;
 	/**
-	 * setting up the view and the model for the controller
-	 * @param view
-	 * @param model
+	 * setting up the view and the model for the controller	
 	 */
 	public Controller(final IBoulderdashView view, final IBoulderdashModel model) {
 		this.setView(view);
@@ -100,7 +98,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	}
 	/**
 	 * All the interactions with the player and the rock for the push
-	 * @throws IOException
+	 
 	 */
 	public void IsThereARock() throws IOException {
 		int playerActualXPosition = getModel().getMyPlayer().getX();
@@ -270,7 +268,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	/**
 	 * collect diamonds
-	 * @throws IOException
+	 
 	 */
 	public void collect() throws IOException {
 
@@ -291,7 +289,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	/**
 	 * Open the door when you have 5 diamonds
-	 * @throws IOException
+	
 	 */
 	public void exidDoorAvailable() throws IOException {
 
@@ -314,7 +312,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	/**
 	 * Displays msg sent in parameter!"
-	 * @param String
+	
 	 */
 	public void news(String msg) {
 
@@ -347,7 +345,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	/**
 	 * Can the player dig ? method
-	 * @throws IOException
+
 	 */
 	public void canBeDig() throws IOException {
 
@@ -365,8 +363,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	}
 	/**
 	 * check if there is something on the border
-	 * @param userOrder
-	 * @throws IOException
+	 
 	 */
 
 	public void ifiamonBorder(UserOrder userOrder) throws IOException {
@@ -407,7 +404,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	}
 	/**
 	 * get the current state of the player
-	 * @return
+	
 	 */
 	private UserOrder getStackOrder() {
 

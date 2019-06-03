@@ -1,11 +1,18 @@
 package motionless;
 
 import java.io.IOException;
-
+/**
+ * <h1>the class MotionlessElementsFactory</h1>
+ * @author  Damien B, Maxime G and Benoît D
+ * @version 1.0
+ */
 public class MotionlessElementsFactory {
 
 	private CommonMotionless toReturn;
+/**
+ * return the element according to the character
 
+ */
 public CommonMotionless getFromFileSymbol(final char fileSymbol) throws IOException {
 
 	switch (fileSymbol) {

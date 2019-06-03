@@ -17,9 +17,9 @@ import contract.UserOrder;
 import mobile.CommonMobile;
 
 /**
- * View
- *
- * @author Maxime G, Damiens et Benoît D
+ * <h1>the class View</h1>
+ * @author Maxime G, Damien B  and Benoît D
+ * @version 1.0
  */
 public final class View implements IBoulderdashView, Runnable, KeyListener {
 
@@ -44,7 +44,9 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 
 	/** The order performer. */
 	private IOrderPerformer orderPerformer;
-
+	/**
+	 * the boardframe
+	 */
 	private BoardFrame boardFrame;
 
 	public BoardFrame getBoardFrame() {
@@ -54,7 +56,10 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 	public void setBoardFrame(BoardFrame boardFrame) {
 		this.boardFrame = boardFrame;
 	}
-
+	/**
+	 * create the view
+	
+	 */
 	public View(final IMap map, CommonMobile Player) throws IOException {
 		this.setView(mapView);
 		this.setMap(map);
@@ -69,6 +74,9 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 	}
 
 	@Override
+	/**
+	 * display the window and the elements
+	 */
 	public final void run() {
 		this.setBoardFrame(new BoardFrame("BoulderDash"));
 		this.getBoardFrame().setDimension(new Dimension(this.getMap().getWidth(), this.getMap().getHeight()));
@@ -93,7 +101,9 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 
 		this.getBoardFrame().setVisible(true);
 	}
-
+	/**
+	 * turn the key prompt into an order
+	 */
 	protected UserOrder keyCodeToUserOrder(int keyCode) {
 		UserOrder userOrder;
 		switch (keyCode) {
@@ -115,15 +125,17 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 		}
 		return userOrder;
 	}
-
+	/**
+	 * not important for our program but necessary to implements because of the
+	 * intefaces
+	 */
 	public void keyTyped(final KeyEvent e) {
-		/*
-		 * not important for our program but necessary to implements because of the
-		 * intefaces
-		 */
+		
 
 	}
-
+	/**
+	 * if the key is pressed
+	 */
 	@Override
 	public void keyPressed(final KeyEvent keyInput) {
 		try {
@@ -141,9 +153,7 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 		 */
 	}
 
-	public void followMyPlayer() {
-		// this.getCloseView().y = this.getMyPlayer().getY() - 5;
-	}
+	
 
 	public IMap getMap() {
 		return map;

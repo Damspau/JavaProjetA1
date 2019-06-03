@@ -52,26 +52,24 @@ public class Map extends Observable implements IMap {
 	
 	/**
 	 * create the map by reading the dab
-	 * @param fileName
-	 * @throws IOException
+	
 	 */
 	public Map(final String fileName) throws IOException {
 		super();
-		DB.lireEnBase();
+		DB.dbReading();
 		this.loadFile(fileName);
 	}
 	/**
 	 * reading the temporary file
-	 * @param fileName
-	 * @throws IOException
+	
 	 */
 	private void loadFile(final String fileName) throws IOException {
 
 		final BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
 		String line = buffer.readLine();
 		int y = 0;
-		this.setWidth(compterOccurrencesLargeur(line));
-		this.setHeight(compterOccurencesHauteur(fileName));
+		this.setWidth(occurenciesCountWidth(line));
+		this.setHeight(occurenciesCountHeight(fileName));
 
 		this.onTheMap = new IElements[this.getWidth()][this.getHeight()];
 
@@ -115,11 +113,7 @@ public class Map extends Observable implements IMap {
 	}
 	/**
 	 * Update the position of the rock if the player hit them
-	 * @param playerActualXPosition
-	 * @param playerActualYPosition
-	 * @param userOrder
-	 * @return
-	 * @throws IOException
+	
 	 */
 	public String updateRockMap(int playerActualXPosition, int playerActualYPosition, UserOrder userOrder)
 			throws IOException {
@@ -184,10 +178,8 @@ public class Map extends Observable implements IMap {
 	}
 	/**
 	 * Update the position of the dirt if the player hit them
-	 * @param playerActualXPosition
-	 * @param playerActualYPosition
-	 * @return
-	 * @throws IOException
+	 
+	 
 	 */
 	public Boolean updateMapDirt(int playerActualXPosition, int playerActualYPosition) throws IOException {
 
@@ -208,7 +200,10 @@ public class Map extends Observable implements IMap {
 			return (false);
 		}
 	}
-
+	/**
+	 * return true if there is a diamond at the player pos
+	 
+	 */
 	public Boolean updateMapDiams(int playerActualXPosition, int playerActualYPosition) throws IOException {
 
 		MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
@@ -227,11 +222,14 @@ public class Map extends Observable implements IMap {
 			return (false);
 		}
 	}
-
+	
+	/**
+	 * check if there is the exit door
+	 *
+	 */
 	public Boolean ifiamonExitDoor(int playerActualXPosition, int playerActualYPosition) throws IOException {
 
-		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
-				.getImageName() == "E.jpg") {
+		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName() == "E.jpg") {
 			return (true);
 		} else {
 			return (false);
@@ -272,29 +270,35 @@ public class Map extends Observable implements IMap {
 		// TODO Auto-generated method stub
 		return this.height;
 	}
-
+	/**
+	 * notify the observers
+	 */
 	@Override
 	public void setMobileHasChanged() {
 		this.setChanged();
 		this.notifyObservers();
 
 	}
-
+	
 	@Override
 	public Observable getObservable() {
 		// TODO Auto-generated method stub
 		return this;
 	}
-
-	public static int compterOccurrencesLargeur(String line) {
+	/**
+	 * determine the width
+	 */
+	public int occurenciesCountWidth(String line) {
 		int nb = 0;
 		for (int i = 0; i < line.length(); i++) {
 			nb++;
 		}
 		return nb;
 	}
-
-	public static int compterOccurencesHauteur(String fileName) throws IOException {
+	/**
+	 * determine the width
+	 */
+	public int occurenciesCountHeight(String fileName) throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader(fileName));
 		int lines = 0;
 		while (reader.readLine() != null)

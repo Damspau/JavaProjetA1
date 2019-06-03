@@ -16,21 +16,19 @@ public interface IMap {
 	
 	/**
 	 * get the width of the map
-	 * @return
+	 * 
 	 */
 	int getWidth();
 
 	
 	/**
 	 * get the height of the map
-	 * @return
+	 * 
 	 */
 	int getHeight();
 	/**
 	 * get what is on the map
-	 * @param x
-	 * @param y
-	 * @return
+	 * 
 	 */
 	
 	ISquare getOnTheMap(int x, int y);
@@ -43,7 +41,7 @@ public interface IMap {
 
 	/**
 	 * use for add an observable
-	 * @return
+	 * 
 	 */
 	Observable getObservable();
 	
@@ -54,9 +52,6 @@ public interface IMap {
 	
 	/**
 	 * Setting elements on the map
-	 * @param onTheMap
-	 * @param x
-	 * @param i
 	 */
 	void setOnTheMap(IElements onTheMap, int x, int i);
 

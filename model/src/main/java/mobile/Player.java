@@ -2,10 +2,14 @@ package mobile;
 
 import contract.IMap;
 import contract.Sprite;
-
+/**
+ * <h1>the class Player</h1>
+ * @author  Damien B, Maxime G and Benoît D
+ * @version 1.0
+ */
 public class Player extends CommonMobile {
 
-	private boolean validMove;
+
 	private boolean alive = true;
 
 	public Player(int x, int y, IMap map) {
@@ -13,9 +17,7 @@ public class Player extends CommonMobile {
 		super(sprite, x, y, map);
 	}
 
-//	public Player(IMap map) {
-//		super(sprite, Permeability.BREAKABLE, map);
-//	}
+
 
 	/** The Constant SPRITE. */
 	private final static Sprite sprite = new Sprite('P', "pF.gif");
@@ -33,15 +35,8 @@ public class Player extends CommonMobile {
 	private final Sprite spriteMoveUp = new Sprite('p', "pU.gif");
 
 	/** The Constant spriteExplode. */
-	private final Sprite spriteExplode = new Sprite('p', "pU.gif");
+	
 
-	public boolean isValidMove() {
-		return validMove;
-	}
-
-	public void setValidMove(boolean validMove) {
-		this.validMove = validMove;
-	}
 
 	@Override
 	public final void moveLeft() {

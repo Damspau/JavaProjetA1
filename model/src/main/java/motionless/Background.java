@@ -3,7 +3,11 @@ package motionless;
 import java.io.IOException;
 
 import contract.Sprite;
-
+/**
+ * <h1>the class Background</h1>
+ * @author  Damien B, Maxime G and Benoît D
+ * @version 1.0
+ */
 
 
 

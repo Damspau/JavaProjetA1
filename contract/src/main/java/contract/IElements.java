@@ -13,12 +13,10 @@ import java.awt.Image;
 public interface IElements {
 	/**
 	 * return the sprite
-	 * @return
 	 */
 	Sprite getSprite();
 	/**
 	 * return the image
-	 * @return
 	 */
 	Image getImage();
 

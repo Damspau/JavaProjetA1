@@ -7,7 +7,11 @@ import elements.*;
 import contract.*;
 
 import contract.IMap;
-
+/**
+ * <h1>the class CommonMotionless</h1>
+ * @author  Damien B, Maxime G and Benoît D
+ * @version 1.0
+ */
 public class CommonMotionless extends Elements {
 	private Point position;
 	private IBoard board;

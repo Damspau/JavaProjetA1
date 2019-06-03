@@ -7,9 +7,15 @@ import org.showboard.IBoard;
 import contract.IMap;
 import contract.Sprite;
 import elements.Elements;
-
-public abstract class CommonMobile extends Elements {
-
+/**
+ * <h1>the class CommonMobile</h1>
+ * @author  Damien B, Maxime G and Benoît D
+ * @version 1.0
+ */
+public class CommonMobile extends Elements {
+	/**
+	 * the position of the element
+	 */
 	private Point position;
 	private IBoard board;
 	private IMap map;
@@ -42,7 +48,7 @@ public abstract class CommonMobile extends Elements {
 	public IBoard getBoard() {
 		return board;
 	}
-
+	
 	public void moveLeft() {
 
 		this.setX(this.getX() - 1);
@@ -73,24 +79,35 @@ public abstract class CommonMobile extends Elements {
 		// TODO Auto-generated method stub
 
 	}
-
+	/**
+	 * notify observer
+	 */
 	private void setHasMoved() {
 		this.getMap().setMobileHasChanged();
 	}
-
+	
+	/**
+	 * is override in player
+	 */
 	public boolean isAlive() {
 
 		return true;
 	}
-
+	/**
+	 * is override in player
+	 */
 	public void setAlive(boolean b) {
 
 	}
-	
+	/**
+	 * Is use for the rock if they can kill or no
+	 */
 	public int getVelocity() {
 		return velocity;
 	}
-
+	/**
+	 * Is use for the rock if they can kill or no
+	 */
 	public void setVelocity(int velocity) {
 		this.velocity = velocity;
 	}
