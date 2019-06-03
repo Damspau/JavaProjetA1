@@ -4,18 +4,27 @@ import contract.IMap;
 import org.showboard.*;
 
 /**
- * The Interface IBoulderdashView.
+ * <h1>The Interface IBoulderdashView.</h1>
  *
- * @author Maxime G, Benoît D et Damiens
+ * @author Maxime G, Benoît D and Damien B
  */
 public interface IBoulderdashView {
-
-	void followMyPlayer();
-
+	
+	/**
+	 * return the maps
+	 * @return
+	 */
 	IMap getMap();
-
+	
+	/**
+	 * return the player
+	 * @return
+	 */
 	IElements getMyPlayer();
-
+	/**
+	 * return the boardFrame
+	 * @return
+	 */
 	BoardFrame getBoardFrame();
 
 

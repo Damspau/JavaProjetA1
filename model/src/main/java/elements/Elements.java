@@ -3,7 +3,11 @@ package elements;
 import java.awt.Image;
 import contract.*;
 import org.showboard.*;
-
+/**
+ * <h1>the class Elements</h1>
+ * @author Maxime G, Damien B et Benoît D
+ * @version 1.0
+ */
 public abstract class Elements implements IElements, IPawn {
 	protected int y;
 	protected int x;

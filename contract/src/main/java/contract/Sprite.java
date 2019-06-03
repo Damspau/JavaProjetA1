@@ -9,14 +9,22 @@ import javax.imageio.ImageIO;
 /**
  * <h1>The Sprite Class.</h1>
  *
- * @author Benoît D, Maxime G and Damiens
+ * @author Damien B, Maxime G and Benoît D 
  * @version 0.1
  */
 
 public class Sprite {
+	/**
+	 * The image which is used
+	 */
 	private Image image;
+	
 	private String imageName;
-
+	/**
+	 * Constructor, setting up the imagename and loading the image
+	 * @param character
+	 * @param imageName
+	 */
 	public Sprite(char character, String imageName) {
 		try {
 			this.setImageName(imageName);
@@ -26,7 +34,7 @@ public class Sprite {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public Image getImage() {
 		return image;
 	}
@@ -42,7 +50,7 @@ public class Sprite {
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
 	}
-
+	
 	public final void loadImage() throws IOException {
 		System.out.println();
 		String spriteName = "sprites/" + this.getImageName();

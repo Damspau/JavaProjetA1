@@ -3,7 +3,7 @@ package contract;
 /**
  * <h1>The Enum UserOrder.</h1>
  *
- * @author Benoît D, Maxime G and Damiens
+ * @author Damien B, Maxime G and Benoît D
  * @version 0.1
  */
 

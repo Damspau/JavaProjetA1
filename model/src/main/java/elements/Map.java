@@ -17,28 +17,54 @@ import mobile.CommonMobile;
 import mobile.MobileElementsFactory;
 import motionless.CommonMotionless;
 import motionless.MotionlessElementsFactory;
-
+/**
+ * <h1>the class Map which extends Observable and implements IMap</h1>
+ * @author Maxime G, Damien B et Benoît D
+ * @version 1.0
+ * 
+ */
 public class Map extends Observable implements IMap {
 
 	private int width;
 	private int height;
-
+	/**
+	 * the tab which contains all the elements except the player on the map
+	 */
 	private IElements[][] onTheMap;
 	private int actualXPlayer;
 	private int actualYPlayer;
-	
+	/**
+	 * Motionless factory
+	 */
 	MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
+	/**
+	 * Mobile element
+	 */
 	MobileElementsFactory factoryMobile = new MobileElementsFactory();
-	
+	/**
+	 * tempory motionless element
+	 */
 	CommonMotionless motionLessElement;
+	/**
+	 * tempory mobile element
+	 */
 	CommonMobile mobileElement;
-
+	
+	/**
+	 * create the map by reading the dab
+	 * @param fileName
+	 * @throws IOException
+	 */
 	public Map(final String fileName) throws IOException {
 		super();
 		DB.lireEnBase();
 		this.loadFile(fileName);
 	}
-
+	/**
+	 * reading the temporary file
+	 * @param fileName
+	 * @throws IOException
+	 */
 	private void loadFile(final String fileName) throws IOException {
 
 		final BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
@@ -87,7 +113,14 @@ public class Map extends Observable implements IMap {
 		}
 		buffer.close();
 	}
-
+	/**
+	 * Update the position of the rock if the player hit them
+	 * @param playerActualXPosition
+	 * @param playerActualYPosition
+	 * @param userOrder
+	 * @return
+	 * @throws IOException
+	 */
 	public String updateRockMap(int playerActualXPosition, int playerActualYPosition, UserOrder userOrder)
 			throws IOException {
 		String retour;
@@ -149,7 +182,13 @@ public class Map extends Observable implements IMap {
 		}
 
 	}
-
+	/**
+	 * Update the position of the dirt if the player hit them
+	 * @param playerActualXPosition
+	 * @param playerActualYPosition
+	 * @return
+	 * @throws IOException
+	 */
 	public Boolean updateMapDirt(int playerActualXPosition, int playerActualYPosition) throws IOException {
 
 		MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();

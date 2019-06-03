@@ -1,7 +1,4 @@
-/**
- * @author Maxime G, Damiens et Benoît D
- * @version 1.0
- */
+
 package main;
 
 import java.io.IOException;
@@ -11,8 +8,12 @@ import controller.Controller;
 import model.BoulderdashModel;
 import model.IBoulderdashModel;
 import view.View;
-
-public abstract class Main {
+/**
+ * <h1>The Main class</h1>
+ * @author Maxime G, Damien B et Benoît D
+ * @version 1.0
+ */
+public class Main {
 
 	public static void main(final String[] args) throws IOException, InterruptedException {
 
