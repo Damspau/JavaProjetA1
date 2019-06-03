@@ -2,7 +2,6 @@ package motionless;
 
 import java.io.IOException;
 
-import contract.Permeability;
 import contract.Sprite;
 
 public class ExitDoor extends CommonMotionless {
@@ -10,13 +9,13 @@ public class ExitDoor extends CommonMotionless {
 	
 	public ExitDoor() {
 
-		super(sprite, Permeability.UNBREAKABLE);
+		super(sprite);
 		
 	}
 	
 	public ExitDoor(int x,int y) throws IOException {
 		
-		super(sprite, Permeability.UNBREAKABLE, x,y);
+		super(sprite, x,y);
 		
 	}
 

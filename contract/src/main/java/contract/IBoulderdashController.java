@@ -7,16 +7,13 @@ import java.io.IOException;
  *
  * @author Benoît D, Damiens and Maxime G
  */
+
 public interface IBoulderdashController {
 
-
-
-	public void orderPerform(UserOrder controllerOrder) throws IOException;
-
+	void orderPerform(UserOrder controllerOrder) throws IOException;
 
 	void play() throws InterruptedException, IOException;
 
-	
 	IOrderPerformer getOrderPerformer();
 
 }

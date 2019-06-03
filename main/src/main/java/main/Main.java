@@ -12,18 +12,16 @@ import model.BoulderdashModel;
 import model.IBoulderdashModel;
 import view.View;
 
-
 public abstract class Main {
 
+	public static void main(final String[] args) throws IOException, InterruptedException {
 
-    public static void main(final String[] args) throws IOException, InterruptedException {
-    
-        final IBoulderdashModel model = new BoulderdashModel("map.txt");
-        final View view = new View(model.getMap(), model.getMyPlayer());
-        final IBoulderdashController controller = new Controller(view, model);
-        view.setOrderPerformer(controller.getOrderPerformer());
+		IBoulderdashModel model = new BoulderdashModel("map.txt");
+		View view = new View(model.getMap(), model.getMyPlayer());
+		IBoulderdashController controller = new Controller(view, model);
+		view.setOrderPerformer(controller.getOrderPerformer());
 
-        controller.play();
-       
-    }
+		controller.play();
+
+	}
 }

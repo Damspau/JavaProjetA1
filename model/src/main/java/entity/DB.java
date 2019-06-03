@@ -1,17 +1,23 @@
 package entity;
 
 import java.io.FileWriter;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * <h1>The Class DB.</h1>
+ *
+ * @author Damiens, Benoît D et Maxime G
+ */
 public class DB {
 
 	public static void lireEnBase() throws IOException {
 
-		String url = "jdbc:mysql://localhost:3306/good?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		String url = "jdbc:mysql://localhost:3306/maps?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 		String login = "root";
 		String passwd = "";
 		Connection cn = null;
@@ -23,7 +29,7 @@ public class DB {
 
 			cn = DriverManager.getConnection(url, login, passwd);
 
-			String query = "{CALL Map1()}";
+			String query = "{CALL Map2()}";
 
 			java.sql.CallableStatement stmt = cn.prepareCall(query);
 

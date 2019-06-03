@@ -24,10 +24,9 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	private int diamondCount = 0;
 
-	/** The model. */
 	private IBoulderdashModel model;
 
-	/** The stack order (RIGHT, LEFT, UP, DOWN and NOP) */
+	/** The stack order (RIGHT, LEFT, UP, DOWN and FACE) */
 	private UserOrder stackOrder;
 
 	private IBoulderdashView view;
@@ -36,31 +35,6 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 		this.setView(view);
 		this.setModel(model);
 		this.clearStackOrder();
-	}
-
-	private void setView(final IBoulderdashView view) {
-		this.view = view;
-	}
-
-	private IBoulderdashView getView() {
-		return this.view;
-	}
-
-	private void setModel(final IBoulderdashModel model) {
-		this.model = model;
-	}
-
-	private IBoulderdashModel getModel() {
-		return this.model;
-	}
-
-	private UserOrder getStackOrder() {
-
-		return stackOrder;
-	}
-
-	private void clearStackOrder() {
-		setStackOrder(UserOrder.FACE);
 	}
 
 	@Override
@@ -109,13 +83,14 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	}
 
+	/**
+	 * Manage the map borders
+	 * 
+	 */
 	public void checkBorderPlayer() throws IOException {
 
 		int playerActualXPosition = getModel().getMyPlayer().getX();
 		int playerActualYPosition = getModel().getMyPlayer().getY();
-
-		System.out.println("X=" + playerActualXPosition);
-		System.out.println("Y=" + playerActualYPosition);
 
 		if (((Map) this.getModel().getMap()).ifiamonBorder(playerActualXPosition, playerActualYPosition)) {
 
@@ -136,20 +111,18 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	}
 
-	public IOrderPerformer getOrderPerformer() {
-		return this;
-	}
-
-	public void orderPerform(final UserOrder userOrder) throws IOException {
-
-		this.setStackOrder(userOrder);
-
-	}
-
 	public int getDiamondCount() {
 		return diamondCount;
 	}
 
+	public void setDiamondCount(int DiamondCount) {
+		this.diamondCount = diamondCount + 1;
+	}
+
+	/**
+	 * collect diamonds
+	 * 
+	 */
 	public void collect() throws IOException {
 
 		int playerActualXPosition = getModel().getMyPlayer().getX();
@@ -161,13 +134,16 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 					this.getView().getMap().getOnTheMap(this.getModel().getMyPlayer().getX(),
 							this.getModel().getMyPlayer().getY()),
 					this.getModel().getMyPlayer().getX(), this.getModel().getMyPlayer().getY());
-			diamondCount = diamondCount + 1;
-			System.out.println("nbr diams" + diamondCount);
+			setDiamondCount(diamondCount);
 
 		}
 
 	}
 
+	/**
+	 * Open the door when you have 5 diamonds
+	 * 
+	 */
 	public void exidDoorAvailable() throws IOException {
 
 		int playerActualXPosition = getModel().getMyPlayer().getX();
@@ -187,6 +163,10 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 	}
 
+	/**
+	 * Displays msg : "you win !"
+	 * 
+	 */
 	public void news(String msg) {
 
 		JFrame frame = new JFrame();
@@ -215,11 +195,11 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 		frame.repaint(); // because you added panel after setVisible was called
 
 	}
-
-	public void canBePushed() {
-
-	}
-
+	
+	/**
+	 * the player can dig the dirt
+	 * 
+	 */
 	public void canBeDig() throws IOException {
 
 		int playerActualXPosition = getModel().getMyPlayer().getX();
@@ -235,14 +215,55 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 		}
 	}
 
+	public void canBePushed() {
+
+	}
+
+
+
 	public void fallAndKill() {
 
+	}
+
+	public IOrderPerformer getOrderPerformer() {
+		return this;
+	}
+
+	public void orderPerform(final UserOrder userOrder) throws IOException {
+
+		this.setStackOrder(userOrder);
+
+	}
+
+	private UserOrder getStackOrder() {
+
+		return stackOrder;
+	}
+
+	private void clearStackOrder() {
+		setStackOrder(UserOrder.FACE);
 	}
 
 	private void setStackOrder(final UserOrder stackOrder) {
 
 		this.stackOrder = stackOrder;
 		System.out.println(stackOrder);
+	}
+
+	private void setView(final IBoulderdashView view) {
+		this.view = view;
+	}
+
+	private IBoulderdashView getView() {
+		return this.view;
+	}
+
+	private void setModel(final IBoulderdashModel model) {
+		this.model = model;
+	}
+
+	private IBoulderdashModel getModel() {
+		return this.model;
 	}
 
 }

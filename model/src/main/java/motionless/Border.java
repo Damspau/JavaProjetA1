@@ -2,7 +2,6 @@ package motionless;
 
 import java.io.IOException;
 
-import contract.Permeability;
 import contract.Sprite;
 
 public class Border extends CommonMotionless {
@@ -11,13 +10,13 @@ public class Border extends CommonMotionless {
 	
 	public Border() {
 
-		super(sprite, Permeability.UNBREAKABLE);
+		super(sprite);
 		
 	}
 	
 	public Border(int x,int y) throws IOException {
 		
-		super(sprite, Permeability.UNBREAKABLE, x,y);
+		super(sprite, x,y);
 		
 	}
 

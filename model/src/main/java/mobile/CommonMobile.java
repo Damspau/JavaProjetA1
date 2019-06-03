@@ -5,7 +5,6 @@ import java.awt.Point;
 import org.showboard.IBoard;
 
 import contract.IMap;
-import contract.Permeability;
 import contract.Sprite;
 import elements.Elements;
 
@@ -24,9 +23,9 @@ public abstract class CommonMobile extends Elements {
 	}
 
 	// Override
-	protected CommonMobile(Sprite sprite, Permeability permeability, int x, int y, IMap map) {
+	protected CommonMobile(Sprite sprite, int x, int y, IMap map) {
 
-		super(sprite, permeability);
+		super(sprite);
 		this.setMap(map);
 
 	}

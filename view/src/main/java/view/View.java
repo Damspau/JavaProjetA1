@@ -22,8 +22,6 @@ import mobile.CommonMobile;
  * @author Maxime G, Damiens et Benoît D
  */
 public final class View implements IBoulderdashView, Runnable, KeyListener {
-	
-	
 
 	// All the different attributes.
 
@@ -48,9 +46,6 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 	private IOrderPerformer orderPerformer;
 
 	private BoardFrame boardFrame;
-	
-
-
 
 	public BoardFrame getBoardFrame() {
 		return boardFrame;
@@ -98,8 +93,6 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 
 		this.getBoardFrame().setVisible(true);
 	}
-	
-	
 
 	protected UserOrder keyCodeToUserOrder(int keyCode) {
 		UserOrder userOrder;
@@ -159,13 +152,8 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 
 	public void setMap(IMap map) throws IOException {
 		this.map = map;
-//        for (int x = 0; x < this.getMap().getWidth(); x++) {
-//            for (int y = 0; y < this.getMap().getHeight(); y++) {
-//               ((IElements) this.getMap().getOnTheMap(x, y)).getSprite().loadImage();
-//            }
 	}
 
-//	}
 	public CommonMobile getMyPlayer() {
 		return myPlayer;
 	}

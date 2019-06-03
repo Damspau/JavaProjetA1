@@ -1,7 +1,6 @@
 package mobile;
 
 import contract.IMap;
-import contract.Permeability;
 import contract.Sprite;
 
 public class Diamond extends CommonMobile {
@@ -13,7 +12,7 @@ public class Diamond extends CommonMobile {
 	private final static Sprite sprite = new Sprite('D', "D.jpg");
 
 	 public Diamond(int x,int y, IMap map) {
-	 	super(sprite, Permeability.BREAKABLE, x, y, map);
+	 	super(sprite, x, y, map);
 	 }
 	
 //	 public Diamond(IMap map) {
@@ -39,8 +38,8 @@ public class Diamond extends CommonMobile {
 //		super.doNothing();
 //		this.setSprite(sprite);
 
-	protected Diamond(Sprite sprite, Permeability permeability, int x, int y, IMap map) {
-		super(sprite, permeability, x, y, map);
+	protected Diamond(Sprite sprite, int x, int y, IMap map) {
+		super(sprite, x, y, map);
 		// TODO Auto-generated constructor stub
 	}
 
