@@ -35,7 +35,7 @@ public class DB {
 				String map1 = rs.getString("MapLines");
 				map.write(map1);
 				map.write("\r\n");
-				System.out.println(map1);
+				System.out.println(map1);²
 
 			}
 			map.close();
