@@ -173,15 +173,6 @@ public class Map extends Observable implements IMap {
 				retour = "playerGoBackUp";
 				return retour;
 			}
-			else if ((((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName() == "R.jpg") && (	(userOrder==UserOrder.UP) || (userOrder==UserOrder.FACE) )	) {
-	            
-				
-            	
-            	
-            	
-				retour = "YouDied";
-				return retour;
-			}
 			
         
         
