@@ -94,11 +94,12 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 				break;
 			}
 		
+			
 			this.canBeDig();
 			
 			
-			
 			this.IsThereARock();
+			this.resetVelocity();
 			this.fallAndKill();
 			
 			Thread.sleep(100);
@@ -198,7 +199,20 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 				
 											}
 
-	
+	public void resetVelocity	(){
+		
+		for (int x = 0; x < this.getView().getMap().getWidth(); x++) {
+
+			for (int y = 0; y <	this.getView().getMap().getHeight(); y++) {
+				if (	(	((Elements) this.getView().getMap().getOnTheMap(x, y)).getSprite().getImageName()==("R.jpg") 	) 	||	(	((Elements) this.getView().getMap().getOnTheMap(x, y)).getSprite().getImageName()==("D.jpg")	)	){
+					if (	(((Elements) this.getView().getMap().getOnTheMap(x, y+1)).getSprite().getImageName()!="background.jpg" )) {
+					((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).setVelocity((0));
+					}
+				}
+			}
+		}
+		
+	}
 	
 	
 	public void fallAndKill()  {
@@ -209,21 +223,28 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 			for (int y = 0; y < this.getView().getMap().getHeight(); y++) {
 
 				if (	(	((Elements) this.getView().getMap().getOnTheMap(x, y)).getSprite().getImageName()==("R.jpg") 	) 	||	(	((Elements) this.getView().getMap().getOnTheMap(x, y)).getSprite().getImageName()==("D.jpg")	)	){
+					
+					if (	(	((((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).getVelocity())	>=	2)	) && (	(x==getModel().getMyPlayer().getX()) && (y+1==getModel().getMyPlayer().getY())	)	) {
+						getModel().getMyPlayer().setAlive(false);
+							 
+							 }
+					
 					//if background under rock:
-					if (	(((Elements) this.getView().getMap().getOnTheMap(x, y+1)).getSprite().getImageName()=="background.jpg" )		)	 {
+					if (	(((Elements) this.getView().getMap().getOnTheMap(x, y+1)).getSprite().getImageName()=="background.jpg" )) {
 						
 						
 						
-						else if (	(this.getModel().getMyPlayer().getX()!=x) || (this.getModel().getMyPlayer().getY()!=y+1)	) {
+						
+						 if (	(this.getModel().getMyPlayer().getX()!=x) || (this.getModel().getMyPlayer().getY()!=y+1)	) {
 							
 							//increase the velocity of the rock
 							
 								((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).setVelocity(((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).getVelocity()+1);
 								
-								System.out.println(((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).getVelocity());
-								if (	(	((((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).getVelocity())	>	2)	) && (	(x==getModel().getMyPlayer().getX()) && (y+1==getModel().getMyPlayer().getY())	)	) {
-									getModel().getMyPlayer().setAlive(false);
-										 System.out.println("u dead");	}
+								
+								
+								//kill the player
+								
 							
 								this.getView().getMap().setOnTheMap((IElements) this.getView().getMap().getOnTheMap(x, y),x,y+1);
 
@@ -233,51 +254,54 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 								this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(x,y),x, y);
 								this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(x,y+1),x, y+1);
 								this.getView().getMap().setMobileHasChanged();
-						}
+						} 
+					}
+					
+				
 					
 					
 					//this line is setting up the rock in his new position
-					}
+					
 					//if rock on rock :
 					else if	(((Elements) this.getView().getMap().getOnTheMap(x, y+1)).getSprite().getImageName()=="R.jpg"	||	(	((Elements) this.getView().getMap().getOnTheMap(x, y)).getSprite().getImageName()==("D.jpg")	) )	{
-						//empty space on left
-						if	(	(((Elements) this.getView().getMap().getOnTheMap(x+1, y+1)).getSprite().getImageName()=="background.jpg" )	)	{
-							
-							if (	(this.getModel().getMyPlayer().getX()!=x+1) || (this.getModel().getMyPlayer().getY()!=y+1)	) {
-								//increase the velocity of the rock
-								((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).setVelocity(((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).getVelocity()+1);
-							
+							//empty space on left
+							if	(	(((Elements) this.getView().getMap().getOnTheMap(x+1, y+1)).getSprite().getImageName()=="background.jpg" )	)	{
 								
-							
-								this.getView().getMap().setOnTheMap((IElements) this.getView().getMap().getOnTheMap(x, y),x+1,y+1);
-
-
-							
-								this.getView().getMap().setOnTheMap(this.getModel().backgroundFastCreator(), x, y);
-							//adding on the boardframe
-							
-								this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(x,y),x, y);
-							
-								this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(x+1,y+1),x+1, y+1);
-								this.getView().getMap().setMobileHasChanged();
-							}
-						}
-						//empty space on right
-							else if ((((Elements) this.getView().getMap().getOnTheMap(x-1, y+1)).getSprite().getImageName()=="background.jpg" )		){
-								if (	(this.getModel().getMyPlayer().getX()!=x-1) || (this.getModel().getMyPlayer().getY()!=y+1)	) {
-									this.getView().getMap().setOnTheMap((IElements) this.getView().getMap().getOnTheMap(x, y),x-1,y+1);
+								if (	(this.getModel().getMyPlayer().getX()!=x+1) || (this.getModel().getMyPlayer().getY()!=y+1)	) {
 									//increase the velocity of the rock
 									((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).setVelocity(((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).getVelocity()+1);
-
+								
+									
+								
+									this.getView().getMap().setOnTheMap((IElements) this.getView().getMap().getOnTheMap(x, y),x+1,y+1);
+	
+	
+								
 									this.getView().getMap().setOnTheMap(this.getModel().backgroundFastCreator(), x, y);
-									//adding on the boardframe
+								//adding on the boardframe
+								
 									this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(x,y),x, y);
-									this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(x-1,y+1),x-1, y+1);
+								
+									this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(x+1,y+1),x+1, y+1);
 									this.getView().getMap().setMobileHasChanged();
 								}
-						//TODO : fais une méthode qui utilise la velocity pour tuer rockford
+							}
+							//empty space on right
+							else if ((((Elements) this.getView().getMap().getOnTheMap(x-1, y+1)).getSprite().getImageName()=="background.jpg" )		){
+									if (	(this.getModel().getMyPlayer().getX()!=x-1) || (this.getModel().getMyPlayer().getY()!=y+1)	) {
+										this.getView().getMap().setOnTheMap((IElements) this.getView().getMap().getOnTheMap(x, y),x-1,y+1);
+										//increase the velocity of the rock
+										((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).setVelocity(((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).getVelocity()+1);
+	
+										this.getView().getMap().setOnTheMap(this.getModel().backgroundFastCreator(), x, y);
+										//adding on the boardframe
+										this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(x,y),x, y);
+										this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(x-1,y+1),x-1, y+1);
+										this.getView().getMap().setMobileHasChanged();
+									}
+						
 								
-								
+									}
 							}
 							
 						
@@ -287,22 +311,23 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 					
 //					
 //						
-						
-					}
+				this.getView().getMap().setMobileHasChanged();	
+				}
 					
 					
 					
-					}
+			
+	}
 		
 	
 				
-		this.getView().getMap().setMobileHasChanged();
-			}
+	
+	}
+		
+		
+		
+	
 
-		
-		
-		
-		
 	
 
 	private void setStackOrder(final UserOrder stackOrder) {
@@ -312,3 +337,6 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	}
 	
 }
+
+	
+

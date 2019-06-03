@@ -105,8 +105,7 @@ public class Map extends Observable implements IMap {
             motionLessElement.setX(playerActualXPosition);
             motionLessElement.setY(playerActualYPosition);
             setOnTheMap(motionLessElement, playerActualXPosition, playerActualYPosition);
-            System.out.println(
-                    ((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName());
+           
             return (true);
         }
             
