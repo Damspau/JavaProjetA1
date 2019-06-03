@@ -2,7 +2,6 @@ package motionless;
 
 import java.io.IOException;
 
-import contract.Permeability;
 import contract.Sprite;
 
 public class Dirt extends CommonMotionless{
@@ -10,12 +9,12 @@ public class Dirt extends CommonMotionless{
 	
 	public Dirt() {
 		// TODO Auto-generated constructor stub
-		super(sprite, Permeability.UNBREAKABLE);
+		super(sprite);
 	}
 	
 	public Dirt(int x,int y) throws IOException {
 		
-		super(sprite, Permeability.BREAKABLE, x,y);
+		super(sprite, x,y);
 		
 	}
 

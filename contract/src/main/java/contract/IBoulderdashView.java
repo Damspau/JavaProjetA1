@@ -21,4 +21,6 @@ public interface IBoulderdashView {
 	IElements getMyPlayer();
 
 	BoardFrame getBoardFrame();
+
+
 }

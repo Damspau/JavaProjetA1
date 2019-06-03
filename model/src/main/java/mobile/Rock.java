@@ -1,6 +1,7 @@
 package mobile;
 
-import contract.*;
+import contract.IMap;
+import contract.Sprite;
 
 public class Rock extends CommonMobile {
 	private boolean validMove;
@@ -11,7 +12,7 @@ public class Rock extends CommonMobile {
 
 
 	 public Rock(int x,int y, IMap map) {
-	 	super(sprite, Permeability.BREAKABLE, x, y, map);
+	 	super(sprite, x, y, map);
 	 }
 	
 //	 public Rock(IMap map) {
@@ -38,8 +39,8 @@ public class Rock extends CommonMobile {
 //		this.setSprite(sprite);
 //	}
 
-	protected Rock(Sprite sprite, Permeability permeability, int x, int y, IMap map) {
-		super(sprite, permeability, x, y, map);
+	protected Rock(Sprite sprite, int x, int y, IMap map) {
+		super(sprite, x, y, map);
 		// TODO Auto-generated constructor stub
 	}
 

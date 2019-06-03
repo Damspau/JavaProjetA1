@@ -6,60 +6,47 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * <h1>The Sprite Class.</h1>
+ *
+ * @author Benoît D, Maxime G and Damiens
+ * @version 0.1
+ */
+
 public class Sprite {
-private Image image;
-private String imageName;
+	private Image image;
+	private String imageName;
 
-private char bddImage;
-//private boolean imageLoaded;
-
-
-
-public Sprite (char character, String imageName) {
-	try {
-		this.setImageName(imageName);
-		this.loadImage();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+	public Sprite(char character, String imageName) {
+		try {
+			this.setImageName(imageName);
+			this.loadImage();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-}
 
-//Overwrite
+	public Image getImage() {
+		return image;
+	}
 
-public Sprite (char character) {
-	
-}
+	public void setImage(Image image) {
+		this.image = image;
+	}
 
-public Image getImage() {
-	return image;
-}
+	public String getImageName() {
+		return imageName;
+	}
 
-public void setImage(Image image) {
-	this.image = image;
-}
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
 
-public String getImageName() {
-	return imageName;
-}
+	public final void loadImage() throws IOException {
+		System.out.println();
+		String spriteName = "sprites/" + this.getImageName();
 
-public void setImageName(String imageName) {
-	this.imageName = imageName;
-}
-
-public char getBddImage() {
-	return bddImage;
-}
-
-public void setBddImage(char bddImage) {
-	this.bddImage = bddImage;
-}
-
-
-public final void loadImage() throws IOException {
-	System.out.println();
-	String spriteName = "sprites/"+ this.getImageName();
-	
-	this.setImage(ImageIO.read(new File(spriteName)));
-}
+		this.setImage(ImageIO.read(new File(spriteName)));
+	}
 }

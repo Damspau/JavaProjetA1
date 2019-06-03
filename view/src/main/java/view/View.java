@@ -145,10 +145,6 @@ public final class View implements IBoulderdashView, Runnable, KeyListener {
 
 	public void setMap(IMap map) throws IOException {
 		this.map = map;
-//        for (int x = 0; x < this.getMap().getWidth(); x++) {
-//            for (int y = 0; y < this.getMap().getHeight(); y++) {
-//               ((IElements) this.getMap().getOnTheMap(x, y)).getSprite().loadImage();
-//            }
 	}
 
 	public CommonMobile getMyPlayer() {

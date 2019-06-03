@@ -21,14 +21,14 @@ public class CommonMotionless extends Elements {
 	}
 	
 	
-	public CommonMotionless(Sprite sprite, Permeability permeability) {
-		super(sprite, permeability);
+	public CommonMotionless(Sprite sprite) {
+		super(sprite);
 		this.setMap(map);
 		// TODO Auto-generated constructor stub
 	}
 	//Override
-	protected CommonMotionless(Sprite sprite, Permeability permeability, int x, int y) {
-		super(sprite, permeability);
+	protected CommonMotionless(Sprite sprite, int x, int y) {
+		super(sprite);
 		
 	}
 	public Point getPosition() {

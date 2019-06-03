@@ -11,8 +11,6 @@ import org.showboard.ISquare;
 
 import contract.IElements;
 import contract.IMap;
-import contract.Sprite;
-import contract.UserOrder;
 import entity.DB;
 import mobile.CommonMobile;
 import mobile.MobileElementsFactory;
@@ -31,8 +29,8 @@ public class Map extends Observable implements IMap {
 	MobileElementsFactory factoryMobile = new MobileElementsFactory();
 	CommonMotionless motionLessElement;
 	CommonMobile mobileElement;
-	
-	
+
+
 
 	public Map(final String fileName) throws IOException {
 		super();
@@ -62,8 +60,6 @@ public class Map extends Observable implements IMap {
 				CommonMotionless motionLessElement = factoryMotionless.getFromFileSymbol(line.toCharArray()[x]);
 				if (motionLessElement == null) {
 					if (c == 'P') {
-						System.out.println(x);
-						System.out.println(y);
 						setActualXPlayer(x);
 						setActualYPlayer(y);
 						motionLessElement = factoryMotionless.getFromFileSymbol('*');
@@ -91,40 +87,19 @@ public class Map extends Observable implements IMap {
 		buffer.close();
 	}
 
-	public boolean updateMap(int playerActualXPosition, int playerActualYPosition) throws IOException {
 
-        MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
-        
-        CommonMotionless motionLessElement;
-        
 
-        if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName() == "-.jpg") {
-
-//            System.out.println("-.jpg");
-            motionLessElement = factoryMotionless.getFromFileSymbol('*');
-            motionLessElement.setX(playerActualXPosition);
-            motionLessElement.setY(playerActualYPosition);
-            setOnTheMap(motionLessElement, playerActualXPosition, playerActualYPosition);
-           
-            return (true);
-        }
-            
-         else {
-            return (false);
-        }
-	}
-	
 	public String updateRockMap (int playerActualXPosition, int playerActualYPosition, UserOrder userOrder ) throws IOException {
 		String retour;
 		if ((((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName() == "R.jpg") && (userOrder==UserOrder.RIGHT)) {
-	            
+
 				if (((IElements) getOnTheMap(playerActualXPosition+1, playerActualYPosition)).getSprite().getImageName() == "background.jpg" )
 		            {
 		                motionLessElement = factoryMotionless.getFromFileSymbol('*');
 		                motionLessElement.setX(playerActualXPosition);
 		                motionLessElement.setY(playerActualYPosition);
-		                
-		
+
+
 		                mobileElement = factoryMobile.getFromFileSymbol('R', playerActualXPosition+1, playerActualYPosition);
 		                mobileElement.setX(playerActualXPosition+1);
 		                mobileElement.setY(playerActualYPosition);
@@ -132,23 +107,23 @@ public class Map extends Observable implements IMap {
 		                setOnTheMap(mobileElement, playerActualXPosition+1, playerActualYPosition);
 		                retour = "rockPushRight";
 		            }
-	            
+
 	            else {
 	            	retour = "playerGoBackLeft";
-	            	
+
 	            	}
-				
+
             return retour;
             }
 		else if ((((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName() == "R.jpg") && (userOrder==UserOrder.LEFT)) {
-            
+
 			if (((IElements) getOnTheMap(playerActualXPosition-1, playerActualYPosition)).getSprite().getImageName() == "background.jpg" )
 	            {
 	                motionLessElement = factoryMotionless.getFromFileSymbol('*');
 	                motionLessElement.setX(playerActualXPosition);
 	                motionLessElement.setY(playerActualYPosition);
-	                
-	
+
+
 	                mobileElement = factoryMobile.getFromFileSymbol('R', playerActualXPosition-1, playerActualYPosition);
 	                mobileElement.setX(playerActualXPosition-1);
 	                mobileElement.setY(playerActualYPosition);
@@ -156,29 +131,87 @@ public class Map extends Observable implements IMap {
 	                setOnTheMap(mobileElement, playerActualXPosition-1, playerActualYPosition);
 	                retour = "rockPushLeft";
 	            }
-            
+
             else {
             	retour = "playerGoBackRight";
-            	
+
             }
 			return retour;
+
+	public Boolean updateMapDirt(int playerActualXPosition, int playerActualYPosition) throws IOException {
+
+		MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
+
+		CommonMotionless motionLessElement;
+
+		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
+				.getImageName() == "-.jpg") {
+
+			motionLessElement = factoryMotionless.getFromFileSymbol('*');
+			motionLessElement.setX(playerActualXPosition);
+			motionLessElement.setY(playerActualYPosition);
+			setOnTheMap(motionLessElement, playerActualXPosition, playerActualYPosition);
+
+			return (true);
+		} else {
+			return (false);
+		}
+	}
+
+	public Boolean updateMapDiams(int playerActualXPosition, int playerActualYPosition) throws IOException {
+
+		MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
+
+		CommonMotionless motionLessElement;
+
+		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
+				.getImageName() == "D.jpg") {
+
+			motionLessElement = factoryMotionless.getFromFileSymbol('*');
+			motionLessElement.setX(playerActualXPosition);
+			motionLessElement.setY(playerActualYPosition);
+			setOnTheMap(motionLessElement, playerActualXPosition, playerActualYPosition);
+			return (true);
+		} else {
+			return (false);
+		}
+	}
+
+	public Boolean ifiamonExitDoor(int playerActualXPosition, int playerActualYPosition) throws IOException {
+
+		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
+				.getImageName() == "E.jpg") {
+			return (true);
+		} else {
+			return (false);
+		}
+	}
+
+	public Boolean ifiamonBorder(int playerActualXPosition, int playerActualYPosition) throws IOException {
+
+		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
+				.getImageName() == "B.jpg") {
+			return (true);
+		} else {
+			return (false);
+
 		}
 			else if ((((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite().getImageName() == "R.jpg") && (userOrder==UserOrder.DOWN)) {
-	            
-				
-	            	
-	            	
-	            	
+
+
+
+
+
 				retour = "playerGoBackUp";
 				return retour;
 			}
-			
-        
-        
+
+
+
 		else {
 			return("z");
 		}
-		
+
 	}
 
 	public void setOnTheMap(IElements mobileElement, int x, int y) {
@@ -291,10 +324,10 @@ public class Map extends Observable implements IMap {
 	public void setMobileElement(CommonMobile mobileElement) {
 		this.mobileElement = mobileElement;
 	}
-	
-	
-	
 
-	
+
+
+
+
 
 }
