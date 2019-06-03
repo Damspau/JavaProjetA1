@@ -9,9 +9,12 @@ import javax.swing.JPanel;
 
 import contract.IBoulderdashController;
 import contract.IBoulderdashView;
+import contract.IElements;
 import contract.IOrderPerformer;
 import contract.UserOrder;
+import elements.Elements;
 import elements.Map;
+import mobile.CommonMobile;
 import model.IBoulderdashModel;
 
 /**
@@ -71,6 +74,10 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 
 			this.checkBorderPlayer();
 
+			this.IsThereARock();
+			this.resetVelocity();
+			this.fallAndKill();
+
 			this.canBeDig();
 
 			this.collect();
@@ -78,6 +85,180 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 			this.exidDoorAvailable();
 
 			this.clearStackOrder();
+
+		}
+
+	}
+
+	public void IsThereARock() throws IOException {
+		int playerActualXPosition = getModel().getMyPlayer().getX();
+		int playerActualYPosition = getModel().getMyPlayer().getY();
+		String result = ((Map) this.getModel().getMap()).updateRockMap(playerActualXPosition, playerActualYPosition,
+				getStackOrder());
+
+		switch (result) {
+		case "rockPushRight":
+			// even if this line is quite scary it only add a background to where the rock
+			// was and the next one add a rock next to it
+			this.getView().getBoardFrame().addSquare(
+					this.getView().getMap().getOnTheMap(this.getModel().getMyPlayer().getX(),
+							this.getModel().getMyPlayer().getY()),
+					this.getModel().getMyPlayer().getX(), this.getModel().getMyPlayer().getY());
+			this.getView().getBoardFrame().addSquare(
+					this.getView().getMap().getOnTheMap(this.getModel().getMyPlayer().getX() + 1,
+							this.getModel().getMyPlayer().getY()),
+					this.getModel().getMyPlayer().getX() + 1, this.getModel().getMyPlayer().getY());
+			break;
+
+		case "rockPushLeft":
+			this.getView().getBoardFrame().addSquare(
+					this.getView().getMap().getOnTheMap(this.getModel().getMyPlayer().getX(),
+							this.getModel().getMyPlayer().getY()),
+					this.getModel().getMyPlayer().getX(), this.getModel().getMyPlayer().getY());
+			this.getView().getBoardFrame().addSquare(
+					this.getView().getMap().getOnTheMap(this.getModel().getMyPlayer().getX() - 1,
+							this.getModel().getMyPlayer().getY()),
+					this.getModel().getMyPlayer().getX() - 1, this.getModel().getMyPlayer().getY());
+			break;
+		case "playerGoBackRight":
+			getModel().getMyPlayer().moveRight();
+			break;
+		case "playerGoBackLeft":
+
+			getModel().getMyPlayer().moveLeft();
+
+			break;
+		case "playerGoBackUp":
+			getModel().getMyPlayer().moveUp();
+
+		default:
+			break;
+		}
+
+	}
+
+	public void resetVelocity() {
+
+		for (int x = 0; x < this.getView().getMap().getWidth(); x++) {
+
+			for (int y = 0; y < this.getView().getMap().getHeight(); y++) {
+				if ((((Elements) this.getView().getMap().getOnTheMap(x, y)).getSprite().getImageName() == ("R.jpg"))
+						|| (((Elements) this.getView().getMap().getOnTheMap(x, y)).getSprite()
+								.getImageName() == ("D.jpg"))) {
+					if ((((Elements) this.getView().getMap().getOnTheMap(x, y + 1)).getSprite()
+							.getImageName() != "background.jpg")) {
+						((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).setVelocity((0));
+					}
+				}
+			}
+		}
+
+	}
+
+	public void fallAndKill() {
+
+		// we go through the all map to detect if there is a rock who is waiting to fall
+		for (int x = 0; x < this.getView().getMap().getWidth(); x++) {
+
+			for (int y = 0; y < this.getView().getMap().getHeight(); y++) {
+
+				if ((((Elements) this.getView().getMap().getOnTheMap(x, y)).getSprite().getImageName() == ("R.jpg"))
+						|| (((Elements) this.getView().getMap().getOnTheMap(x, y)).getSprite()
+								.getImageName() == ("D.jpg"))) {
+					
+					
+					// kill the player
+					if ((((((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).getVelocity()) >= 2)) && ((x == getModel().getMyPlayer().getX()) && (y + 1 == getModel().getMyPlayer().getY()))) {
+						getModel().getMyPlayer().setAlive(false);
+						news("Game over !");
+
+					}
+
+					// if background under rock:
+					if ((((Elements) this.getView().getMap().getOnTheMap(x, y + 1)).getSprite()
+							.getImageName() == "background.jpg")) {
+
+						if ((this.getModel().getMyPlayer().getX() != x) || (this.getModel().getMyPlayer().getY() != y + 1)) {
+
+							// increase the velocity of the rock
+
+							((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).setVelocity(
+									((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).getVelocity() + 1);
+
+							
+
+							this.getView().getMap().setOnTheMap((IElements) this.getView().getMap().getOnTheMap(x, y),
+									x, y + 1);
+
+							this.getView().getMap().setOnTheMap(this.getModel().backgroundFastCreator(), x, y);
+							// adding on the boardframe
+							this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(x, y), x, y);
+							this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(x, y + 1), x,
+									y + 1);
+							this.getView().getMap().setMobileHasChanged();
+						}
+					}
+
+					// this line is setting up the rock in his new position
+
+					// if rock on rock :
+					else if (((Elements) this.getView().getMap().getOnTheMap(x, y + 1)).getSprite()
+							.getImageName() == "R.jpg"
+							|| (((Elements) this.getView().getMap().getOnTheMap(x, y)).getSprite()
+									.getImageName() == ("D.jpg"))) {
+						// empty space on left
+						if ((((Elements) this.getView().getMap().getOnTheMap(x + 1, y + 1)).getSprite()
+								.getImageName() == "background.jpg")) {
+
+							if ((this.getModel().getMyPlayer().getX() != x + 1)
+									|| (this.getModel().getMyPlayer().getY() != y + 1)) {
+								// increase the velocity of the rock
+								((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).setVelocity(
+										((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).getVelocity() + 1);
+
+								this.getView().getMap().setOnTheMap(
+										(IElements) this.getView().getMap().getOnTheMap(x, y), x + 1, y + 1);
+
+								this.getView().getMap().setOnTheMap(this.getModel().backgroundFastCreator(), x, y);
+								// adding on the boardframe
+
+								this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(x, y), x,
+										y);
+
+								this.getView().getBoardFrame()
+										.addSquare(this.getView().getMap().getOnTheMap(x + 1, y + 1), x + 1, y + 1);
+								this.getView().getMap().setMobileHasChanged();
+							}
+						}
+						// empty space on right
+						else if ((((Elements) this.getView().getMap().getOnTheMap(x - 1, y + 1)).getSprite()
+								.getImageName() == "background.jpg")) {
+							if ((this.getModel().getMyPlayer().getX() != x - 1)
+									|| (this.getModel().getMyPlayer().getY() != y + 1)) {
+								this.getView().getMap().setOnTheMap(
+										(IElements) this.getView().getMap().getOnTheMap(x, y), x - 1, y + 1);
+								// increase the velocity of the rock
+								((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).setVelocity(
+										((CommonMobile) this.getView().getMap().getOnTheMap(x, y)).getVelocity() + 1);
+
+								this.getView().getMap().setOnTheMap(this.getModel().backgroundFastCreator(), x, y);
+								// adding on the boardframe
+								this.getView().getBoardFrame().addSquare(this.getView().getMap().getOnTheMap(x, y), x,
+										y);
+								this.getView().getBoardFrame()
+										.addSquare(this.getView().getMap().getOnTheMap(x - 1, y + 1), x - 1, y + 1);
+								this.getView().getMap().setMobileHasChanged();
+							}
+
+						}
+					}
+
+				}
+
+//					
+//						
+				this.getView().getMap().setMobileHasChanged();
+			}
 
 		}
 
@@ -195,7 +376,7 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 		frame.repaint(); // because you added panel after setVisible was called
 
 	}
-	
+
 	/**
 	 * the player can dig the dirt
 	 * 
@@ -216,12 +397,6 @@ public final class Controller implements IBoulderdashController, IOrderPerformer
 	}
 
 	public void canBePushed() {
-
-	}
-
-
-
-	public void fallAndKill() {
 
 	}
 

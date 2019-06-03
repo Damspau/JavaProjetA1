@@ -32,4 +32,6 @@ public interface IMap {
 
 	int getActualYPlayer();
 
+	void setOnTheMap(IElements onTheMap, int x, int i);
+
 }

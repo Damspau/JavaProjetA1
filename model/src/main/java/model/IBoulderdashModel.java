@@ -4,6 +4,7 @@ package model;
 
 
 
+import contract.IElements;
 import contract.IMap;
 import mobile.CommonMobile;
 
@@ -19,5 +20,6 @@ public interface IBoulderdashModel {
 
 	public CommonMobile getMyPlayer ();
 	IMap getMap();
+	public IElements backgroundFastCreator();
 
 }

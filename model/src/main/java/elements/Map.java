@@ -11,6 +11,7 @@ import org.showboard.ISquare;
 
 import contract.IElements;
 import contract.IMap;
+import contract.UserOrder;
 import entity.DB;
 import mobile.CommonMobile;
 import mobile.MobileElementsFactory;
@@ -25,6 +26,12 @@ public class Map extends Observable implements IMap {
 	private IElements[][] onTheMap;
 	private int actualXPlayer;
 	private int actualYPlayer;
+	
+	MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
+	MobileElementsFactory factoryMobile = new MobileElementsFactory();
+	
+	CommonMotionless motionLessElement;
+	CommonMobile mobileElement;
 
 	public Map(final String fileName) throws IOException {
 		super();
@@ -81,6 +88,67 @@ public class Map extends Observable implements IMap {
 		buffer.close();
 	}
 
+	public String updateRockMap(int playerActualXPosition, int playerActualYPosition, UserOrder userOrder)
+			throws IOException {
+		String retour;
+		if ((((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
+				.getImageName() == "R.jpg") && (userOrder == UserOrder.RIGHT)) {
+
+			if (((IElements) getOnTheMap(playerActualXPosition + 1, playerActualYPosition)).getSprite()
+					.getImageName() == "background.jpg") {
+				motionLessElement = factoryMotionless.getFromFileSymbol('*');
+				motionLessElement.setX(playerActualXPosition);
+				motionLessElement.setY(playerActualYPosition);
+
+				mobileElement = factoryMobile.getFromFileSymbol('R', playerActualXPosition + 1, playerActualYPosition);
+				mobileElement.setX(playerActualXPosition + 1);
+				mobileElement.setY(playerActualYPosition);
+				setOnTheMap(motionLessElement, playerActualXPosition, playerActualYPosition);
+				setOnTheMap(mobileElement, playerActualXPosition + 1, playerActualYPosition);
+				retour = "rockPushRight";
+			}
+
+			else {
+				retour = "playerGoBackLeft";
+
+			}
+
+			return retour;
+		} else if ((((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
+				.getImageName() == "R.jpg") && (userOrder == UserOrder.LEFT)) {
+
+			if (((IElements) getOnTheMap(playerActualXPosition - 1, playerActualYPosition)).getSprite()
+					.getImageName() == "background.jpg") {
+				motionLessElement = factoryMotionless.getFromFileSymbol('*');
+				motionLessElement.setX(playerActualXPosition);
+				motionLessElement.setY(playerActualYPosition);
+
+				mobileElement = factoryMobile.getFromFileSymbol('R', playerActualXPosition - 1, playerActualYPosition);
+				mobileElement.setX(playerActualXPosition - 1);
+				mobileElement.setY(playerActualYPosition);
+				setOnTheMap(motionLessElement, playerActualXPosition, playerActualYPosition);
+				setOnTheMap(mobileElement, playerActualXPosition - 1, playerActualYPosition);
+				retour = "rockPushLeft";
+			}
+
+			else {
+				retour = "playerGoBackRight";
+
+			}
+			return retour;
+		} else if ((((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
+				.getImageName() == "R.jpg") && (userOrder == UserOrder.DOWN)) {
+
+			retour = "playerGoBackUp";
+			return retour;
+		}
+
+		else {
+			return ("z");
+		}
+
+	}
+
 	public Boolean updateMapDirt(int playerActualXPosition, int playerActualYPosition) throws IOException {
 
 		MotionlessElementsFactory factoryMotionless = new MotionlessElementsFactory();
@@ -129,7 +197,7 @@ public class Map extends Observable implements IMap {
 			return (false);
 		}
 	}
-	
+
 	public Boolean ifiamonBorder(int playerActualXPosition, int playerActualYPosition) throws IOException {
 
 		if (((IElements) getOnTheMap(playerActualXPosition, playerActualYPosition)).getSprite()
